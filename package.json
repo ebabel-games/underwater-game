@@ -1,0 +1,19 @@
+{
+  "name": "underwater-server",
+  "version": "1.0.0",
+  "description": "Aquatic 3D HTML5 game of survival, fighting underwater creatures in a web browser.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ebabel-eu/underwater-server.git"
+  },
+  "author": "Thomas Amar <hello@ebabel.eu> (https://ebabel.eu)",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ebabel-eu/underwater-server/issues"
+  },
+  "homepage": "https://github.com/ebabel-eu/underwater-server#readme"
+}
