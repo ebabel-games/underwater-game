@@ -6,10 +6,14 @@ const io = require('socket.io')(http);
 app.use(express.static('public'));
 
 io.on('connection', (socket) => {
-  console.log('a user connected');
+  io.emit('chatMessage', 'Player is online.');
 
   socket.on('disconnect', () => {
-    console.log('a user disconnected');
+    io.emit('chatMessage', 'Player is offline.');
+  });
+
+  socket.on('chatMessage', (chatMessage) => {
+    io.emit('chatMessage', `Player says "${chatMessage}"`);
   });
 });
 
