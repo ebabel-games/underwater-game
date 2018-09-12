@@ -2,13 +2,13 @@
   "name": "underwater-game",
   "version": "1.1.0",
   "description": "Aquatic 3D HTML5 game of survival, fighting underwater creatures in a web browser.",
-  "main": "src/index.js",
+  "main": "server/index.js",
   "scripts": {
     "test": "npm run eslint && npm run mocha",
     "mocha": "node ./node_modules/.bin/mocha --exit",
-    "eslint": "node ./node_modules/.bin/eslint ./src/*.js ./src/**/*.js",
-    "production": "export NODE_ENV=production&& node ./src/index.js",
-    "start": "node ./src/index.js",
+    "eslint": "node ./node_modules/.bin/eslint ./server/*.js ./server/**/*.js ./client/*.js ./client/**/*.js",
+    "production": "export NODE_ENV=production&& node ./server/index.js",
+    "start": "node ./server/index.js",
     "now-start": "npm run production"
   },
   "repository": {
