@@ -8,12 +8,22 @@ You need Node.js and npm from https://nodejs.org/
 npm install
 ```
 
+## Build for Development
+```
+npm run build
+```
+
 ## Run locally in Development
 ```
 npm start
 ```
 
 Browse http://localhost:3000
+
+## Build for Production
+```
+npm run build-production
+```
 
 ## Deploy to Production
 Any Node.js hosting will do, but I recommend free hosting, easy to deploy service "now", from https://zeit.co/
