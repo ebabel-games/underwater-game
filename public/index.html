@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="description" content="Aquatic 3D HTML5 game of survival, fighting underwater creatures in a web browser.">
+  <title>Underwater Game</title>
+  <meta name="theme-color" content="#3c6478">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 12px;
+      overflow: hidden;
+      background-color: #3c6478;
+      color: black;
+    }
+    .window {
+      position: absolute;
+      background-color: rgba(0, 0, 128, .75);;
+      color: #ffff00;
+      overflow: auto;
+      padding: .5em .75em;
+    }
+    .window p {
+      margin: 0;
+      line-height: 1.25em;
+    }
+    #logsWindow {
+      bottom: 0;
+      left: 0;
+      min-width: 116px;
+      height: 116px;
+    }
+    @media (max-width: 320px) {
+      body {
+        font-size: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Underwater Game</h1>
+  <p>Aquatic 3D HTML5 game of survival, fighting underwater creatures in a web browser.</p>
+
+  <div id="logsWindow" class="window"></div>
+
+  <script src="libraries.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+  </script>
+  <script src="game.js"></script>
+</body>
+</html>
