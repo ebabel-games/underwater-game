@@ -7,7 +7,7 @@
     "test": "npm run eslint && npm run mocha",
     "mocha": "node ./node_modules/.bin/mocha --exit",
     "eslint": "node ./node_modules/.bin/eslint ./server/*.js ./server/**/*.js ./client/*.js ./client/**/*.js",
-    "build": "node ./node_modules/.bin/webpack --mode=development",
+    "build": "node ./node_modules/.bin/webpack --mode=development --devtool source-map",
     "build-production": "node ./node_modules/.bin/webpack --mode=production",
     "production": "export NODE_ENV=production&& node ./server/index.js",
     "start": "node ./server/index.js",
