@@ -6,7 +6,8 @@
     "es6": true
   },
   "globals": {
-    "io": true
+    "io": true,
+    "socket": true
   },
   "extends": "eslint:recommended",
   "rules": {
