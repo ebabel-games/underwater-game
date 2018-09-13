@@ -8,6 +8,14 @@ const render = (scene, clock, camera, renderer) => {
   requestAnimationFrame((timestamp) => {
     render(scene, clock, camera, renderer);
   });
+
+  return {
+    delta,
+    scene,
+    clock,
+    camera,
+    renderer
+  };
 };
 
 export { render };

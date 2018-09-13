@@ -7,6 +7,14 @@ const game = (socket, THREE, THREEx) => {
   chatMessage(socket);
   const { scene, clock, camera, renderer } = world(THREE, THREEx); /* no-unused-var: 0 */
   render(scene, clock, camera, renderer);
+
+  return {
+    socket,
+    scene,
+    clock,
+    camera,
+    renderer
+  };
 };
 
 game(socket, THREE, THREEx);

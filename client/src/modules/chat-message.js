@@ -26,6 +26,11 @@ const chatMessage = (socket) => {
     socket.emit('chatMessage', chatMessage);
     document.getElementById('logsInput').value = '';
   });
+
+  return {
+    socket,
+    logsForm: document.getElementById('logsForm')
+  }
 };
 
 export { chatMessage };

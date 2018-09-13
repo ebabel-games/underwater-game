@@ -23,5 +23,8 @@ module.exports = {
   },
   stats: {
     colors: true
+  },
+  watchOptions: {
+    ignored: /node_modules/
   }
 };

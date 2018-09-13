@@ -16,9 +16,17 @@ Source: https://threejs.org/docs/#examples/controls/OrbitControls
 ## THREEx WindowResize
 Source: https://raw.githubusercontent.com/jeromeetienne/threex.windowresize/master/threex.windowresize.js
 
-# Underwater "fog"
+## Underwater "fog"
 Source: https://alastaira.wordpress.com/2014/10/07/underwater-effects/
 
-# Soil beach
+## Soil beach
 - soil-beach.jpg
 Source: https://www.textures.com/download/soilbeach0111/48724
+
+## Skybox tutorial
+Source: https://www.youtube.com/watch?v=7fJgVyq0OYo
+
+## Whirlpool Skybox
+- assets/whirlpool/* (all files in directory)
+Author: The Mighty Pete
+Source: http://www.custommapmakers.org/skyboxes.php

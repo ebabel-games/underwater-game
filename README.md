@@ -8,9 +8,14 @@ You need Node.js and npm from https://nodejs.org/
 npm install
 ```
 
-## Build for Development
+## Build once for Development
 ```
 npm run build
+```
+
+## Build continuously for Development
+```
+npm run watch
 ```
 
 ## Run locally in Development
