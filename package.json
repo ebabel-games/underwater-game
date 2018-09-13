@@ -1,6 +1,6 @@
 {
   "name": "underwater-game",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Aquatic 3D HTML5 game of survival, fighting underwater creatures in a web browser.",
   "main": "server/index.js",
   "scripts": {
@@ -10,9 +10,8 @@
     "build": "node ./node_modules/.bin/webpack --mode=development --devtool source-map",
     "watch": "node ./node_modules/.bin/webpack --mode=development --devtool source-map --watch --progress",
     "build-production": "node ./node_modules/.bin/webpack --mode=production",
-    "production": "export NODE_ENV=production&& node ./server/index.js",
     "start": "node ./server/index.js",
-    "now-start": "npm run build-production && npm run production"
+    "now-start": "npm run build-production && npm start"
   },
   "repository": {
     "type": "git",
