@@ -25,7 +25,7 @@ io.on('connection', (socket) => {
   });
 });
 
-let port = 3000;  // Default port while developing.
+let port = 3000;
 if (process.env.NODE_ENV === 'production') port = 80;
 http.listen(port, () => {
   console.log(`Underwater Game listening on port ${port}.`); /* eslint no-console: 0 */
