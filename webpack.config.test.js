@@ -1,5 +1,7 @@
-const config = require('./webpack.config');
-config.target = 'node';
-config.mode = 'development';
+var nodeExternals = require('webpack-node-externals');
 
-module.exports = config;
+module.exports = {
+  target: 'node', // webpack should compile node compatible code
+  externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
+  mode: 'development'
+};

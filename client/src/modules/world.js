@@ -40,7 +40,7 @@ const world = (THREE, THREEx, position = _position, rotation = _rotation, color 
   const windowResize = new THREEx.WindowResize(renderer, camera);
 
   // Light.
-  light(scene);
+  light({ THREE, scene });
 
   // Skybox.
   skybox(scene);
