@@ -56,6 +56,10 @@
     }
   </style>
 
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io();
+  </script>
 </head>
 <body>
   <h1>Underwater Game</h1>
@@ -69,7 +73,6 @@
   </div>
   
   <script src="libraries.js"></script>
-  <script src="/socket.io/socket.io.js"></script>
   <script src="dist/game.min.js"></script>
 </body>
 </html>
