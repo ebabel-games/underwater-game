@@ -16,13 +16,8 @@ app.use((req, res, next) => {
 io.on('connection', (socket) => {
   io.emit('chatMessage', 'Player is online.');
 
-  socket.on('disconnect', () => {
-    io.emit('chatMessage', 'Player is offline.');
-  });
-
-  socket.on('chatMessage', (chatMessage) => {
-    io.emit('chatMessage', `Player says "${chatMessage}"`);
-  });
+  socket.on('disconnect', () => io.emit('chatMessage', 'Player is offline.'));
+  socket.on('chatMessage', (chatMessage) => io.emit('chatMessage', `Player says "${chatMessage}"`));
 });
 
 let port = 3000;

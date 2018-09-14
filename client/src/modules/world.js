@@ -22,7 +22,10 @@ const _opacity = 1;
 // Setup the 3D world.
 const world = (THREE, THREEx, position = _position, rotation = _rotation, color = _color, opacity = _opacity) => {
   const clock = new THREE.Clock();
+  clock.start();
+
   const scene = new THREE.Scene();
+  scene.name = 'underwater-game-world';
 
   const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.01, 200000);
   camera.position.set(position[0], position[1], position[2]);
