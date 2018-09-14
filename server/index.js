@@ -3,6 +3,8 @@ const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
+const game = require('./game.js');
+
 app.use(express.static('client'));
 
 app.settings['x-powered-by'] = false;
@@ -25,3 +27,6 @@ if (process.env.NODE_ENV === 'production') port = 80;
 http.listen(port, () => {
   console.log(`Underwater Game listening on port ${port}.`); /* eslint no-console: 0 */
 });
+
+// Start the server-side game.
+game(io);

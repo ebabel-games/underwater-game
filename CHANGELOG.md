@@ -1,6 +1,7 @@
 # Underwater Game changelog
 
 ## 1.2.0
+- Setup server-side game loop.
 - Add non-player-characters (npc). Spawn npc based on spawn chance. The game doesn't take any order, this isn't an API anymore.
 
 ## 1.1.1
