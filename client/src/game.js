@@ -10,10 +10,10 @@ particleGroup.position.y = 55;
 const particleAttributes = { startSize: [], startPosition: [], randomness: [] };
 
 // Main game module that co-ordinates all other modules.
-const game = (socket, THREE, THREEx) => {
-  chatMessage(socket);
-  const { scene, clock, camera, renderer } = world(socket, THREE, THREEx); /* no-unused-var: 0 */
-  render(socket, scene, clock, camera, renderer);
+const game = (THREE, THREEx) => {
+  chatMessage();
+  const { scene, clock, camera, renderer } = world(THREE, THREEx); /* no-unused-var: 0 */
+  render(scene, clock, camera, renderer);
 
   // Link scene to dataStore.
   dataStore.scene = scene;
@@ -41,7 +41,6 @@ const game = (socket, THREE, THREEx) => {
   });
 
   return {
-    socket,
     scene,
     clock,
     camera,
@@ -49,6 +48,6 @@ const game = (socket, THREE, THREEx) => {
   };
 };
 
-game(socket, THREE, THREEx);
+game(THREE, THREEx);
 
 export { game };

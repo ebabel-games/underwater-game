@@ -1,4 +1,4 @@
-const render = (socket, scene, clock, camera, renderer) => {
+const render = (scene, clock, camera, renderer) => {
   const delta = clock.getDelta(); // Calculate Delta.
 
   // Animate npc.
@@ -26,7 +26,7 @@ const render = (socket, scene, clock, camera, renderer) => {
   // Render the scene.
   renderer.render(scene, camera);
   requestAnimationFrame((timestamp) => {
-    render(socket, scene, clock, camera, renderer);
+    render(scene, clock, camera, renderer);
   });
 
   return {

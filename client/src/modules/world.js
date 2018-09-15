@@ -20,7 +20,7 @@ const _color = 0x0e0727;
 const _opacity = 1;
 
 // Setup the 3D world.
-const world = function (socket, THREE, THREEx, position = _position, rotation = _rotation, color = _color, opacity = _opacity) {
+const world = function (THREE, THREEx, position = _position, rotation = _rotation, color = _color, opacity = _opacity) {
   const clock = new THREE.Clock();
   clock.start();
 

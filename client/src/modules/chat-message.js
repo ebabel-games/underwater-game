@@ -18,7 +18,7 @@ const addMessageToLogs = (message) => {
 };
 
 // Multi-player chat.
-const chatMessage = (socket) => {
+const chatMessage = () => {
   socket.on('chatMessage', (chatMessage) => addMessageToLogs(chatMessage));
 
   // Emit current player chat message to all players, via server side.
@@ -30,7 +30,6 @@ const chatMessage = (socket) => {
   });
 
   return {
-    socket,
     logsForm: document.getElementById('logsForm')
   }
 };

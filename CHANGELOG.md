@@ -18,7 +18,8 @@
 - Multi-player chat.
 
 # Future features to develop
-- Implement fighting between npc
+- Prevent npc from going beyond the skybox.
+- Implement fighting between npc.
 - Skybox follows position of the camera so that user is always at its center to preserve the illusion of distant 3D environment.
 - Prevent scrolling out of the skybox.
 - Keep running the node.js instance "forever" to persist the world, its non-player-characters (npc) and player characters (pc).
