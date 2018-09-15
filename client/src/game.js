@@ -26,6 +26,7 @@ const game = (socket, THREE, THREEx) => {
   socket.on('spawnNpc', (npc) => {
     const spriteMaterial = new THREE.SpriteMaterial({ map: particleTexture, color: 0xffffff });
     const sprite = new THREE.Sprite(spriteMaterial);
+    sprite.name = npc.creation.name;
     sprite.scale.set(npc.creation.life * 20, npc.creation.life * 20, 1.0);
     sprite.position.set(...npc.creation.position);
     sprite.material.color.setRGB(...npc.creation.color);
