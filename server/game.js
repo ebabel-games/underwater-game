@@ -1,5 +1,6 @@
 const gameloop = require('node-gameloop');
 
+const { random } = require('./utils.js');
 const { createNpc } = require('./npc.js');
 
 // Main server-side game function.
@@ -18,10 +19,29 @@ module.exports = (input) => {
   // Main game loop that runs continuously.
   // Note: run gameloop.clearGameLoop(id); to stop the loop from running.
   const id = gameloop.setGameLoop((delta) => {
+    // Move all npc sprites.
+    dataStore.npc = dataStore.npc.map((n) => {
+      n.state.position[0] += 1;
+
+      return n;
+    });
+
     // Runs every 1 second.
     oneSecond += delta;
     if (oneSecond > 1) {
-      dataStore.npc.push(createNpc(io));
+      // Random changes to spawn a certain npc.
+      const spawnChance = random(99);
+      switch (spawnChance) {
+        case 33:
+          dataStore.npc.push(createNpc(io, 'a blessed wisp'));
+          break;
+        case 6:
+        case 66:
+          dataStore.npc.push(createNpc(io, 'an evil wisp'));
+          break;
+        default:
+          dataStore.npc.push(createNpc(io));
+      }
 
       // Reset.
       oneSecond = 0;

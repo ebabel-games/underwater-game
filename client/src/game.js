@@ -9,6 +9,7 @@ const dataStore = {
 // Particles setup.
 const particleTexture = new THREE.TextureLoader().load('assets/spark.png');
 const particleGroup = new THREE.Object3D();
+particleGroup.name = 'npc';
 particleGroup.position.y = 55;
 const particleAttributes = { startSize: [], startPosition: [], randomness: [] };
 
@@ -27,7 +28,7 @@ const game = (socket, THREE, THREEx) => {
     const sprite = new THREE.Sprite(spriteMaterial);
     sprite.scale.set(npc.creation.life * 20, npc.creation.life * 20, 1.0);
     sprite.position.set(...npc.creation.position);
-    sprite.material.color.setRGB(npc.creation.strength / 18, 0, npc.creation.agility / 18);
+    sprite.material.color.setRGB(...npc.creation.color);
     sprite.material.blending = THREE.AdditiveBlending;
     sprite.userData = npc;
 

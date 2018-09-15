@@ -1,26 +1,23 @@
-const { trait, positive, randomPosition } = require('./utils.js');
+const { createWisp } = require('./create-wisp.js');
+const { createBlessedWisp } = require('./create-blessed-wisp.js');
+const { createEvilWisp } = require('./create-evil-wisp.js');
 
 module.exports = {
   // Create a new Non Playing Character.
-  createNpc: (io) => {
+  createNpc: (io, name = 'a wisp') => {
     // Creation characteristics. These will never change in the creation object.
-    const strength = trait();
-    const stamina = trait();
-    const agility = trait();
-    const life = positive(stamina + agility - strength) || 1;
+    let creation;
 
-    const creation = {
-      name: 'a wisp',
-      strength,
-      stamina,
-      agility,
-      life,
-      attack: positive((strength * 3) - (agility * 1.5)) || 1,
-      defence: positive((agility * 3) - (strength * 1.5)) || 1,
-      position: randomPosition([9500, 9500, 9500]),
-      fightMode: false,
-      killList: []
-    };
+    switch (name) {
+      case 'an evil wisp':
+        creation = createEvilWisp(name);
+        break;
+      case 'a blessed wisp':
+        creation = createBlessedWisp(name);
+        break;
+      default:
+        creation = createWisp(name);
+    }
 
     // State will change based on how the npc evolves.
     // Deep copy from creation, so that state stays separate.
