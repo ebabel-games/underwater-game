@@ -25,3 +25,6 @@
 - Skybox follows position of the camera so that user is always at its center to preserve the illusion of distant 3D environment.
 - Prevent scrolling out of the skybox.
 - Keep running the node.js instance "forever" to persist the world, its non-player-characters (npc) and player characters (pc).
+- Add sounds for each npc, based on how close the player is to the sprite. All sprites make a sound continuously, which should be harmonious when all play together at the same time, although the sound varies based on the player location. Beyond a certain distance, the soun isn't audible.
+- When in fight mode, the sprite changes sound.
+- Different type of wisp make different sound from a range of sound variations.
