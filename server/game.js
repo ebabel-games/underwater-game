@@ -41,6 +41,8 @@ module.exports = (input) => {
     const npcPositions = dataStore.npc.map((n) => n.state.position);
     io.emit('updateNpcPositions', npcPositions);
 
+    // todo: implement fighting.
+
     // Runs every 1 second.
     oneSecond += delta;
     if (oneSecond > 1 && dataStore.npc.length < maxNpcPopulation) {
