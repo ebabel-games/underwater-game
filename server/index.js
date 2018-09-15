@@ -5,6 +5,11 @@ const io = require('socket.io')(http);
 
 const game = require('./game.js');
 
+// Central store that keeps state of the whole game.
+const dataStore = {
+  npc: []
+};
+
 app.use(express.static('client'));
 
 app.settings['x-powered-by'] = false;
@@ -29,4 +34,4 @@ http.listen(port, () => {
 });
 
 // Start the server-side game.
-game(io);
+game({ io, dataStore });

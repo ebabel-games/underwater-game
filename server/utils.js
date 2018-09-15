@@ -29,7 +29,7 @@ const randomTick = (ticks, max = 10) => (!ticks || ticks.length === 0) ?
 
 const deepCopy = (input) => JSON.parse(JSON.stringify(input));
 
-export {
+module.exports = {
   random,
   dice,
   trait,
@@ -39,5 +39,5 @@ export {
   randomPosition,
   highestTick,
   randomTick,
-  deepCopy
+  deepCopy  
 };

@@ -1,4 +1,4 @@
-const render = (scene, clock, camera, renderer) => {
+const render = (socket, dataStore, scene, clock, camera, renderer) => {
   const delta = clock.getDelta(); // Calculate Delta.
 
   // todo: animations are placed here. Use delta to keep speeds consistent.
@@ -6,7 +6,7 @@ const render = (scene, clock, camera, renderer) => {
   // Render the scene.
   renderer.render(scene, camera);
   requestAnimationFrame((timestamp) => {
-    render(scene, clock, camera, renderer);
+    render(socket, dataStore, scene, clock, camera, renderer);
   });
 
   return {
