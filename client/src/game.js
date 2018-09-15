@@ -2,10 +2,6 @@ import { chatMessage } from './modules/chat-message.js';
 import { world } from './modules/world.js';
 import { render } from './modules/render.js';
 
-const dataStore = {
-  scene: null
-};
-
 // Particles setup.
 const particleTexture = new THREE.TextureLoader().load('assets/spark.png');
 const particleGroup = new THREE.Object3D();
@@ -16,8 +12,8 @@ const particleAttributes = { startSize: [], startPosition: [], randomness: [] };
 // Main game module that co-ordinates all other modules.
 const game = (socket, THREE, THREEx) => {
   chatMessage(socket);
-  const { scene, clock, camera, renderer } = world(socket, dataStore, THREE, THREEx); /* no-unused-var: 0 */
-  render(socket, dataStore, scene, clock, camera, renderer);
+  const { scene, clock, camera, renderer } = world(socket, THREE, THREEx); /* no-unused-var: 0 */
+  render(socket, scene, clock, camera, renderer);
 
   // Link scene to dataStore.
   dataStore.scene = scene;
@@ -37,6 +33,11 @@ const game = (socket, THREE, THREEx) => {
     particleAttributes.startPosition.push(sprite.position.clone());
     particleAttributes.randomness.push(Math.random());
     dataStore.scene.add(particleGroup);
+  });
+
+  // Update npc positions.
+  socket.on('updateNpcPositions', (npcPositions) => {
+    dataStore.npcPositions = npcPositions;
   });
 
   return {

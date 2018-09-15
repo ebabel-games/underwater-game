@@ -1,7 +1,9 @@
 const gameloop = require('node-gameloop');
 
-const { random } = require('./utils.js');
+const { random, randomPosOrNeg } = require('./utils.js');
 const { createNpc } = require('./npc.js');
+
+const maxNpcPopulation = 200;
 
 // Main server-side game function.
 // @io: socket.io
@@ -21,14 +23,27 @@ module.exports = (input) => {
   const id = gameloop.setGameLoop((delta) => {
     // Move all npc sprites.
     dataStore.npc = dataStore.npc.map((n) => {
-      n.state.position[0] += 1;
-
+      const direction = random(3);
+      switch (direction) {
+        case 1:
+          n.state.position[0] += randomPosOrNeg(20);
+          break;
+        case 2:
+          n.state.position[1] += randomPosOrNeg(20);
+          break;
+        default:
+          n.state.position[2] += randomPosOrNeg(20);
+      }
       return n;
     });
 
+    // Update positions for all npc.
+    const npcPositions = dataStore.npc.map((n) => n.state.position);
+    io.emit('updateNpcPositions', npcPositions);
+
     // Runs every 1 second.
     oneSecond += delta;
-    if (oneSecond > 1) {
+    if (oneSecond > 1 && dataStore.npc.length < maxNpcPopulation) {
       // Random changes to spawn a certain npc.
       const spawnChance = random(99);
       switch (spawnChance) {
