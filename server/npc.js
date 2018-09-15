@@ -17,7 +17,7 @@ module.exports = {
       life,
       attack: positive((strength * 3) - (agility * 1.5)) || 1,
       defence: positive((agility * 3) - (strength * 1.5)) || 1,
-      position: randomPosition([1000, 1000, 1000]),
+      position: randomPosition([9500, 9500, 9500]),
       fightMode: false,
       killList: []
     };
