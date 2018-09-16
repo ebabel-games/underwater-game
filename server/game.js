@@ -119,7 +119,7 @@ module.exports = (input) => {
         fightMode: n.state.fightMode,
       };
     });
-    io.emit('updateNpcState', npcStates);
+    io.emit('updateNpcStates', npcStates);
 
     // Runs every 1 second.
     oneSecond += delta;

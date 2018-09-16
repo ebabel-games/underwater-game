@@ -40,6 +40,11 @@ const game = (THREE, THREEx) => {
     dataStore.npcPositions = npcPositions;
   });
 
+  // Update npc states.
+  socket.on('updateNpcStates', (npcStates) => {
+    dataStore.npcStates = npcStates;
+  });
+
   return {
     scene,
     clock,

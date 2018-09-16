@@ -5,7 +5,22 @@ const render = (scene, clock, camera, renderer) => {
   const npc = dataStore.scene && dataStore.scene.children.filter(child => child.name === 'npc');
   if (npc && npc.length && dataStore.npcPositions && dataStore.npcPositions.length) {
     npc[0].children.map((child, index) => {
+      // Skip npc  if there is no matching position to update for same index.
       if (!dataStore.npcPositions[index]) {
+        return;
+      }
+
+      // Only npc with positive life points are visible.
+      if (child.userData.state.life < 0) {
+        child.visible = false;
+        return;
+      }
+
+      // Update the size of npc based on its life.
+      child.scale.set(child.userData.state.life * 20, child.userData.state.life * 20, 1.0);
+
+      // Skip npc movement if fight mode is on.
+      if (child.userData.state.fightMode) {
         return;
       }
 
