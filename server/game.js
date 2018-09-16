@@ -88,6 +88,29 @@ module.exports = (input) => {
           message = `${attackNpc.state.name} tries to bite ${defenceNpc.state.name} but misses.`;
         }
         io.emit('chatMessage', message);
+
+        // When the Blessed Fish gets attacked, if he still alive, he will heal the attacking fish.
+        // if (otherFish.name === 'Blessed Fish' && otherFish.life > 0) {
+        //   const healing = random(3);
+        //   fish.life += healing;
+        //   const message = `[${tick}] ${fish.name} is healed for ${healing} life by ${otherFish.name}!`;
+        //   dataStore.logs.push(message);
+        //   log.push(message);
+        // }
+
+        // if (otherFish.life <= 0) {
+        //   fish.fightMode = false;
+        //   const bonusLife = dice() + dice() + dice();
+        //   fish.life += bonusLife;
+        //   fish.killList.push(otherFish.name);
+        //   let message = `[${tick}] ${otherFish.name} has died, eaten by ${fish.name}.`;
+        //   dataStore.logs.push(message);
+        //   log.push(message);
+
+        //   message = `[${tick}] ${fish.name} wins a bonus ${bonusLife} life!`;
+        //   dataStore.logs.push(message);
+        //   log.push(message);
+        // }
       }
     }
 
