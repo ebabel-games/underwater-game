@@ -3,7 +3,7 @@ const gameloop = require('node-gameloop');
 const { random, randomPosOrNeg, distance, dice } = require('./utils.js');
 const { createNpc } = require('./npc.js');
 
-const minNpcPopulation = 33;
+const minNpcPopulation = 66;
 const maxNpcPopulation = 99;
 const defaultFps = 10;
 const agroDistance = 320;
@@ -89,28 +89,26 @@ module.exports = (input) => {
         }
         io.emit('chatMessage', message);
 
-        // When the Blessed Fish gets attacked, if he still alive, he will heal the attacking fish.
-        // if (otherFish.name === 'Blessed Fish' && otherFish.life > 0) {
-        //   const healing = random(3);
-        //   fish.life += healing;
-        //   const message = `[${tick}] ${fish.name} is healed for ${healing} life by ${otherFish.name}!`;
-        //   dataStore.logs.push(message);
-        //   log.push(message);
-        // }
+        // When a blessed wisp gets attacked, if he still alive, he will heal the attacking npc.
+        if (defenceNpc.state.name === 'a blessed wisp' && defenceNpc.state.life > 0) {
+          const healing = random(3);
+          attackNpc.state.life += healing;
+          const message = `${attackNpc.state.name} is healed for ${healing} life by ${defenceNpc.state.name}!`;
+          io.emit('chatMessage', message);
+        }
 
-        // if (otherFish.life <= 0) {
-        //   fish.fightMode = false;
-        //   const bonusLife = dice() + dice() + dice();
-        //   fish.life += bonusLife;
-        //   fish.killList.push(otherFish.name);
-        //   let message = `[${tick}] ${otherFish.name} has died, eaten by ${fish.name}.`;
-        //   dataStore.logs.push(message);
-        //   log.push(message);
+        // When defence npc dies, boost life of attack npc, update his kill list.
+        if (defenceNpc.state.life <= 0) {
+          attackNpc.state.fightMode = false;
+          const bonusLife = dice() + dice() + dice();
+          attackNpc.state.life += bonusLife;
+          attackNpc.state.killList.push(defenceNpc.state.name);
+          let message = `${defenceNpc.state.name} has died, eaten by ${attackNpc.state.name}.`;
+          io.emit('chatMessage', message);
 
-        //   message = `[${tick}] ${fish.name} wins a bonus ${bonusLife} life!`;
-        //   dataStore.logs.push(message);
-        //   log.push(message);
-        // }
+          message = `${attackNpc.state.name} wins a bonus ${bonusLife} life!`;
+          io.emit('chatMessage', message);
+        }
       }
     }
 
