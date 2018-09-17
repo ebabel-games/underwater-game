@@ -47,6 +47,8 @@ const world = function (input) {
 
   // Let user rotate around the world with touch or mouse.
   const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.enablePan = false;
+  controls.enableZoom = false;
 
   // When the window resizes, adjust the renderer and camera.
   const windowResize = new THREEx.WindowResize(renderer, camera);
