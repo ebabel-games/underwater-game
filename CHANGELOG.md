@@ -2,6 +2,7 @@
 
 ## 1.3.0
 - Prevent autocomplete in Chrome for the chat input field.
+- Disable panning and zoomon with Orbits Controls.
 - Implement fighting between npc.
 - Fix linting issues.
 
