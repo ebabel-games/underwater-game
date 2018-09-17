@@ -1,7 +1,9 @@
 # Underwater Game changelog
 
 ## 1.3.0
+- Prevent autocomplete in Chrome for the chat input field.
 - Implement fighting between npc.
+- Fix linting issues.
 
 ## 1.2.0
 - Setup server-side game loop.
@@ -29,3 +31,5 @@
 - When in fight mode, the sprite changes sound.
 - Different type of wisp make different sound from a range of sound variations.
 - Fix the blinking of sprites and make their movement smoother.
+- Before playing, show a splash screen that asks players to give a name. That name will be used in chat instead of the socket id. Use the splash screen to start preloading assets and libraries. Indicate when the game is ready to play. Disable the play button until assets are loaded and game is ready to play. Use that screen to make sure the sprites are all populated in storeData and in THREE.js scene object.
+- Fix the connection event from socket.io not firing sometimes.

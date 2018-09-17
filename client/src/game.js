@@ -6,13 +6,11 @@ import { render } from './modules/render.js';
 const particleTexture = new THREE.TextureLoader().load('assets/spark.png');
 const particleGroup = new THREE.Object3D();
 particleGroup.name = 'npc';
-particleGroup.position.y = 55;
-const particleAttributes = { startSize: [], startPosition: [], randomness: [] };
 
 // Main game module that co-ordinates all other modules.
 const game = (THREE, THREEx) => {
   chatMessage();
-  const { scene, clock, camera, renderer } = world(THREE, THREEx); /* no-unused-var: 0 */
+  const { scene, clock, camera, renderer } = world({ THREE, THREEx }); /* no-unused-var: 0 */
   render(scene, clock, camera, renderer);
 
   // Link scene to dataStore.
@@ -30,8 +28,6 @@ const game = (THREE, THREEx) => {
     sprite.userData = npc;
 
     particleGroup.add(sprite);
-    particleAttributes.startPosition.push(sprite.position.clone());
-    particleAttributes.randomness.push(Math.random());
     dataStore.scene.add(particleGroup);
   });
 

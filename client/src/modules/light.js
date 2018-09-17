@@ -4,7 +4,7 @@ const light = (input) => {
     THREE,
     scene,
     color = 0xffffff,
-    position = [0, 250, 0],
+    position = [1, 250, 1],
     name = 'main-light'
   } = input;
 
