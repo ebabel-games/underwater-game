@@ -28,7 +28,7 @@ const skybox = (scene) => {
   );
 
   const directions = ['ft', 'bk', 'up', 'dn', 'rt', 'lf']
-    .map(filename => `../assets/whirlpool/whirlpool_${filename}.jpg`);;
+    .map(filename => `../assets/whirlpool/large-files/whirlpool_${filename}.jpg`);;
 
   const material = directions.map(direction => new THREE.MeshBasicMaterial({
     map: new THREE.TextureLoader().load(direction),
