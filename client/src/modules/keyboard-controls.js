@@ -2,8 +2,9 @@ let moveForward;
 let moveBackward;
 let turnLeft;
 let turnRight;
+let moveUp;
 
-const moveSpeed = 20;
+const moveSpeed = 10;
 const turnSpeed = 2;
 
 const updateCamera = (camera) => {
@@ -12,7 +13,7 @@ const updateCamera = (camera) => {
   }
 
   if (moveBackward) {
-    camera.translateZ(moveSpeed / 3);
+    camera.translateY(-moveSpeed / 3);
   }
 
   if (turnLeft) {
@@ -21,6 +22,10 @@ const updateCamera = (camera) => {
 
   if (turnRight) {
     camera.rotation.y -= turnSpeed * Math.PI / 180;
+  }
+
+  if (moveUp) {
+    camera.translateY(moveSpeed / 2);
   }
 };
 
@@ -50,6 +55,10 @@ const keyboardControls = () => {
       case 39: // Right arrow.
       case 68: // D
         turnRight = enable;
+        break;
+
+      case 32: // Space bar.
+        moveUp = enable;
         break;
     }
   }

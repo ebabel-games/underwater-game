@@ -3,16 +3,8 @@ import { skybox } from './skybox.js';
 import { keyboardControls } from './keyboard-controls.js';
 
 const playerBindPoint = {
-  position: [
-    -0.009062170340834919,
-    0.001421878159226919,
-    0.014692015900277543
-  ],
-  rotation: [
-    -0.09647850685417493,
-    -0.5506070394039728,
-    -0.05059199825215861
-  ]
+  position: [0, 0, 0],
+  rotation: [0, 0, 0]
 }
 
 // Default renderer clear color.
