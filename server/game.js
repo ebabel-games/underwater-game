@@ -6,7 +6,7 @@ const { createNpc } = require('./npc.js');
 const minNpcPopulation = 66;
 const maxNpcPopulation = 99;
 const defaultFps = 10;
-const agroDistance = 1000;
+const agroDistance = 2000;
 
 // Main server-side game function.
 // @io: socket.io
@@ -25,10 +25,17 @@ module.exports = (input) => {
   // Note: run gameloop.clearGameLoop(id); to stop the loop from running.
   const id = gameloop.setGameLoop((delta) => {  /* eslint no-unused-vars: 0 */
     // Move all npc sprites.
-    dataStore.npc = dataStore.npc.map((n) => {
-      // Sprites in fight mode must stop moving.
-      if (n.state.fightMode) return n;
+    dataStore.npc = dataStore.npc.map((n, index) => {
+      // Sprites in fight mode and still alive must stop moving.
+      if (n.state.fightMode && n.state.life > 0) return n;
 
+      // Sprites that are dead should float up to the surface.
+      if (n.state.life <= 0) {
+        n.state.position[1] = n.state.position[1] + 2;
+        return n;
+      }
+
+      // Sprites that are still alive get to move normally.
       const direction = random(3);
       switch (direction) {
         case 1:
@@ -97,7 +104,7 @@ module.exports = (input) => {
         // When defence npc dies, boost life of attack npc, update his kill list.
         if (defenceNpc.state.life <= 0) {
           attackNpc.state.fightMode = false;
-          const bonusLife = dice() + dice() + dice();
+          const bonusLife = dice() + dice() + dice() + dice() + dice() + dice();
           attackNpc.state.life += bonusLife;
           attackNpc.state.killList.push(defenceNpc.state.name);
           io.emit('chatMessage', `${defenceNpc.state.name} has died, eaten by ${attackNpc.state.name}.`);

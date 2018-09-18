@@ -1,14 +1,21 @@
 const render = (scene, clock, camera, renderer) => {
   const delta = clock.getDelta(); // Calculate Delta.
 
-  // Animate npc.
+  // Update position and state of all npc.
   const npc = dataStore.scene && dataStore.scene.children.filter(child => child.name === 'npcGroup');
   if (npc && npc.length && dataStore.npcPositions && dataStore.npcPositions.length) {
     npc[0].children.map((child, index) => {
-      // Only npc with positive life points are visible.
+      // Update state from dataStore.npcStates when there is one.
+      const newState = dataStore.npcStates[index];
+      if (dataStore.npcStates && newState) {
+        child.userData.state.life = newState.life;
+        child.userData.state.fightMode = newState.fightMode;
+      }
+
+      // Change appearance of npc that are no longer alive.
       if (child.userData.state.life <= 0) {
-        child.visible = false;
-        return;
+        child.material.color.set('rgb(50, 50, 50)');
+        child.children[0].material.color.set('rgb(200, 200, 200)');
       }
 
       // Skip npc  if there is no matching position to update for same index.
@@ -17,7 +24,8 @@ const render = (scene, clock, camera, renderer) => {
       }
 
       // Update the size of npc based on its life.
-      child.scale.set(child.userData.state.life * 20, child.userData.state.life * 20, 1.0);
+      const newSize = (child.userData.state.life > 0) ? child.userData.state.life * 20 : 2;
+      child.scale.set(newSize, newSize, 1.0);
 
       // Skip npc movement if fight mode is on.
       if (child.userData.state.fightMode) {
