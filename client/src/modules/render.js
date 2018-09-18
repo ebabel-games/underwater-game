@@ -1,5 +1,12 @@
+import { updateCamera } from './keyboard-controls.js';
+
 const render = (scene, clock, camera, renderer) => {
   const delta = clock.getDelta(); // Calculate Delta.
+
+  updateCamera(camera);
+
+  // Place the skybox in relation with the camera position.
+  scene.children[1].position.set(camera.position.x, camera.position.y, camera.position.z);
 
   // Update position and state of all npc.
   const npc = dataStore.scene && dataStore.scene.children.filter(child => child.name === 'npcGroup');
@@ -24,14 +31,10 @@ const render = (scene, clock, camera, renderer) => {
       }
 
       // Update the size of npc based on its life.
-      const newSize = (child.userData.state.life > 0) ? child.userData.state.life * 20 : 2;
+      const newSize = (child.userData.state.life > 2) ? child.userData.state.life * 20 : 40;
       child.scale.set(newSize, newSize, 1.0);
 
-      // Skip npc movement if fight mode is on.
-      if (child.userData.state.fightMode) {
-        return;
-      }
-
+      // Update npc new position.
       if (child.position.x !== dataStore.npcPositions[index][0]) {
         child.position.x = dataStore.npcPositions[index][0];
       }

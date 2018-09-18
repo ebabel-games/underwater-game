@@ -1,5 +1,6 @@
 import { light } from './light.js';
 import { skybox } from './skybox.js';
+import { keyboardControls } from './keyboard-controls.js';
 
 const playerBindPoint = {
   position: [
@@ -40,13 +41,13 @@ const world = function (input) {
   camera.position.set(position[0], position[1], position[2]);
   camera.rotation.set(rotation[0], rotation[1], rotation[2]);
 
+  // Setup keyboard controls.
+  const controls = keyboardControls();
+
   const renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setClearColor(color, opacity);
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
-
-  // Let user rotate around the world with touch or mouse.
-  const controls = new THREE.OrbitControls(camera, renderer.domElement);
 
   // When the window resizes, adjust the renderer and camera.
   const windowResize = new THREEx.WindowResize(renderer, camera);
