@@ -23,7 +23,7 @@ module.exports = (input) => {
 
   // Main game loop that runs continuously.
   // Note: run gameloop.clearGameLoop(id); to stop the loop from running.
-  const id = gameloop.setGameLoop((delta) => {
+  const id = gameloop.setGameLoop((delta) => {  /* eslint no-unused-vars: 0 */
     // Move all npc sprites.
     dataStore.npc = dataStore.npc.map((n) => {
       // Sprites in fight mode must stop moving.
