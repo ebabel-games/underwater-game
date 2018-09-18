@@ -4,9 +4,9 @@ const { random, randomPosOrNeg, distance, dice } = require('./utils.js');
 const { createNpc } = require('./npc.js');
 
 const minNpcPopulation = 66;
-const maxNpcPopulation = 999;
+const maxNpcPopulation = 99;
 const defaultFps = 10;
-const agroDistance = 320;
+const agroDistance = 1000;
 
 // Main server-side game function.
 // @io: socket.io
