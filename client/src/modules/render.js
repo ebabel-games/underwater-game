@@ -5,14 +5,14 @@ const render = (scene, clock, camera, renderer) => {
   const npc = dataStore.scene && dataStore.scene.children.filter(child => child.name === 'npcGroup');
   if (npc && npc.length && dataStore.npcPositions && dataStore.npcPositions.length) {
     npc[0].children.map((child, index) => {
-      // Skip npc  if there is no matching position to update for same index.
-      if (!dataStore.npcPositions[index]) {
-        return;
-      }
-
       // Only npc with positive life points are visible.
       if (child.userData.state.life <= 0) {
         child.visible = false;
+        return;
+      }
+
+      // Skip npc  if there is no matching position to update for same index.
+      if (!dataStore.npcPositions[index]) {
         return;
       }
 
