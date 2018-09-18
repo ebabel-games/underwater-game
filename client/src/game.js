@@ -1,11 +1,12 @@
 import { chatMessage } from './modules/chat-message.js';
 import { world } from './modules/world.js';
 import { render } from './modules/render.js';
+import { textSprite } from './modules/text-sprite.js';
 
 // Particles setup.
 const particleTexture = new THREE.TextureLoader().load('assets/spark.png');
 const particleGroup = new THREE.Object3D();
-particleGroup.name = 'npc';
+particleGroup.name = 'npcGroup';
 
 // Main game module that co-ordinates all other modules.
 const game = (THREE, THREEx) => {
@@ -26,6 +27,10 @@ const game = (THREE, THREEx) => {
     sprite.material.color.setRGB(...npc.creation.color);
     sprite.material.blending = THREE.AdditiveBlending;
     sprite.userData = npc;
+
+    // Name above sprite.
+    const text = textSprite(npc.creation.name);
+    sprite.add(text);
 
     particleGroup.add(sprite);
     dataStore.scene.add(particleGroup);
