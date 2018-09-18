@@ -6,6 +6,7 @@
 - Implement fighting between npc.
 - Add text above each npc sprite.
 - Fix linting issues.
+- Increase distance at which sprites start fighting.
 
 ## 1.2.0
 - Setup server-side game loop.
