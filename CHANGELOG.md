@@ -1,5 +1,10 @@
 # Underwater Game changelog
 
+## 1.4.0
+- Add sounds for each npc, based on how close the player is to the sprite. All sprites make a sound continuously, which should be harmonious when all play together at the same time, although the sound varies based on the player location. Beyond a certain distance, the soun isn't audible.
+- When in fight mode, the sprite changes sound.
+- Different type of wisp make different sound from a range of sound variations.
+
 ## 1.3.0
 - Prevent autocomplete in Chrome for the chat input field.
 - Remove Orbit Controls and replace with keyboard controls.
@@ -28,9 +33,6 @@
 
 # Future features to develop
 - Keep adding spawns regardless of max/min population. Let the fighting and the dead sprites make room for new sprites.
-- Add sounds for each npc, based on how close the player is to the sprite. All sprites make a sound continuously, which should be harmonious when all play together at the same time, although the sound varies based on the player location. Beyond a certain distance, the soun isn't audible.
-- When in fight mode, the sprite changes sound.
-- Different type of wisp make different sound from a range of sound variations.
 - Fix the blinking of sprites and make their movement smoother.
 - Fix some sprites that are not fighting, not dead but not moving either.
 - Before playing, show a splash screen that asks players to give a name. That name will be used in chat instead of the socket id. Use the splash screen to start preloading assets and libraries. Indicate when the game is ready to play. Disable the play button until assets are loaded and game is ready to play. Use that screen to make sure the sprites are all populated in storeData and in THREE.js scene object.
