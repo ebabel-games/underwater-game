@@ -10,13 +10,13 @@ module.exports = {
 
     switch (name) {
       case 'an evil wisp':
-        creation = createEvilWisp(name);
+        creation = createEvilWisp();
         break;
       case 'a blessed wisp':
-        creation = createBlessedWisp(name);
+        creation = createBlessedWisp();
         break;
       default:
-        creation = createWisp(name);
+        creation = createWisp();
     }
 
     // State will change based on how the npc evolves.

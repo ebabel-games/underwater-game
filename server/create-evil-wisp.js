@@ -1,24 +1,19 @@
-const { positive, randomPosition } = require('./utils.js');
+const { createWisp } = require('./create-wisp.js');
 
-const createEvilWisp = (name) => {
-  const strength = 18;
-  const stamina = 18;
-  const agility = 1;
-  const life = 6;
+// Evil wisp, based on wisp.
+const createEvilWisp = () => {
+  const wisp = createWisp({
+    name: 'an evil wisp',
+    strength: 18,
+    stamina: 1,
+    agility: 1,
+  });
 
-  return {
-    name,
-    strength,
-    stamina,
-    agility,
-    life,
-    attack: positive((strength * 3) - (agility * 1.5)) || 1,
-    defence: positive((agility * 3) - (strength * 1.5)) || 1,
-    position: randomPosition([9500, 9500, 9500]),
-    fightMode: false,
-    killList: [],
-    color: [1, 0, 0]
-  };
+  wisp.color[0] = 0;    // Hue.
+  wisp.color[1] = 1;    // Saturation.
+  wisp.color[2] = 0.5;  // Lightness.
+
+  return wisp;
 };
 
 module.exports = {

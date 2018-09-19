@@ -1,10 +1,15 @@
 const { trait, positive, randomPosition } = require('./utils.js');
 
-const createWisp = (name) => {
-  const strength = trait();
-  const stamina = trait();
-  const agility = trait();
-  const life = positive(stamina + agility - strength) || 1;
+// Wisp npc.
+const createWisp = (input = {}) => {
+  const {
+    name = 'a wisp',
+    strength = trait(),
+    stamina = trait(),
+    agility = trait()
+  } = input;
+
+  const life = positive((stamina + agility - strength) * 20) || 40;
 
   return {
     name,
@@ -17,7 +22,7 @@ const createWisp = (name) => {
     position: randomPosition([9500, 9500, 9500]),
     fightMode: false,
     killList: [],
-    color: [strength / 18, 0, agility / 18]
+    color: [0.64, 0.9, 0.7] // Hue, saturation, and lightness.
   };
 };
 
