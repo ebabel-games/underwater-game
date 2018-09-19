@@ -1,7 +1,7 @@
 const { random, randomPosOrNeg } = require('./utils.js');
 
 // Move all npc.
-const npcMove = (npc) => npc.map((n, index) => {
+const npcMove = (npc) => npc.map((n) => {
   // Sprites in fight mode and still alive must stop moving.
   if (n.state.fightMode && n.state.life > 0) return n;
 
