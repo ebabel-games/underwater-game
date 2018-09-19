@@ -1,6 +1,6 @@
 const { random, distance, dice } = require('./utils.js');
 
-const agroDistance = 1000;
+const agroDistance = 1500;
 
 // All npc that are close enough enter into a fight with each other.
 const npcFight = (npc, io) => {
