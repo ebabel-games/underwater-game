@@ -11,12 +11,17 @@ const render = (scene, clock, camera, renderer) => {
   scene.children[1].position.set(camera.position.x, camera.position.y, camera.position.z);
 
   // Update position and state of all npc.
-  const npc = dataStore.scene && dataStore.scene.children.filter(child => child.name === 'npcGroup');
+  const npc = dataStore.scene && dataStore.scene.children.filter(child => child.name === 'npc-group');
   if (npc && npc.length && dataStore.npcStates && dataStore.npcStates.length) {
     npc[0].children.map((child, index) => {
       // Skip npc  if there is no matching state to update for same index.
       const newState = dataStore.npcStates[index];
       if (!newState) return;
+
+      // Npc just died, play its death sound.
+      if (child.userData.state.life > 0 && newState.life <= 0) {
+        child.children.filter((c) => c.name === 'death')[0].play();
+      }
 
       // Update state from dataStore.npcStates when there is one.
       child.userData.state.position =  newState.position;
@@ -26,7 +31,9 @@ const render = (scene, clock, camera, renderer) => {
       // Change appearance of npc that are no longer alive.
       if (child.userData.state.life <= 0) {
         child.material.color.set('rgb(50, 50, 50)');
-        child.children[0].material.color.set('rgb(200, 200, 200)');
+        const text = child.children.filter((c) => c.name === 'text');
+        if (text && text[0] && text[0].material && text[0].material.color)
+          text[0].material.color.set('rgb(200, 200, 200)');
       }
 
       // Minimum size of any npc is 40.

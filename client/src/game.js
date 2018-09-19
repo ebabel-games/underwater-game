@@ -2,11 +2,12 @@ import { chatMessage } from './modules/chat-message.js';
 import { world } from './modules/world.js';
 import { render } from './modules/render.js';
 import { textSprite } from './modules/text-sprite.js';
+import { soundEffect } from './modules/sound-effect.js';
 
 // Particles setup.
 const particleTexture = new THREE.TextureLoader().load('assets/spark.png');
 const particleGroup = new THREE.Object3D();
-particleGroup.name = 'npcGroup';
+particleGroup.name = 'npc-group';
 
 // Main game module that co-ordinates all other modules.
 const game = (THREE, THREEx) => {
@@ -32,6 +33,10 @@ const game = (THREE, THREEx) => {
     const text = textSprite(npc.creation.name);
     sprite.add(text);
 
+    // Add sound effect to sprite.
+    const sound = soundEffect({ camera });
+    sprite.add(sound);
+    
     particleGroup.add(sprite);
     dataStore.scene.add(particleGroup);
   });

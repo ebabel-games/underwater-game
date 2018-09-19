@@ -33,6 +33,7 @@ const world = (input) => {
 
   // Setup camera as the subjective first person point of view of current player.
   const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 100000);
+  camera.name = 'player-first-view-camera';
   camera.position.set(position[0], position[1], position[2]);
   camera.rotation.set(rotation[0], rotation[1], rotation[2]);
 
@@ -40,7 +41,7 @@ const world = (input) => {
   const controls = keyboardControls();
 
   // Setup main theme music.
-  const music = themeMusic(camera, 'assets/music/ambient2-nautilus.mp3');
+  const music = themeMusic({ camera });
 
   // Setup main renderer for WebGL graphics.
   const renderer = new THREE.WebGLRenderer({ antialias: true });

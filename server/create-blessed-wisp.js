@@ -9,7 +9,6 @@ const createBlessedWisp = () => {
     agility: 18,
   });
 
-  wisp.color = 0.1583;
   wisp.color[0] = 0.1583; // Hue.
   wisp.color[2] = 0.67;   // Lightness.
 

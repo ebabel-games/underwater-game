@@ -1,6 +1,6 @@
-const { random, distance, dice } = require('./utils.js');
+const { random, distance, reducedDistance, dice } = require('./utils.js');
 
-const agroDistance = 1500;
+const agroDistance = 1000;
 
 // All npc that are close enough enter into a fight with each other.
 const npcFight = (npc, io) => {
@@ -29,10 +29,16 @@ const npcFight = (npc, io) => {
       // Skip npc that are too far appart to fight each other.
       if (_distance > agroDistance) continue;
 
-      // Set both npc fightMode to true, so they stop moving.
+      // Set both npc fightMode to true, so they stop moving in a random direction.
       attackNpc.state.fightMode = true;
       defenceNpc.state.fightMode = true;
 
+      // When fighting npc are within agro range but not that close, move them closer to each other.
+      if (_distance > 10) {
+        attackNpc.state.position =
+          reducedDistance(attackNpc.state.position, defenceNpc.state.position, 1);
+      }
+      
       // Fight resolutions.
       let attackBonus = attackNpc.state.attack - defenceNpc.state.defence;
       if (attackBonus < 2) attackBonus = 2;

@@ -3,11 +3,23 @@ const dice = () => random(6);
 const trait = () => dice() + dice() + dice();
 const positive = (input) =>  Math.ceil(Math.abs(input));
 const randomPosOrNeg = (max) => (Math.random() < 0.5 ? -1 : 1) * random(max);
+
+// Return the distance from point "a" to point "b".
 const distance = (a, b) => Math.sqrt(
   Math.pow((b[0] - a[0]), 2)
   + Math.pow((b[1] - a[1]), 2)
   + Math.pow((b[2] - a[2]), 2)
 );
+
+// Return new x, y, and z co-ordinates for point "a" in order to get
+// closer to point "b" by a given reduction of distance "r".
+const reducedDistance = (a, b, r) => {
+  return [
+    Math.floor(a[0] + ((b[0] - a[0]) * r)),
+    Math.floor(a[1] + ((b[1] - a[1]) * r)),
+    Math.floor(a[2] + ((b[2] - a[2]) * r))
+  ];
+};
 
 const randomPosition = (size) => {
   const width = size[0];
@@ -36,6 +48,7 @@ module.exports = {
   positive,
   randomPosOrNeg,
   distance,
+  reducedDistance,
   randomPosition,
   highestTick,
   randomTick,
