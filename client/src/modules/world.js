@@ -1,6 +1,7 @@
 import { light } from './light.js';
 import { skybox } from './skybox.js';
 import { keyboardControls } from './keyboard-controls.js';
+import { themeMusic } from './theme-music.js';
 
 const playerBindPoint = {
   position: [0, 0, 0],
@@ -12,7 +13,7 @@ const _color = 0x0e0727;
 const _opacity = 1;
 
 // Setup the 3D world.
-const world = function (input) {
+const world = (input) => {
   const {
     THREE,
     THREEx,
@@ -22,9 +23,11 @@ const world = function (input) {
     opacity = _opacity
   } = input;
 
+  // Setup main clock that accurately calculates delta in animations.
   const clock = new THREE.Clock();
   clock.start();
 
+  // Setup main 3D scene where all meshes, sprites, and 3D objects will live.
   const scene = new THREE.Scene();
   scene.name = 'underwater-game-world';
 
@@ -36,6 +39,10 @@ const world = function (input) {
   // Setup keyboard controls.
   const controls = keyboardControls();
 
+  // Setup main theme music.
+  const music = themeMusic(camera, 'assets/music/ambient2-nautilus.mp3');
+
+  // Setup main renderer for WebGL graphics.
   const renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setClearColor(color, opacity);
   renderer.setSize(window.innerWidth, window.innerHeight);
@@ -56,7 +63,8 @@ const world = function (input) {
     camera,
     renderer,
     controls,
-    windowResize
+    windowResize,
+    music
   };
 };
 
