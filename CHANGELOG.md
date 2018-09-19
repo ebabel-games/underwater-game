@@ -2,9 +2,7 @@
 
 ## 1.4.0
 - Add "/sounds on" and "/sounds off" commands to toggle all sounds on or off.
-- Add sounds for each npc, based on how close the player is to the sprite. All sprites make a sound continuously, which should be harmonious when all play together at the same time, although the sound varies based on the player location. Beyond a certain distance, the soun isn't audible.
-- When in fight mode, the sprite changes sound.
-- Different type of wisp make different sound from a range of sound variations.
+- Add sounds for each npc, based on events like when a wisp dies.
 
 ## 1.3.0
 - Prevent autocomplete in Chrome for the chat input field.
