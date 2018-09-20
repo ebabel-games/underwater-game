@@ -37,23 +37,18 @@ const keyboardControls = () => {
 
     switch (keyCode) {
       case 38: // Up arrow.
-      case 87: // W
         moveForward = enable;
         break;
 
       case 40: // Down arrow.
-      case 83: // S
         moveBackward = enable;
-        event.preventDefault(); // Prevent the whole page scrolling down when using the down arrow key.
         break;
 
       case 37: // Left arrow.
-      case 65: // A
         turnLeft = enable;
         break;
 
       case 39: // Right arrow.
-      case 68: // D
         turnRight = enable;
         break;
 
