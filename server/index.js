@@ -21,14 +21,18 @@ app.use((req, res, next) => {
 });
 
 io.on('connection', (socket) => {
-  // Greet a player who just connected to the game and tell all players a new player has logged in.
-  io.emit('chatMessage', `Player ${socket.id} is online.`);
-
   // For a single player, spawn all NPCs.
   dataStore.npc.map((n) => io.to(socket.id).emit('spawnNpc', n));
 
-  socket.on('disconnect', () => io.emit('chatMessage', `Player ${socket.id} is offline.`));
-  socket.on('chatMessage', (chatMessage) => io.emit('chatMessage', `Player ${socket.id} says "${chatMessage}"`));
+  socket.on('playerStarts', (playerName) => {
+    // Greet single player directly.
+    io.to(socket.id).emit('chatMessage', `Welcome ${playerName}!`);
+
+    // Tell all other players that a new player has logged in.
+    socket.broadcast.emit('chatMessage', `${playerName} is online.`);
+  });
+
+  socket.on('chatMessage', (input) => io.emit('chatMessage', `${input.playerName} says "${input.chatMessage}"`));
 });
 
 let port = 3000;

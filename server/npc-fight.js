@@ -45,16 +45,12 @@ const npcFight = (npc, io) => {
       if (dice() <= attackBonus) {
         const damage = dice();
         defenceNpc.state.life -= damage;
-        io.emit('chatMessage', `${attackNpc.state.name} bites ${defenceNpc.state.name} for ${damage} damage${damage > 1 ? 's' : ''}.`);
-      } else {
-        io.emit('chatMessage', `${attackNpc.state.name} tries to bite ${defenceNpc.state.name} but misses.`);
       }
 
       // When a blessed wisp gets attacked, if he still alive, he will heal the attacking npc.
       if (defenceNpc.state.name === 'a blessed wisp' && defenceNpc.state.life > 0) {
         const healing = random(3);
         attackNpc.state.life += healing;
-        io.emit('chatMessage', `${attackNpc.state.name} is healed for ${healing} life by ${defenceNpc.state.name}!`);
       }
 
       // When defence npc dies, boost life of attack npc, update his kill list.
@@ -64,7 +60,6 @@ const npcFight = (npc, io) => {
         attackNpc.state.life += bonusLife;
         attackNpc.state.killList.push(defenceNpc.state.name);
         io.emit('chatMessage', `${defenceNpc.state.name} has died, eaten by ${attackNpc.state.name}.`);
-        io.emit('chatMessage', `${attackNpc.state.name} wins a bonus ${bonusLife} life!`);
       }
     }
   }

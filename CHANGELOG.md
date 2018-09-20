@@ -1,12 +1,8 @@
 # Underwater Game changelog
 
 ## 1.5.0
-- Before playing, show a splash screen that asks players to give a name. That name will be used in chat instead of the socket id.
-- Use the splash screen to start preloading assets and libraries.
-- Indicate when the game is ready to play.
-- Disable the play button until assets are loaded and game is ready to play.
-- Use the splash screen to make sure the sprites are all populated in storeData and in THREE.js scene object.
-- Fix the connection event from socket.io not firing sometimes.
+- Before playing, show a splash screen that asks players to give a name.
+- That name will be used in chat instead of the socket id.
 
 ## 1.4.0
 - Stop sounds when tab is not in focus.

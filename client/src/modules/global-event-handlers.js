@@ -14,6 +14,14 @@ const globalEventHandlers = () => {
   window.addEventListener('focus', () => {
     window.dispatchEvent(new CustomEvent('adjustMasterVolume', { detail: { masterVolume: 1 } }));
   });
+
+  document.getElementById('logsInput').addEventListener('focus', () => {
+    dataStore.disablePlayerControls = true;
+  });
+
+  document.getElementById('logsInput').addEventListener('blur', () => {
+    dataStore.disablePlayerControls = false;
+  });
 };
 
 export { globalEventHandlers };

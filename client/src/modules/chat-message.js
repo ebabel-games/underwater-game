@@ -10,13 +10,16 @@ const chatMessage = () => {
   logsForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const chatMessage = document.getElementById('logsInput').value;
-    socket.emit('chatMessage', chatMessage);
-    document.getElementById('logsInput').value = '';
+    socket.emit('chatMessage', { chatMessage, playerName: dataStore.playerName });
+
+    const logsInput = document.getElementById('logsInput');
+    logsInput.value = '';
+    logsInput.blur();
   });
 
   return {
     logsForm: document.getElementById('logsForm')
-  }
+  };
 };
 
 export { chatMessage };

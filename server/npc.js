@@ -24,7 +24,6 @@ module.exports = {
     const state = JSON.parse(JSON.stringify(creation));
 
     io.emit('spawnNpc', { creation, state });
-    io.emit('chatMessage', `${creation.name} spawned with ${creation.life} life at ${creation.position}.`);
 
     return {
       creation,

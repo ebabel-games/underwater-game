@@ -31,9 +31,12 @@ const updateCamera = (camera) => {
 
 const keyboardControls = () => {
   const setDirection = (input) => {
-    const event = input && input.event;
     const keyCode = input && input.keyCode;
     const enable = input && input.enable;
+
+    if (dataStore.disablePlayerControls) {
+      return;
+    }
 
     switch (keyCode) {
       case 38: // Up arrow.
@@ -56,7 +59,7 @@ const keyboardControls = () => {
         moveUp = enable;
         break;
     }
-  }
+  };
 
   const onKeyDown = (e) => {
     setDirection({

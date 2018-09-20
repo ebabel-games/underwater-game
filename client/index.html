@@ -104,6 +104,15 @@
       font-weight: 600;
     }
 
+    #loginForm .error {
+      display: none;
+      color: rgb(255, 150, 150);
+    }
+
+    #loginForm.error .error {
+      display: block;
+    }
+
     @media (max-width: 320px) {
       body {
         font-size: 10px;
@@ -136,8 +145,11 @@
       <form action="#" id="loginForm">
         <h2>Player name</h2>
         <p>
-          <input type="text" id="playerName" >
+          <input type="text" id="playerName" min="3" max="8">
           <input type="submit" value="Play">
+        </p>
+        <p class="error">
+          Name is not correct. Please try a player name like "Dave" or "Thomas".
         </p>
       </form>
     </div>
@@ -150,14 +162,25 @@
       camera: null,
       npcStates: [],
       playerName: null,
-      startGame: false
+      disablePlayerControls: false
     };
 
     document.getElementById('loginForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      dataStore.playerName = document.getElementById('playerName').nodeValue;
-      dataStore.startGame = true;
+
+      const playerName = document.getElementById('playerName').value;
+
+      if (!playerName || playerName.trim() === '' || playerName.length < 3 || playerName.length > 8) {
+        document.getElementById('loginForm').classList.toggle('error', true);
+        return;
+      } else {
+        document.getElementById('loginForm').classList.toggle('error', false);
+      }
+
+      dataStore.playerName = playerName;
       document.getElementById('splashScreen').style.display = 'none';
+
+      socket.emit('playerStarts', playerName);
     });
   </script>
   
