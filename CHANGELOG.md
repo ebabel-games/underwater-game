@@ -3,6 +3,7 @@
 ## 1.5.0
 - Before playing, show a splash screen that asks players to give a name.
 - That name will be used in chat instead of the socket id.
+- Fix the connection event from socket.io not firing sometimes.
 
 ## 1.4.0
 - Stop sounds when tab is not in focus.
