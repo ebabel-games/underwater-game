@@ -98,6 +98,12 @@
       margin: 0 0 .25em;
     }
 
+    #splashScreen .key {
+      width: 100px;
+      display: inline-block;
+      font-weight: 600;
+    }
+
     @media (max-width: 320px) {
       body {
         font-size: 10px;
@@ -120,11 +126,11 @@
       <h1>Underwater Game</h1>
       <h2>Controls</h2>
       <ul>
-        <li>[&darr;] swim down</li>
-        <li>[SPACE] swim up</li>
-        <li>[&uarr;] swim forward</li>
-        <li>[&larr;] turn left</li>
-        <li>[&rarr;] rurn right</li>
+        <li><span class="key">[&larr;]</span> turn left</li>
+        <li><span class="key">[&rarr;]</span> rurn right</li>
+        <li><span class="key">[&uarr;]</span> swim forward</li>
+        <li><span class="key">[&darr;]</span> swim down</li>
+        <li><span class="key">[SPACE]</span> swim up</li>
       </ul>
 
       <form action="#" id="loginForm">
