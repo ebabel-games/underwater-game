@@ -34,7 +34,7 @@ const npcFight = (npc, io) => {
       defenceNpc.state.fightMode = true;
 
       // When fighting npc are within agro range but not that close, move them closer to each other.
-      if (_distance > 20) {
+      if (_distance > 40) {
         attackNpc.state.position =
           reducedDistance(attackNpc.state.position, defenceNpc.state.position, 1);
       }
