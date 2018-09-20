@@ -28,24 +28,13 @@ module.exports = (input) => {
     // Move all npc sprites.
     dataStore.npc = npcMove(dataStore.npc);
 
-    // All npc that are close to each other will fight (bar exceptions, like blessed wisp).
-    dataStore.npc = npcFight(dataStore.npc, io);
-
-    // Update life, and fightMode for all npc after their fights.
-    const npcStates = dataStore.npc.map((n) => {
-      return {
-        position: n.state.position,
-        life: n.state.life,
-        fightMode: n.state.fightMode,
-      };
-    });
-    io.emit('updateNpcStates', npcStates);
-
     // Runs every 1 second.
     oneSecond += delta;
+    const oneSecondFlag = oneSecond > 1;
+
     // Spawn very fast if the population is lower than minimum npc population,
     // or spawn every second if npc population is less than maximum population.
-    if ((oneSecond > 1 && dataStore.npc.length < maxNpcPopulation) || dataStore.npc.length < minNpcPopulation) {
+    if ((oneSecondFlag && dataStore.npc.length < maxNpcPopulation) || dataStore.npc.length < minNpcPopulation) {
       // Random changes to spawn a certain npc.
       const spawnChance = random(99);
       switch (spawnChance) {
@@ -59,10 +48,25 @@ module.exports = (input) => {
         default:
           dataStore.npc.push(createNpc(io));
       }
-
-      // Reset.
-      oneSecond = 0;
     }
+
+    // All npc that are close to each other will fight (bar exceptions, like blessed wisp).
+    if (oneSecondFlag) {
+      dataStore.npc = npcFight(dataStore.npc, io);
+    }
+
+    // Update life, and fightMode for all npc after their fights.
+    const npcStates = dataStore.npc.map((n) => {
+      return {
+        position: n.state.position,
+        life: n.state.life,
+        fightMode: n.state.fightMode,
+      };
+    });
+    io.emit('updateNpcStates', npcStates);
+
+    // Reset.
+    if (oneSecondFlag) oneSecond = 0;
 
     frameCount = frameCount + 1;
   }, 1000 / fps);
