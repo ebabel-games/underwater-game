@@ -1,28 +1,13 @@
-const addMessageToLogs = (message) => {
-  const logsList = document.getElementById('logsList');
-  const li = document.createElement('li');
-  li.textContent = message;
-
-  // Remove old messages.
-  if (logsList.childNodes.length > 5) {
-    while (logsList.childNodes.length > 5) {
-      logsList.removeChild(logsList.firstChild);
-    }
-  }
-
-  // Display latest message.
-  logsList.append(li);
-
-  // Scroll to the latest message.
-  logsList.scrollTop = logsList.scrollHeight;
-};
+import { addMessageToLogs } from './add-message-to-logs.js';
 
 // Multi-player chat.
 const chatMessage = () => {
   socket.on('chatMessage', (chatMessage) => addMessageToLogs(chatMessage));
 
+  const logsForm = document.getElementById('logsForm');
+
   // Emit current player chat message to all players, via server side.
-  document.getElementById('logsForm').addEventListener('submit', (e) => {
+  logsForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const chatMessage = document.getElementById('logsInput').value;
     socket.emit('chatMessage', chatMessage);
