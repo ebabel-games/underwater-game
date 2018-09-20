@@ -49,6 +49,55 @@
       width: 228px;
     }
 
+    #splashScreen {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #3c6478;
+      background-image: url('assets/whirlpool/large-files/whirlpool_ft.jpg');
+      background-size: cover;
+      background-position: center center;
+      color: #cff;
+      font-size: 2em;
+    }
+
+    #splashScreen .container {
+      background-color: #3c6478;
+      width: 300px;
+      padding: 1.5em 2em;
+      margin: 100px auto 0;
+      border-radius: 1em;
+    }
+
+    #splashScreen h1,
+    #splashScreen h2 {
+      margin: 0 0 .5em;
+    }
+
+    #splashScreen h1 {
+      font-size: 1.15em;
+      text-transform: uppercase;
+    }
+
+    #splashScreen h2 {
+      font-size: 1em;
+    }
+
+    #splashScreen ul {
+      margin: 0 0 1em;
+      padding-left: 0;
+    }
+
+    #splashScreen ul li {
+      list-style: none;
+    }
+
+    #splashScreen p {
+      margin: 0 0 .25em;
+    }
+
     @media (max-width: 320px) {
       body {
         font-size: 10px;
@@ -57,14 +106,6 @@
   </style>
 
   <script src="/socket.io/socket.io.js"></script>
-  <script>
-    var socket = io();
-    var dataStore = {
-      scene: null,
-      camera: null,
-      npcStates: []
-    };
-  </script>
 </head>
 <body>
   <div id="logsWindow" class="window">
@@ -74,6 +115,46 @@
     </form>
   </div>
 
+  <div id="splashScreen">
+    <div class="container">
+      <h1>Underwater Game</h1>
+      <h2>Controls</h2>
+      <ul>
+        <li>[&darr;] swim down</li>
+        <li>[SPACE] swim up</li>
+        <li>[&uarr;] swim forward</li>
+        <li>[&larr;] turn left</li>
+        <li>[&rarr;] rurn right</li>
+      </ul>
+
+      <form action="#" id="loginForm">
+        <h2>Player name</h2>
+        <p>
+          <input type="text" id="playerName" >
+          <input type="submit" value="Play">
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    var socket = io();
+    var dataStore = {
+      scene: null,
+      camera: null,
+      npcStates: [],
+      playerName: null,
+      startGame: false
+    };
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      dataStore.playerName = document.getElementById('playerName').nodeValue;
+      dataStore.startGame = true;
+      document.getElementById('splashScreen').style.display = 'none';
+    });
+  </script>
+  
   <script src="libraries.js"></script>
   <script src="dist/game.min.js"></script>
 </body>
