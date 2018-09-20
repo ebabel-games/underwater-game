@@ -3,7 +3,6 @@
 ## 1.4.0
 - Stop sounds when tab is not in focus.
 - Stop capturing keyboard keys when the input box gains focus, so the player can type without moving his camera.
-- Add "/sounds on" and "/sounds off" commands to toggle all sounds on or off.
 - Add sounds for each npc, based on events like when a wisp dies.
 
 ## 1.3.0

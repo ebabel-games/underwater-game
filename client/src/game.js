@@ -3,6 +3,7 @@ import { world } from './modules/world.js';
 import { render } from './modules/render.js';
 import { textSprite } from './modules/text-sprite.js';
 import { soundEffect } from './modules/sound-effect.js';
+import { globalEventHandlers } from './modules/global-event-handlers.js';
 
 // Particles setup.
 const particleTexture = new THREE.TextureLoader().load('assets/spark.png');
@@ -15,8 +16,9 @@ const game = (THREE, THREEx) => {
   const { scene, clock, camera, renderer } = world({ THREE, THREEx }); /* no-unused-var: 0 */
   render(scene, clock, camera, renderer);
 
-  // Link scene to dataStore.
+  // Link scene and camera to dataStore.
   dataStore.scene = scene;
+  dataStore.camera = camera;
 
   // Spawn npc.
   socket.on('spawnNpc', (npc) => {
@@ -45,6 +47,9 @@ const game = (THREE, THREEx) => {
   socket.on('updateNpcStates', (npcStates) => {
     dataStore.npcStates = npcStates;
   });
+
+  // Register all global event handlers.
+  globalEventHandlers();
 
   return {
     scene,

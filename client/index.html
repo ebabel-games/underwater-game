@@ -61,6 +61,7 @@
     var socket = io();
     var dataStore = {
       scene: null,
+      camera: null,
       npcStates: []
     };
   </script>
@@ -72,7 +73,7 @@
       <input type="text" id="logsInput" autocomplete="off">
     </form>
   </div>
-  
+
   <script src="libraries.js"></script>
   <script src="dist/game.min.js"></script>
 </body>
