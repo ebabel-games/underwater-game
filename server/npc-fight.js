@@ -58,7 +58,6 @@ const npcFight = (npc, io) => {
         attackNpc.state.fightMode = false;
         const bonusLife = defenceNpc.creation.life;
         attackNpc.state.life += bonusLife;
-        attackNpc.state.killList.push(defenceNpc.state.name);
         io.emit('chatMessage', `${defenceNpc.state.name} has died, eaten by ${attackNpc.state.name}.`);
       }
     }
