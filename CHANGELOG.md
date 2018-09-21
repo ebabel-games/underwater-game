@@ -46,3 +46,4 @@
 - Fix the blinking of sprites and make their movement smoother.
 - Fix some sprites that are not fighting, not dead but not moving either.
 - Fix the label above each sprite rotating based on camera instead of facing straight to camera regardless of angle.
+- Camera of player looking up and down in a way that feels natural would be a nice addon.
