@@ -3,7 +3,7 @@ const { random, distance, reducedDistance, dice } = require('./utils.js');
 const agroDistance = 320;
 
 // All npc that are close enough enter into a fight with each other.
-const npcFight = (npc, io) => {
+const npcFight = (npc) => {
   const l = npc.length;
 
   for (let i = 0; i < l; i++) {
@@ -53,12 +53,13 @@ const npcFight = (npc, io) => {
         attackNpc.state.life += healing;
       }
 
-      // When defence npc dies, boost life of attack npc, update his kill list.
+      // When defence npc dies, the attack npc gets his all his default creation life back,
+      // and a random bonus. However, if the bonus would be less than the npc currently has in life,
+      // then he keeps that same state life.
       if (defenceNpc.state.life <= 0) {
         attackNpc.state.fightMode = false;
-        const bonusLife = defenceNpc.creation.life;
-        attackNpc.state.life += bonusLife;
-        io.emit('chatMessage', `${defenceNpc.state.name} has died, eaten by ${attackNpc.state.name}.`);
+        const bonusLife = attackNpc.creation.life + dice();
+        attackNpc.state.life = (attackNpc.state.life < bonusLife) ? bonusLife : attackNpc.state.life;
       }
     }
   }

@@ -1,6 +1,6 @@
 const gameloop = require('node-gameloop');
 
-const { random } = require('./utils.js');
+const { random, randomPosition } = require('./utils.js');
 const { createNpc } = require('./npc.js');
 const { npcMove } = require('./npc-move.js');
 const { npcFight } = require('./npc-fight.js');
@@ -53,7 +53,7 @@ module.exports = (input) => {
 
     // All npc that are close to each other will fight (bar exceptions, like blessed wisp).
     if (oneSecondFlag) {
-      dataStore.npc = npcFight(dataStore.npc, io);
+      dataStore.npc = npcFight(dataStore.npc);
     }
 
     // Respawn dead npc that have reached a certain height after they drifted upwards.
@@ -61,7 +61,7 @@ module.exports = (input) => {
       if (n.state.life <= 0 && n.state.position[1] >= respawnHeight) {
         n.state.life = n.creation.life;
         n.state.fightMode = false;
-        n.state.position = n.creation.position;
+        n.state.position = randomPosition();
       }
 
       return n;

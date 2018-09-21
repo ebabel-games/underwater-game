@@ -1,6 +1,9 @@
 # Underwater Game changelog
 
 ## 1.8.0
+- Remove messages to chat when a sprite dies, because that's too much spam.
+- When npc respawns, he reappears at a random location.
+- When defence npc dies, the attack npc gets his all his default creation life back, and a random bonus. However, if the bonus would be less than the npc currently has in life, then he keeps that same state life.
 - Display a sprite for each player and attach name of player above the sprite as text
 
 ## 1.7.0

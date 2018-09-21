@@ -19,7 +19,7 @@ const createWisp = (input = {}) => {
     life,
     attack: positive((strength * 3) - (agility * 1.5)) || 1,
     defence: positive((agility * 3) - (strength * 1.5)) || 1,
-    position: randomPosition([6000, 6000, 6000]),
+    position: randomPosition(),
     fightMode: false,
     color: [0.64, 0.9, 0.7] // Hue, saturation, and lightness.
   };

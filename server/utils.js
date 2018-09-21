@@ -21,15 +21,15 @@ const reducedDistance = (a, b, r) => {
   ];
 };
 
-const randomPosition = (size) => {
+const randomPosition = (size = [6000, 6000, 6000]) => {
   const width = size[0];
   const height = size[1];
   const depth = size[2];
 
   return [
-    Math.floor(random(width) - width / 2),
-    Math.floor(random(height) - height / 2),
-    Math.floor(random(depth) - depth / 2)
+    Math.floor(randomPosOrNeg(width)),
+    Math.floor(randomPosOrNeg(height)),
+    Math.floor(randomPosOrNeg(depth))
   ];
 };
 
