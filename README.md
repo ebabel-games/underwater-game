@@ -26,6 +26,7 @@ npm start
 ```
 
 ## Production
+You could use [Digital Ocean](https://www.digitalocean.com/) to deploy this code, or any server that can run a Node.js app with socket.io
 
 ## Build for Production
 ```
