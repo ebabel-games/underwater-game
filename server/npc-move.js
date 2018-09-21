@@ -7,7 +7,7 @@ const npcMove = (npc) => npc.map((n) => {
 
   // Sprites that are dead should float up to the surface.
   if (n.state.life <= 0) {
-    n.state.position[1] = n.state.position[1] + 2;
+    n.state.position[1] = n.state.position[1] + 10;
     return n;
   }
 

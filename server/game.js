@@ -8,6 +8,7 @@ const { npcFight } = require('./npc-fight.js');
 const minNpcPopulation = 66;
 const maxNpcPopulation = 99;
 const defaultFps = 10;
+const respawnHeight = 10000;
 
 // Main server-side game function.
 // @io: socket.io
@@ -55,14 +56,16 @@ module.exports = (input) => {
       dataStore.npc = npcFight(dataStore.npc, io);
     }
 
-    // Remove dead npc that have reached a certain height after they drifted upwards.
+    // Respawn dead npc that have reached a certain height after they drifted upwards.
     dataStore.npc = dataStore.npc.map((n) => {
-      if (n.state.life <= 0 && n.state.position.y >= 1000) {
-        return undefined;
+      if (n.state.life <= 0 && n.state.position[1] >= respawnHeight) {
+        n.state.life = n.creation.life;
+        n.state.fightMode = false;
+        n.state.position = n.creation.position;
       }
 
       return n;
-    }).filter((n) => n);  // Remove undefined members.
+    });
 
     // Update life, and fightMode for all npc after their fights.
     const npcStates = dataStore.npc.map((n) => {

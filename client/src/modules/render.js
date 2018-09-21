@@ -28,14 +28,6 @@ const render = (scene, clock, camera, renderer) => {
       child.userData.state.life = newState.life;
       child.userData.state.fightMode = newState.fightMode;
 
-      // Change appearance of npc that are no longer alive.
-      if (child.userData.state.life <= 0) {
-        child.material.color.set('rgb(50, 50, 50)');
-        const text = child.children.filter((c) => c.name === 'text');
-        if (text && text[0] && text[0].material && text[0].material.color)
-          text[0].material.color.set('rgb(200, 200, 200)');
-      }
-
       // Minimum size of any npc is 40.
       const newSize = (child.userData.state.life > 40) ? child.userData.state.life : 40;
 

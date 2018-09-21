@@ -1,7 +1,8 @@
 # Underwater Game changelog
 
 ## 1.7.0
-- Remove dead npc when they reach a certain height, to preserve performance.
+- Put back maximum population, to preserve performance.
+- Resurrect dead npc when they reach a certain height, and place them back at their initial creation location.
 
 ## 1.6.1
 - Fix typo in package.json
