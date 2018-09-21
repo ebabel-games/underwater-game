@@ -29,7 +29,7 @@ module.exports = (input) => {
 
     // Runs every 1 second.
     oneSecond += delta;
-    const oneSecondFlag = oneSecond > 1;
+    const oneSecondFlag = oneSecond >= 1;
 
     // Spawn very fast if the population of alive npc is lower
     // than minimum npc population, or spawn every second.
