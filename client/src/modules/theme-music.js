@@ -3,7 +3,7 @@ const themeMusic = (input) => {
     camera,
     url = 'assets/music/ambient2-nautilus.mp3',
     loop = true,
-    volume = 0.35,
+    volume = dataStore.defaultVolume,
     autostart = true
   } = input;
 

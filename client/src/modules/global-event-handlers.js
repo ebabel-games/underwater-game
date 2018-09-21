@@ -12,7 +12,7 @@ const globalEventHandlers = () => {
   });
 
   window.addEventListener('focus', () => {
-    window.dispatchEvent(new CustomEvent('adjustMasterVolume', { detail: { masterVolume: 1 } }));
+    window.dispatchEvent(new CustomEvent('adjustMasterVolume', { detail: { masterVolume: dataStore.defaultVolume } }));
   });
 
   document.getElementById('logsInput').addEventListener('focus', () => {
