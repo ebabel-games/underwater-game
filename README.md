@@ -2,7 +2,7 @@
 Aquatic 3D HTML5 game of survival, fighting underwater creatures in a web browser.
 
 ## Install
-You need Node.js and npm from https://nodejs.org/
+You need [Node.js and npm](https://nodejs.org/)
 
 ```
 npm install
