@@ -1,5 +1,9 @@
 # Underwater Game changelog
 
+## 1.6.0
+- Keep adding spawns regardless of max/min population. Let the fighting and the dead sprites make room for new sprites.
+- Keep running the node.js instance "forever" to persist the world, its non-player-characters (npc) and player characters (pc).
+
 ## 1.5.0
 - Before playing, show a splash screen that asks players to give a name.
 - That name will be used in chat instead of the socket id.
@@ -37,7 +41,7 @@
 - Multi-player chat.
 
 # Future features to develop
-- Keep adding spawns regardless of max/min population. Let the fighting and the dead sprites make room for new sprites.
+- Display a sprite for each player and attach name of player above the sprite as text
+- Let player fight npc
 - Fix the blinking of sprites and make their movement smoother.
 - Fix some sprites that are not fighting, not dead but not moving either.
-- Keep running the node.js instance "forever" to persist the world, its non-player-characters (npc) and player characters (pc).
