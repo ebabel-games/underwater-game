@@ -7,7 +7,7 @@ const child = new (forever.Monitor)('./server/index.js', {
 });
 
 child.on('exit', () => {
-  console.log('index.js has exited after 3 restarts');
+  console.log('index.js has exited after 3 restarts');  /* eslint no-console: 0 */
 });
 
 child.start();
