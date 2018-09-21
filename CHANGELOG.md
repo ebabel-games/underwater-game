@@ -2,7 +2,7 @@
 
 ## 1.6.0
 - Keep running the node.js instance "forever" to persist the world, its non-player-characters (npc) and player characters (pc).
-- Keep adding spawns regardless of max/min population. Let the fighting and the dead sprites make room for new sprites.
+- Keep adding spawns regardless of maximum population. Let the fighting and the dead sprites make room for new sprites.
 
 ## 1.5.0
 - Before playing, show a splash screen that asks players to give a name.
