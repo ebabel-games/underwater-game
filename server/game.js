@@ -6,7 +6,6 @@ const { npcMove } = require('./npc-move.js');
 const { npcFight } = require('./npc-fight.js');
 
 const minNpcPopulation = 66;
-const maxNpcPopulation = 99;
 const defaultFps = 10;
 
 // Main server-side game function.
@@ -32,9 +31,9 @@ module.exports = (input) => {
     oneSecond += delta;
     const oneSecondFlag = oneSecond > 1;
 
-    // Spawn very fast if the population is lower than minimum npc population,
-    // or spawn every second if npc population is less than maximum population.
-    if ((oneSecondFlag && dataStore.npc.length < maxNpcPopulation) || dataStore.npc.length < minNpcPopulation) {
+    // Spawn very fast if the population of alive npc is lower
+    // than minimum npc population, or spawn every second.
+    if (oneSecondFlag || dataStore.npc.filter(n => n.state.life > 0).length < minNpcPopulation) {
       // Random changes to spawn a certain npc.
       const spawnChance = random(99);
       switch (spawnChance) {

@@ -3,7 +3,6 @@
 ## 1.6.0
 - Keep running the node.js instance "forever" to persist the world, its non-player-characters (npc) and player characters (pc).
 - Keep adding spawns regardless of max/min population. Let the fighting and the dead sprites make room for new sprites.
-- Remove dead npc when they reach a certain height.
 
 ## 1.5.0
 - Before playing, show a splash screen that asks players to give a name.
@@ -42,6 +41,7 @@
 - Multi-player chat.
 
 # Future features to develop
+- Remove dead npc when they reach a certain height.
 - Display a sprite for each player and attach name of player above the sprite as text
 - Let player fight npc
 - Fix the blinking of sprites and make their movement smoother.
