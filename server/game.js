@@ -54,6 +54,15 @@ module.exports = (input) => {
       dataStore.npc = npcFight(dataStore.npc, io);
     }
 
+    // Remove dead npc that have reached a certain height after they drifted upwards.
+    dataStore.npc = dataStore.npc.map((n) => {
+      if (n.state.life <= 0 && n.state.position.y >= 1000) {
+        return undefined;
+      }
+
+      return n;
+    }).filter((n) => n);  // Remove undefined members.
+
     // Update life, and fightMode for all npc after their fights.
     const npcStates = dataStore.npc.map((n) => {
       return {

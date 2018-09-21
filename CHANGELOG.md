@@ -1,5 +1,8 @@
 # Underwater Game changelog
 
+## 1.7.0
+- Remove dead npc when they reach a certain height, to preserve performance.
+
 ## 1.6.1
 - Fix typo in package.json
 
@@ -44,7 +47,6 @@
 - Multi-player chat.
 
 # Future features to develop
-- Remove dead npc when they reach a certain height.
 - Display a sprite for each player and attach name of player above the sprite as text
 - Let player fight npc
 - Fix the blinking of sprites and make their movement smoother.

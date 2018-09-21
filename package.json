@@ -1,6 +1,6 @@
 {
   "name": "underwater-game",
-  "version": "1.6.1",
+  "version": "1.7.0",
   "description": "Aquatic 3D HTML5 game of survival, fighting underwater creatures in a web browser.",
   "main": "server/index.js",
   "scripts": {
