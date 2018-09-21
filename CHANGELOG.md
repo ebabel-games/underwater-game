@@ -1,5 +1,8 @@
 # Underwater Game changelog
 
+## 1.8.0
+- Display a sprite for each player and attach name of player above the sprite as text
+
 ## 1.7.0
 - Put back maximum population, to preserve performance.
 - Resurrect dead npc when they reach a certain height, and place them back at their initial creation location.
@@ -48,7 +51,6 @@
 - Multi-player chat.
 
 # Future features to develop
-- Display a sprite for each player and attach name of player above the sprite as text
 - Let player fight npc
 - Fix the blinking of sprites and make their movement smoother.
 - Fix some sprites that are not fighting, not dead but not moving either.
