@@ -107,6 +107,7 @@
     #loginForm .error {
       display: none;
       color: rgb(255, 150, 150);
+      font-size: .75em;
     }
 
     #loginForm.error .error {
@@ -183,6 +184,8 @@
 
       socket.emit('playerStarts', playerName);
     });
+
+    document.getElementById('playerName').focus();
   </script>
   
   <script src="libraries.js"></script>
