@@ -1,9 +1,8 @@
 import { chatMessage } from './modules/chat-message.js';
 import { world } from './modules/world.js';
 import { render } from './modules/render.js';
-import { textSprite } from './modules/text-sprite.js';
-import { soundEffect } from './modules/sound-effect.js';
 import { globalEventHandlers } from './modules/global-event-handlers.js';
+import { spawnNpc } from './modules/spawn-npc.js';
 
 // Particles setup.
 const particleTexture = new THREE.TextureLoader().load('assets/spark.png');
@@ -20,27 +19,16 @@ const game = (THREE, THREEx) => {
   dataStore.scene = scene;
   dataStore.camera = camera;
 
-  // Spawn npc.
+  // Spawn multiple npc.
+  socket.on('spawnMultipleNpc', (multipleNpc) => {
+    multipleNpc.map((npc) => {
+      spawnNpc({ npc, particleTexture, particleGroup, camera });
+    });
+  });
+
+  // Spawn single npc.
   socket.on('spawnNpc', (npc) => {
-    const spriteMaterial = new THREE.SpriteMaterial({ map: particleTexture, color: 0xffffff });
-    const sprite = new THREE.Sprite(spriteMaterial);
-    sprite.name = npc.creation.name;
-    sprite.scale.set(npc.creation.life, npc.creation.life, 1.0);
-    sprite.position.set(...npc.creation.position);
-    sprite.material.color.setHSL(npc.creation.color[0], npc.creation.color[1], npc.creation.color[2]); 
-    sprite.material.blending = THREE.AdditiveBlending;
-    sprite.userData = npc;
-
-    // Name above sprite.
-    const text = textSprite(npc.creation.name);
-    sprite.add(text);
-
-    // Add sound effect to sprite.
-    const sound = soundEffect({ camera });
-    sprite.add(sound);
-    
-    particleGroup.add(sprite);
-    dataStore.scene.add(particleGroup);
+    spawnNpc({ npc, particleTexture, particleGroup, camera });
   });
 
   // Update npc states.

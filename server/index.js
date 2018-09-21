@@ -21,17 +21,19 @@ app.use((req, res, next) => {
 });
 
 io.on('connection', (socket) => {
-  // For a single player, spawn all NPCs.
-  dataStore.npc.map((n) => io.to(socket.id).emit('spawnNpc', n));
-
+  // Greet a player.
   socket.on('playerStarts', (playerName) => {
     // Greet single player directly.
     io.to(socket.id).emit('chatMessage', `Welcome ${playerName}!`);
 
     // Tell all other players that a new player has logged in.
     socket.broadcast.emit('chatMessage', `${playerName} is online.`);
+
+    // For a single player, spawn all NPCs.
+    io.to(socket.id).emit('spawnMultipleNpc', dataStore.npc);
   });
 
+  // Send all players the message from any player.
   socket.on('chatMessage', (input) => io.emit('chatMessage', `${input.playerName} says "${input.chatMessage}"`));
 });
 
