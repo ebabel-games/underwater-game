@@ -1,5 +1,8 @@
 # Underwater Game changelog
 
+## 1.9.0
+- Display a sprite for each player and attach name of player above the sprite as text
+
 ## 1.8.0
 - Remove messages to chat when a sprite dies, because that's too much spam.
 - When npc respawns, he reappears at a random location.
@@ -53,7 +56,6 @@
 - Multi-player chat.
 
 # Future features to develop
-- Display a sprite for each player and attach name of player above the sprite as text
 - Let player fight npc
 - Fix the blinking of sprites and make their movement smoother.
 - Fix some sprites that are not fighting, not dead but not moving either.
