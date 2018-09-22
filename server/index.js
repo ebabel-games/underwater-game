@@ -4,10 +4,12 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
 const game = require('./game.js');
+const player = require('./player.js');
 
 // Central store that keeps state of the whole game.
 const dataStore = {
-  npc: []
+  npc: [],
+  players: []
 };
 
 app.use(express.static('client'));
@@ -21,20 +23,10 @@ app.use((req, res, next) => {
 });
 
 io.on('connection', (socket) => {
-  // Greet a player.
-  socket.on('playerStarts', (playerName) => {
-    // Greet single player directly.
-    io.to(socket.id).emit('chatMessage', `Welcome ${playerName}!`);
-
-    // Tell all other players that a new player has logged in.
-    socket.broadcast.emit('chatMessage', `${playerName} is online.`);
-
-    // For a single player, spawn all NPCs.
-    io.to(socket.id).emit('spawnMultipleNpc', dataStore.npc);
+  // Add current player.
+  socket.on('playerStarts', (name) => {
+    dataStore.players.push(player({ name, io, socket, npc: dataStore.npc }));
   });
-
-  // Send all players the message from any player.
-  socket.on('chatMessage', (input) => io.emit('chatMessage', `${input.playerName} says "${input.chatMessage}"`));
 });
 
 let port = 3000;

@@ -1,3 +1,4 @@
+const { deepCopy } = require('./utils.js');
 const { createWisp } = require('./create-wisp.js');
 const { createBlessedWisp } = require('./create-blessed-wisp.js');
 const { createEvilWisp } = require('./create-evil-wisp.js');
@@ -21,7 +22,7 @@ module.exports = {
 
     // State will change based on how the npc evolves.
     // Deep copy from creation, so that state stays separate.
-    const state = JSON.parse(JSON.stringify(creation));
+    const state = deepCopy(creation);
 
     io.emit('spawnNpc', { creation, state });
 

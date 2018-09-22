@@ -3,11 +3,6 @@ import { skybox } from './skybox.js';
 import { keyboardControls } from './keyboard-controls.js';
 import { themeMusic } from './theme-music.js';
 
-const playerBindPoint = {
-  position: [0, 0, 0],
-  rotation: [0, 0, 0]
-}
-
 // Default renderer clear color.
 const _color = 0x0e0727;
 const _opacity = 1;
@@ -17,8 +12,8 @@ const world = (input) => {
   const {
     THREE,
     THREEx,
-    position = playerBindPoint.position,
-    rotation = playerBindPoint.rotation,
+    position = [0, 0, 0],
+    rotation = [0, 0, 0],
     color = _color,
     opacity = _opacity
   } = input;

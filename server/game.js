@@ -7,7 +7,7 @@ const { npcFight } = require('./npc-fight.js');
 
 const minNpcPopulation = 66;
 const maxNpcPopulation = 99;
-const defaultFps = 10;
+const defaultFps = 6;
 const respawnHeight = 10000;
 
 // Main server-side game function.
