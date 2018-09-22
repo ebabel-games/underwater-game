@@ -76,3 +76,7 @@ socket.broadcast.to(socketid).emit('message', 'for your eyes only');
 ```
 Author: LearnRPG (https://stackoverflow.com/users/1325485/learnrpg)
 Source: https://stackoverflow.com/questions/10058226/send-response-to-all-clients-except-sender
+
+## CSS loading animation
+Author: loadingio (https://github.com/loadingio)
+Source: https://github.com/loadingio/css-spinner/

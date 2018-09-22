@@ -3,6 +3,7 @@
 ## 1.9.0
 - Fix the blessed wisps attacking other wisps.
 - Display a sprite for each player and attach name of player above the sprite as text
+- Disable play button, display loading animation, and once the game is ready, remove loading animation, and enable the play button.
 
 ## 1.8.0
 - Remove messages to chat when a sprite dies, because that's too much spam.
