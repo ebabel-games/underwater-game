@@ -57,6 +57,7 @@
 
 # Future features to develop
 - Let player fight npc
+- Fix the server failing to continue running after a while. Investigate the logs.
 - Fix the blinking of sprites and make their movement smoother.
 - Fix some sprites that are not fighting, not dead but not moving either.
 - Fix the label above each sprite rotating based on camera instead of facing straight to camera regardless of angle.
