@@ -1,4 +1,5 @@
 const { deepCopy } = require('./utils.js');
+const { createWisp } = require('./create-wisp.js');
 
 module.exports = (input) => {
   const {
@@ -18,15 +19,16 @@ module.exports = (input) => {
   io.to(socket.id).emit('spawnMultipleNpc', npc);
   
   // Send all players any message from any player.
-  socket.on('chatMessage', (input) => io.emit('chatMessage', `${input.playerName} says "${input.chatMessage}"`));
+  socket.on('chatMessage', (input) => io.emit('chatMessage', `${input.name} says "${input.chatMessage}"`));
 
   const player = {
-    creation: {
+    creation: createWisp({
       name,
-      position: [0, 0, 0],
-      rotation: [0, 0, 0],
-    }
+      position: [0, 0, 0]
+    })
   };
+
+  player.creation.color[0] = 0.3583; // Hue.
 
   player.state = deepCopy(player.creation);
 

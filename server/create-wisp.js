@@ -6,7 +6,9 @@ const createWisp = (input = {}) => {
     name = 'a wisp',
     strength = trait(),
     stamina = trait(),
-    agility = trait()
+    agility = trait(),
+    position = randomPosition(),
+    rotation = [0, 0, 0]
   } = input;
 
   const life = positive((stamina + agility - strength) * 20) || 40;
@@ -19,7 +21,8 @@ const createWisp = (input = {}) => {
     life,
     attack: positive((strength * 3) - (agility * 1.5)) || 1,
     defence: positive((agility * 3) - (strength * 1.5)) || 1,
-    position: randomPosition(),
+    position,
+    rotation,
     fightMode: false,
     color: [0.64, 0.9, 0.7] // Hue, saturation, and lightness.
   };

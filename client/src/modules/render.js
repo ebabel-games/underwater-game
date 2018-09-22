@@ -1,14 +1,15 @@
-import { updateCamera } from './keyboard-controls.js';
+import { updatePlayerPositionRotation } from './keyboard-controls.js';
 
 const render = (scene, clock, camera, renderer) => {
   // Calculate Delta.
   const delta = clock.getDelta();
 
   // Update position of camera based on where the player moves to.
-  updateCamera(camera);
+  updatePlayerPositionRotation(camera);
 
   // Place the skybox in relation with the camera position.
-  scene.children[1].position.set(camera.position.x, camera.position.y, camera.position.z);
+  scene.children.filter(c => c.name === 'skybox')[0]
+    .position.set(camera.position.x, camera.position.y, camera.position.z);
 
   // Update position and state of all npc.
   const npc = dataStore.scene && dataStore.scene.children.filter(child => child.name === 'npc-group');
