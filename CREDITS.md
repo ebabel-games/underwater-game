@@ -80,3 +80,6 @@ Source: https://stackoverflow.com/questions/10058226/send-response-to-all-client
 ## CSS loading animation
 Author: loadingio (https://github.com/loadingio)
 Source: https://github.com/loadingio/css-spinner/
+
+## HSL color picker
+Source: http://hslpicker.com/
