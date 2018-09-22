@@ -11,7 +11,7 @@ const npcFight = (npc) => {
     const attackNpc = npc[i];
 
     // Skip the attacks of npc that are dead or pacifist.
-    if (attackNpc.state.life <= 0 || attackNpc.name === 'a blessed wisp') continue;
+    if (attackNpc.state.life <= 0 || attackNpc.state.name === 'a blessed wisp') continue;
 
     for (let i2 = 0; i2 < l; i2++) {
       // Defending npc.
