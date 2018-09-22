@@ -1,5 +1,8 @@
 # Underwater Game changelog
 
+## 1.10.0
+- Display a sprite for each player and attach name of player above the sprite as text
+
 ## 1.9.0
 - Fix the blessed wisps attacking other wisps.
 - Disable play button, display loading animation, and once the game is ready, remove loading animation, and enable the play button.
@@ -57,7 +60,6 @@
 - Multi-player chat.
 
 # Future features to develop
-- Display a sprite for each player and attach name of player above the sprite as text
 - Player vs npc fighting.
 - Player vs player fighting.
 - Fix the server failing to continue running after a while. Investigate the logs.
