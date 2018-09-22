@@ -36,6 +36,11 @@ const game = (THREE, THREEx) => {
     dataStore.npcStates = npcStates;
   });
 
+  socket.on('updatePlayer', (player) => {
+    dataStore.player = player;
+    spawnNpc({ npc: player, particleTexture, particleGroup, camera });
+  });
+
   // Register all global event handlers.
   globalEventHandlers();
 

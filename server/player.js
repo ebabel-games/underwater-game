@@ -32,5 +32,8 @@ module.exports = (input) => {
 
   player.state = deepCopy(player.creation);
 
+  // Update both creation and state of currently logged player.
+  io.to(socket.id).emit('updatePlayer', player);
+
   return player;
 };
