@@ -1,6 +1,7 @@
 # Underwater Game changelog
 
 ## 1.9.0
+- Fix the blessed wisps attacking other wisps.
 - Display a sprite for each player and attach name of player above the sprite as text
 
 ## 1.8.0
@@ -56,9 +57,12 @@
 - Multi-player chat.
 
 # Future features to develop
-- Let player fight npc
+- Player vs npc fighting.
+- Player vs player fighting.
 - Fix the server failing to continue running after a while. Investigate the logs.
 - Fix the blinking of sprites and make their movement smoother.
 - Fix some sprites that are not fighting, not dead but not moving either.
 - Fix the label above each sprite rotating based on camera instead of facing straight to camera regardless of angle.
 - Camera of player looking up and down in a way that feels natural would be a nice addon.
+- Add reporting for test coverage.
+- Write more tests.
