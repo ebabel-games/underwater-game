@@ -9,7 +9,8 @@
     "io": true,
     "socket": true,
     "THREE": true,
-    "THREEx": true
+    "THREEx": true,
+    "dataStore": true
   },
   "extends": "eslint:recommended",
   "rules": {

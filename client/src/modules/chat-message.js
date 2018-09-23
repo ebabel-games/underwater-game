@@ -1,36 +1,25 @@
+import { addMessageToLogs } from './add-message-to-logs.js';
+
 // Multi-player chat.
-const chatMessage = (socket) => {
-  socket.on('chatMessage', (chatMessage) => {
-    const logsList = document.getElementById('logsList');
-    const li = document.createElement('li');
-    li.textContent = chatMessage;
+const chatMessage = () => {
+  socket.on('chatMessage', (chatMessage) => addMessageToLogs(chatMessage));
 
-    // Remove old messages.
-    if (logsList.childNodes.length > 5) {
-      while (logsList.childNodes.length > 5) {
-        logsList.removeChild(logsList.firstChild);
-      }
-    }
-
-    // Display latest message.
-    logsList.append(li);
-
-    // Scroll to the latest message.
-    logsList.scrollTop = logsList.scrollHeight;
-  });
+  const logsForm = document.getElementById('logsForm');
 
   // Emit current player chat message to all players, via server side.
-  document.getElementById('logsForm').addEventListener('submit', (e) => {
+  logsForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const chatMessage = document.getElementById('logsInput').value;
-    socket.emit('chatMessage', chatMessage);
-    document.getElementById('logsInput').value = '';
+    socket.emit('chatMessage', { chatMessage, playerName: dataStore.playerName });
+
+    const logsInput = document.getElementById('logsInput');
+    logsInput.value = '';
+    logsInput.blur();
   });
 
   return {
-    socket,
     logsForm: document.getElementById('logsForm')
-  }
+  };
 };
 
 export { chatMessage };

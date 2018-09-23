@@ -1,40 +1,48 @@
 import { light } from './light.js';
 import { skybox } from './skybox.js';
-
-// Default camera position.
-const _position = [
-  -151.16242594559424,
-  42.748204539201545,
-  218.00346784149542
-];
-
-// Default camera rotation.
-const _rotation = [
-  -0.19363271143730437,
-  -0.5974748869523452,
-  -0.10986727175133501
-];
+import { keyboardControls } from './keyboard-controls.js';
+import { themeMusic } from './theme-music.js';
 
 // Default renderer clear color.
 const _color = 0x0e0727;
 const _opacity = 1;
 
 // Setup the 3D world.
-const world = (THREE, THREEx, position = _position, rotation = _rotation, color = _color, opacity = _opacity) => {
-  const clock = new THREE.Clock();
-  const scene = new THREE.Scene();
+const world = (input) => {
+  const {
+    THREE,
+    THREEx,
+    position = [0, 0, 0],
+    rotation = [0, 0, 0],
+    color = _color,
+    opacity = _opacity
+  } = input;
 
-  const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.01, 200000);
+  // Setup main clock that accurately calculates delta in animations.
+  const clock = new THREE.Clock();
+  clock.start();
+
+  // Setup main 3D scene where all meshes, sprites, and 3D objects will live.
+  const scene = new THREE.Scene();
+  scene.name = 'underwater-game-world';
+
+  // Setup camera as the subjective first person point of view of current player.
+  const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 100000);
+  camera.name = 'player-first-view-camera';
   camera.position.set(position[0], position[1], position[2]);
   camera.rotation.set(rotation[0], rotation[1], rotation[2]);
 
+  // Setup keyboard controls.
+  const controls = keyboardControls();
+
+  // Setup main theme music.
+  const music = themeMusic({ camera });
+
+  // Setup main renderer for WebGL graphics.
   const renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setClearColor(color, opacity);
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
-
-  // Let user rotate around the world with touch or mouse.
-  const controls = new THREE.OrbitControls(camera, renderer.domElement);
 
   // When the window resizes, adjust the renderer and camera.
   const windowResize = new THREEx.WindowResize(renderer, camera);
@@ -51,7 +59,8 @@ const world = (THREE, THREEx, position = _position, rotation = _rotation, color 
     camera,
     renderer,
     controls,
-    windowResize
+    windowResize,
+    music
   };
 };
 

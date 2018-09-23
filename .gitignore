@@ -65,3 +65,6 @@ typings/
 
 # Game build
 client/dist
+
+# DigitalOcean generated directory
+v8-compile-cache-0
