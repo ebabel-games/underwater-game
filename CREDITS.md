@@ -83,3 +83,6 @@ Source: https://github.com/loadingio/css-spinner/
 
 ## HSL color picker
 Source: http://hslpicker.com/
+
+## Animation of a group of fishes
+Source: http://altspacevr.github.io/AltspaceJam/fish/fish.html
