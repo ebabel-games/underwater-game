@@ -11,7 +11,7 @@ const createWisp = (input = {}) => {
     rotation = [0, 0, 0]
   } = input;
 
-  const life = positive((stamina + agility - strength) * 20) || 40;
+  const life = positive((stamina + agility - strength) * 20) || 20;
 
   return {
     name,

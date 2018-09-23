@@ -1,5 +1,7 @@
 import { updatePlayerPositionRotation } from './keyboard-controls.js';
 
+const npcMinimumSize = 20;
+
 const render = (scene, clock, camera, renderer) => {
   // Calculate Delta.
   const delta = clock.getDelta();
@@ -29,8 +31,8 @@ const render = (scene, clock, camera, renderer) => {
       child.userData.state.life = newState.life;
       child.userData.state.fightMode = newState.fightMode;
 
-      // Minimum size of any npc is 40.
-      const newSize = (child.userData.state.life > 40) ? child.userData.state.life : 40;
+      // Minimum size of any npc.
+      const newSize = (child.userData.state.life > npcMinimumSize) ? child.userData.state.life : npcMinimumSize;
 
       // Update the size of npc based on its life.
       child.scale.set(newSize, newSize, 1.0);
@@ -46,7 +48,7 @@ const render = (scene, clock, camera, renderer) => {
 
   // Render the scene.
   renderer.render(scene, camera);
-  requestAnimationFrame((timestamp) => {
+  requestAnimationFrame(() => {
     render(scene, clock, camera, renderer);
   });
 
