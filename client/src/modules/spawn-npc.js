@@ -5,7 +5,6 @@ const spawnNpc = (input) => {
   const {
     npc,
     particleTexture,
-    particleGroup,
     camera
   } = input;
 
@@ -26,8 +25,7 @@ const spawnNpc = (input) => {
   const sound = soundEffect({ camera });
   sprite.add(sound);
   
-  particleGroup.add(sprite);
-  dataStore.scene.add(particleGroup);
+  return sprite;
 };
 
 export { spawnNpc };

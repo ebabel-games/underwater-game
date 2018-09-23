@@ -9,6 +9,11 @@ const particleTexture = new THREE.TextureLoader().load('assets/spark.png');
 const particleGroup = new THREE.Object3D();
 particleGroup.name = 'npc-group';
 
+const addSprite = (sprite) => {
+  particleGroup.add(sprite);
+  dataStore.scene.add(particleGroup);
+}
+
 // Main game module that co-ordinates all other modules.
 const game = (THREE, THREEx) => {
   chatMessage();
@@ -22,13 +27,13 @@ const game = (THREE, THREEx) => {
   // Spawn multiple npc.
   socket.on('spawnMultipleNpc', (multipleNpc) => {
     multipleNpc.map((npc) => {
-      spawnNpc({ npc, particleTexture, particleGroup, camera });
+      addSprite(spawnNpc({ npc, particleTexture, camera }));
     });
   });
 
   // Spawn single npc.
   socket.on('spawnNpc', (npc) => {
-    spawnNpc({ npc, particleTexture, particleGroup, camera });
+    addSprite(spawnNpc({ npc, particleTexture, particleGroup, camera }));
   });
 
   // Update npc states.
@@ -38,7 +43,7 @@ const game = (THREE, THREEx) => {
 
   socket.on('updatePlayer', (player) => {
     dataStore.player = player;
-    spawnNpc({ npc: player, particleTexture, particleGroup, camera });
+    addSprite(spawnNpc({ npc: player, particleTexture, particleGroup, camera }));
   });
 
   // Register all global event handlers.
