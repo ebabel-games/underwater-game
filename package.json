@@ -1,11 +1,11 @@
 {
   "name": "underwater-game",
-  "version": "1.9.1",
+  "version": "1.9.2",
   "description": "Aquatic 3D HTML5 game of survival, fighting underwater creatures in a web browser.",
   "main": "server/index.js",
   "scripts": {
     "test": "npm run eslint && npm run mocha",
-    "mocha": "node ./node_modules/.bin/mocha-webpack --recursive --webpack-config webpack.config.test.js ./spec/*.js",
+    "mocha": "node ./node_modules/.bin/mocha-webpack --recursive --webpack-config webpack.config.test.js ./spec/*.spec.js",
     "eslint": "node ./node_modules/.bin/eslint ./server/*.js ./server/**/*.js ./client/*.js ./client/**/*.js",
     "build": "node ./node_modules/.bin/webpack --mode=development --devtool source-map",
     "watch": "node ./node_modules/.bin/webpack --mode=development --devtool source-map --watch --progress",
