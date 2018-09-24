@@ -2,14 +2,14 @@ import { chatMessage } from './modules/chat-message.js';
 import { world } from './modules/world.js';
 import { render } from './modules/render.js';
 import { globalEventHandlers } from './modules/global-event-handlers.js';
-import { spawnNpc } from './modules/spawn-npc.js';
+import { spawnSprite } from './modules/spawn-sprite.js';
 
 // Particles setup.
 const particleTexture = new THREE.TextureLoader().load('assets/spark.png');
 const particleGroup = new THREE.Object3D();
 particleGroup.name = 'npc-group';
 
-const addSprite = (sprite) => {
+const addNpc = (sprite) => {
   particleGroup.add(sprite);
   dataStore.scene.add(particleGroup);
 }
@@ -27,13 +27,13 @@ const game = (THREE, THREEx) => {
   // Spawn multiple npc.
   socket.on('spawnMultipleNpc', (multipleNpc) => {
     multipleNpc.map((npc) => {
-      addSprite(spawnNpc({ npc, particleTexture, camera }));
+      addNpc(spawnSprite({ spriteData: npc, particleTexture, camera }));
     });
   });
 
   // Spawn single npc.
-  socket.on('spawnNpc', (npc) => {
-    addSprite(spawnNpc({ npc, particleTexture, particleGroup, camera }));
+  socket.on('spawnSprite', (npc) => {
+    addNpc(spawnSprite({ spriteData: npc, particleTexture, camera }));
   });
 
   // Update npc states.
@@ -41,9 +41,29 @@ const game = (THREE, THREEx) => {
     dataStore.npcStates = npcStates;
   });
 
-  socket.on('updatePlayer', (player) => {
+  // Spawn a player.
+  socket.on('spawnPlayer', (player) => {
     dataStore.player = player;
-    addSprite(spawnNpc({ npc: player, particleTexture, particleGroup, camera }));
+    dataStore.scene.add(spawnSprite({ spriteData: player, particleTexture, camera }));
+  });
+
+  // Spawn player other than the current one.
+  // Note: this other player has spawned after the current one started playing.
+  socket.on('spawnOtherPlayer', (player) => {
+    dataStore.otherPlayerStates[player.name] = player;
+    dataStore.scene.add(spawnSprite({ spriteData: player, particleTexture, camera }));
+  });
+
+  // Update state of a player other than current one.
+  socket.on('updateOtherPlayerStates', (playerState) => {
+    dataStore.otherPlayerStates[playerState.name] = playerState;
+
+    // If that player state isn't in the scene of current player, add that other player now.
+    const otherPlayerExists = dataStore.scene.children.filter(otherPlayer => otherPlayer.name === playerState.name).length;
+    if (!otherPlayerExists) {
+      // Note: this other player had already spawned before the current one started playing.
+      dataStore.scene.add(spawnSprite({ spriteData: {creation: null, state: playerState}, particleTexture, camera }));
+    }
   });
 
   // Register all global event handlers.

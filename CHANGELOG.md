@@ -1,7 +1,7 @@
 # Underwater Game changelog
 
 ## 1.10.0
-- Display a sprite for each player and attach name of player above the sprite as text
+- Display a sprite for each player and attach name of player above the sprite as text.
 
 ## 1.9.1
 - Fix the `forever` process, so that game doesn't crash when ssh console is closed.
@@ -63,6 +63,8 @@
 - Multi-player chat.
 
 # Future features to develop
+- Prevent a player from joining with a name that is currently taken.
+- Remove from all clients a player that has disconnected.
 - Player vs npc fighting.
 - Player vs player fighting.
 - Fix the server failing to continue running after a while. Investigate the logs.

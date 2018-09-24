@@ -21,6 +21,11 @@ module.exports = (input) => {
   // Send all players any message from any player.
   socket.on('chatMessage', (input) => io.emit('chatMessage', `${input.name} says "${input.chatMessage}"`));
 
+  // Broadcast to all other players the state of the current player.
+  socket.on('updatePlayerState', (playerState) => {
+    socket.broadcast.emit('updateOtherPlayerStates', playerState);
+  });
+
   const player = {
     creation: createWisp({
       name,
@@ -32,8 +37,11 @@ module.exports = (input) => {
 
   player.state = deepCopy(player.creation);
 
-  // Update both creation and state of currently logged player.
-  io.to(socket.id).emit('updatePlayer', player);
+  // Spawn current player with both creation and state.
+  io.to(socket.id).emit('spawnPlayer', player);
+
+  // Spawn current player for all other players.
+  socket.broadcast.emit('spawnOtherPlayer', player);
 
   return player;
 };
