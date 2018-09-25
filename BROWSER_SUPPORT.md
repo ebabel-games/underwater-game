@@ -18,6 +18,6 @@ IE11 is still popular at this time, although much less so than touch device brow
 Edge should work but it still doesn't support all features of WebGL. The jury is out on this one, if Edge works for this game then I will add it to supported browsers.
 
 ## Contact
-If you can think of a way to tackle these issues and increase the range of browsers and platforms this game supports, I would [love to hear](hello@ebabel.eu) from you :)
+If you can think of a way to tackle these issues and increase the range of browsers and platforms this game supports, I would [love to hear](mailto:hello@ebabel.eu) from you :)
 
-Don't hesitate to fork this repository and implement any improvements you would like to see in this game. [Contributions](CONTRIBUTING.md) are most welcome!
+Don't hesitate to fork this repository and implement any improvements you would like to see in this game. Contributions are [most welcome](CONTRIBUTING.md)!
