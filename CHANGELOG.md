@@ -1,5 +1,8 @@
 # Underwater Game changelog
 
+## 1.9.3
+- Add [browser support](BROWSER_SUPPORT.md) documentation.
+
 ## 1.9.1
 - Fix the `forever` process, so that game doesn't crash when ssh console is closed.
 
