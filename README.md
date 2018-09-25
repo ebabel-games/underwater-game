@@ -1,7 +1,7 @@
 # Underwater Game
 Aquatic 3D HTML5 game of survival, fighting underwater creatures in a web browser.
 
-![Screenshot of Underwater Game](screenshots/2018-09-22-0558.png)
+![Screenshot of Underwater Game](screenshots/2018-09-25-2213.png)
 
 ## Install
 You need [Node.js and npm](https://nodejs.org/) installed on your machine before installing this game dependencies.

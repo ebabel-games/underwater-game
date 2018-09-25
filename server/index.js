@@ -33,7 +33,7 @@ io.on('connection', (socket) => {
 
   // Remove player from all other clients when he stops playing.
   socket.on('disconnect', () => {
-    socket.broadcast.emit('chatMessage', `Player ${_name} is offline.`);
+    socket.broadcast.emit('chatMessage', `${_name} has left.`);
   });
 });
 
