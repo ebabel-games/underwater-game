@@ -73,6 +73,7 @@
 - Multi-player chat.
 
 # Future features to develop
+- Improve time to interactive by optimizing images format. See Chrome Audit.
 - Player vs npc fighting.
 - Player vs player fighting.
 - Fix the server failing to continue running after a while. Investigate the logs.
