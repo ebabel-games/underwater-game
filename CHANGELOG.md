@@ -80,3 +80,6 @@
 - Camera of player looking up and down in a way that feels natural would be a nice addon.
 - Add reporting for test coverage.
 - Write more tests.
+- Document performance targets into PERFORMANCE.md
+- Improve configuration of `forever` to fix 2 warnings: `--minUptime not set. Defaulting to: 1000ms` and `--spinSleepTime not set. Your script will exit if it does not stay up for at least 1000ms`
+- Implement the module Ernesto is developing, to place particles around the environment without impacting server side socket communication load.
