@@ -1,5 +1,8 @@
 # Underwater Game changelog
 
+## 1.10.1
+- Add script to stop forever before it starts again.
+
 ## 1.10.0
 - Display a sprite for each player and attach name of player above the sprite as text.
 
