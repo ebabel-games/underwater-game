@@ -1,5 +1,8 @@
 # Underwater Game changelog
 
+## 1.10.2
+- Add support for Google Analytics.
+
 ## 1.10.1
 - Add script to stop forever before it starts again.
 
