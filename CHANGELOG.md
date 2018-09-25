@@ -4,6 +4,9 @@
 - Prevent a player from joining with a name that is currently taken.
 - Remove from all clients a player that has disconnected.
 
+## 1.10.2
+- Add support for Google Analytics.
+
 ## 1.10.1
 - Add script to stop forever before it starts again.
 
