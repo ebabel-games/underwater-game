@@ -9,7 +9,7 @@ const player = require('./player.js');
 // Central store that keeps state of the whole game.
 const dataStore = {
   npc: [],
-  players: []
+  players: {}
 };
 
 app.use(express.static('client'));
@@ -28,12 +28,19 @@ io.on('connection', (socket) => {
   // Add current player.
   socket.on('playerStarts', (name) => {
     _name = name;
-    dataStore.players.push(player({ name, io, socket, npc: dataStore.npc }));
+    dataStore.players[name] = player({ name, io, socket, npc: dataStore.npc });
   });
 
-  // Remove player from all other clients when he stops playing.
   socket.on('disconnect', () => {
+    if (!_name) return;
+    // Message all other players that current player has left the game.
     socket.broadcast.emit('chatMessage', `${_name} has left.`);
+
+    // Delete player.
+    delete dataStore.players[_name];
+
+    // Remove player from all other clients when he stops playing.
+    socket.broadcast.emit('removePlayer', _name);
   });
 });
 
