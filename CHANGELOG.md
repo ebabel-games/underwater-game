@@ -1,5 +1,9 @@
 # Underwater Game changelog
 
+## 1.11.0
+- Prevent a player from joining with a name that is currently taken.
+- Remove from all clients a player that has disconnected.
+
 ## 1.10.1
 - Add script to stop forever before it starts again.
 
@@ -69,8 +73,6 @@
 - Multi-player chat.
 
 # Future features to develop
-- Prevent a player from joining with a name that is currently taken.
-- Remove from all clients a player that has disconnected.
 - Player vs npc fighting.
 - Player vs player fighting.
 - Fix the server failing to continue running after a while. Investigate the logs.
