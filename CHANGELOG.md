@@ -91,6 +91,6 @@
 - Login with Firebase.
 - Store logs and usage in Firebase.
 - Persist state of game in Firebase.
-- Build a downloadable version of the game that can be run as a desktop app with https://electronjs.org/ and https://github.com/jeromeetienne/electron-threejs-example
+- Build a downloadable version of the game that can be run as a desktop app with [Electron](https://electronjs.org/) - see [sample project](https://github.com/jeromeetienne/electron-threejs-example)
 - Publish the game on the Steam store.
-- Publish also on the Mac and Windows stores. See https://electronjs.org/docs/tutorial/mac-app-store-submission-guide and https://electronjs.org/docs/tutorial/windows-store-guide
+- Publish also on the [Mac](https://electronjs.org/docs/tutorial/mac-app-store-submission-guide) and [Windows](https://electronjs.org/docs/tutorial/windows-store-guide) stores.
