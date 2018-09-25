@@ -23,9 +23,17 @@ app.use((req, res, next) => {
 });
 
 io.on('connection', (socket) => {
+  let _name;
+
   // Add current player.
   socket.on('playerStarts', (name) => {
+    _name = name;
     dataStore.players.push(player({ name, io, socket, npc: dataStore.npc }));
+  });
+
+  // Remove player from all other clients when he stops playing.
+  socket.on('disconnect', () => {
+    socket.broadcast.emit('chatMessage', `Player ${_name} is offline.`);
   });
 });
 
