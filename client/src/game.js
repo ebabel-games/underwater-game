@@ -12,7 +12,7 @@ particleGroup.name = 'npc-group';
 const addNpc = (sprite) => {
   particleGroup.add(sprite);
   dataStore.scene.add(particleGroup);
-}
+};
 
 // Main game module that co-ordinates all other modules.
 const game = (THREE, THREEx) => {

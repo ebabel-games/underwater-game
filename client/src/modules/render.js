@@ -21,7 +21,7 @@ const render = (scene, clock, camera, renderer) => {
   }
 
   // Update position and rotation of other players (not current one).
-  const otherPlayerStates = Object.keys(dataStore.otherPlayerStates).map((key, index) => dataStore.otherPlayerStates[key]);
+  const otherPlayerStates = Object.keys(dataStore.otherPlayerStates).map((key) => dataStore.otherPlayerStates[key]);
   if (otherPlayerStates && otherPlayerStates.length) {
     otherPlayerStates.map((otherPlayerState) => {
       const otherPlayer = dataStore.scene.children.filter(c => c.name === otherPlayerState.name);

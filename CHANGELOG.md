@@ -3,6 +3,9 @@
 ## 1.10.0
 - Display a sprite for each player and attach name of player above the sprite as text.
 
+## 1.9.3
+- Add [browser support](BROWSER_SUPPORT.md) documentation.
+
 ## 1.9.1
 - Fix the `forever` process, so that game doesn't crash when ssh console is closed.
 
