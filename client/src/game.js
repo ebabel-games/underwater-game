@@ -47,13 +47,6 @@ const game = (THREE, THREEx) => {
     dataStore.scene.add(spawnSprite({ spriteData: player, particleTexture, camera }));
   });
 
-  // Spawn player other than the current one.
-  // Note: this other player has spawned after the current one started playing.
-  socket.on('spawnOtherPlayer', (player) => {
-    dataStore.otherPlayerStates[player.name] = player;
-    dataStore.scene.add(spawnSprite({ spriteData: player, particleTexture, camera }));
-  });
-
   // Update state of a player other than current one.
   socket.on('updateOtherPlayerStates', (playerState) => {
     dataStore.otherPlayerStates[playerState.name] = playerState;
@@ -64,6 +57,15 @@ const game = (THREE, THREEx) => {
       // Note: this other player had already spawned before the current one started playing.
       dataStore.scene.add(spawnSprite({ spriteData: {creation: null, state: playerState}, particleTexture, camera }));
     }
+  });
+
+  socket.on('removePlayer', (name) => {
+    // Remove other player from dataStore.
+    dataStore.otherPlayerStates[name] = undefined;
+    delete dataStore.otherPlayerStates[name];
+
+    // Remove other player from THREE.js scene.
+    dataStore.scene.remove(dataStore.scene.getObjectByName(name));
   });
 
   // Register all global event handlers.

@@ -7,7 +7,7 @@ const game = require('./game.js');
 const player = require('./player.js');
 const { greetSinglePlayer, waveOtherPlayers, messageAllPlayers } = require('./message-players.js');
 const { spawnMultipleNpc } = require('./spawn-multiple-npc.js');
-const { spawnPlayer, spawnOtherPlayer, updatePlayerState  } = require('./spawn-players.js');
+const { spawnPlayer, updatePlayerState  } = require('./spawn-players.js');
 
 // Central store that keeps state of the whole game.
 const dataStore = {
@@ -51,7 +51,6 @@ io.on('connection', (socket) => {
 
     // Players.
     spawnPlayer(io, socket.id, dataStore.players[name]);
-    spawnOtherPlayer(socket, dataStore.players[name]);
     updatePlayerState(socket);
 
     // Confirm the player has been created.
