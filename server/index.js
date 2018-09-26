@@ -5,6 +5,9 @@ const io = require('socket.io')(http);
 
 const game = require('./game.js');
 const player = require('./player.js');
+const { greetSinglePlayer, waveOtherPlayers, messageAllPlayers } = require('./message-players.js');
+const { spawnMultipleNpc } = require('./spawn-multiple-npc.js');
+const { spawnPlayer, spawnOtherPlayer, updatePlayerState  } = require('./spawn-players.js');
 
 // Central store that keeps state of the whole game.
 const dataStore = {
@@ -28,7 +31,24 @@ io.on('connection', (socket) => {
   // Add current player.
   socket.on('playerStarts', (name) => {
     _name = name;
-    dataStore.players[name] = player({ name, io, socket, npc: dataStore.npc });
+
+    // Check if that name isn't used by a player.
+    if (dataStore.players[name] === undefined) {
+      dataStore.players[name] = player(name);
+    }
+
+    // Messages
+    greetSinglePlayer(io, socket.id, name);
+    waveOtherPlayers(socket, name);
+    messageAllPlayers(socket, io);
+
+    // NPC.
+    spawnMultipleNpc(io, socket.id, dataStore.npc);
+
+    // Players.
+    spawnPlayer(io, socket.id, dataStore.players[name]);
+    spawnOtherPlayer(socket, dataStore.players[name]);
+    updatePlayerState(socket);
   });
 
   socket.on('disconnect', () => {
