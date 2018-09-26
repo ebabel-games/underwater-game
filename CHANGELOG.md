@@ -101,3 +101,5 @@
 - Build a downloadable version of the game that can be run as a desktop app with [Electron](https://electronjs.org/) - see [sample project](https://github.com/jeromeetienne/electron-threejs-example)
 - Publish the game on the Steam store.
 - Publish also on the [Mac](https://electronjs.org/docs/tutorial/mac-app-store-submission-guide) and [Windows](https://electronjs.org/docs/tutorial/windows-store-guide) stores.
+- Fix text labels that are black instead of white on Safari 12 (Mac desktop).
+- Fix theme music not playing on  Safari 12 (Mac desktop).
