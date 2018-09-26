@@ -33,9 +33,13 @@ io.on('connection', (socket) => {
     _name = name;
 
     // Check if that name isn't used by a player.
-    if (dataStore.players[name] === undefined) {
-      dataStore.players[name] = player(name);
+    if (dataStore.players[name] !== undefined) {
+      io.to(socket.id).emit('nameNotAvailable', name);
+      return;
     }
+
+    // Create the new player.
+    dataStore.players[name] = player(name);
 
     // Messages
     greetSinglePlayer(io, socket.id, name);
@@ -49,6 +53,9 @@ io.on('connection', (socket) => {
     spawnPlayer(io, socket.id, dataStore.players[name]);
     spawnOtherPlayer(socket, dataStore.players[name]);
     updatePlayerState(socket);
+
+    // Confirm the player has been created.
+    io.to(socket.id).emit('playerCreated', name);
   });
 
   socket.on('disconnect', () => {

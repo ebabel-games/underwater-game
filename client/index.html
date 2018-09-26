@@ -247,11 +247,17 @@
         document.getElementById('loginForm').classList.toggle('error', false);
       }
 
+      socket.emit('playerStarts', name);
+    });
+
+    socket.on('playerCreated', (name) => {
       dataStore.player.creation.name = name;
       dataStore.player.state.name = name;
       document.getElementById('splashScreen').style.display = 'none';
+    });
 
-      socket.emit('playerStarts', name);
+    socket.on('nameNotAvailable', (name) => {
+      document.getElementById('loginForm').classList.toggle('error', true);
     });
 
     document.getElementById('name').focus();
