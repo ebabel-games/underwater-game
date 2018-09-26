@@ -19,8 +19,8 @@
 ## 1.9.3
 - Add [browser support](BROWSER_SUPPORT.md) documentation.
 
-## 1.9.2 
-- Update package.json test file pattern 
+## 1.9.2
+- Update package.json test file pattern
 
 ## 1.9.1
 - Fix the `forever` process, so that game doesn't crash when ssh console is closed.

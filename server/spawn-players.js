@@ -9,7 +9,7 @@ const updatePlayerState = (socket) => {
   socket.on('updatePlayerState', (playerState) => {
     socket.broadcast.emit('updateOtherPlayerStates', playerState);
   });
-}
+};
 
 module.exports = {
   spawnPlayer,
