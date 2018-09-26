@@ -5,7 +5,7 @@ const assert = chai.assert;
 import { themeMusic } from '../client/src/modules/theme-music.js';
 
 describe('theme-music', () => {
-  it('requires a camera', () => {
+  it('requires a camera should return undefined', () => {
     // Mocking.
     const volume = 2;
     // Call code to test.
