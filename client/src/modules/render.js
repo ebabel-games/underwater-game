@@ -1,22 +1,51 @@
-import { updateCamera } from './keyboard-controls.js';
+import { updatePlayerPositionRotation } from './keyboard-controls.js';
+
+const npcMinimumSize = 20;
 
 const render = (scene, clock, camera, renderer) => {
   // Calculate Delta.
   const delta = clock.getDelta();
 
   // Update position of camera based on where the player moves to.
-  updateCamera(camera);
+  updatePlayerPositionRotation(camera);
+
+  // Update position and rotation of current player.
+  const player = dataStore.scene && dataStore.scene.children.filter(child => child.name === dataStore.player.state.name);
+  if (player && player[0]) {
+    player[0].position.set(...dataStore.player.state.position);
+  }
+
+  // Broadcast to all other players the position of the current player.
+  if (dataStore.player.state.name && dataStore.player.state.position) {
+    socket.emit('updatePlayerState', dataStore.player.state);
+  }
+
+  // Update position and rotation of other players (not current one).
+  const otherPlayerStates = Object.keys(dataStore.otherPlayerStates).map((key) => dataStore.otherPlayerStates[key]);
+  if (otherPlayerStates && otherPlayerStates.length) {
+    otherPlayerStates.map((otherPlayerState) => {
+      const otherPlayer = dataStore.scene.children.filter(c => c.name === otherPlayerState.name);
+
+      if (!otherPlayer || !otherPlayer.length || !otherPlayer[0].position) return;
+
+      otherPlayer[0].position.set(...otherPlayerState.position);
+      otherPlayer[0].rotation.set(...otherPlayerState.rotation);
+    });
+  }
 
   // Place the skybox in relation with the camera position.
-  scene.children[1].position.set(camera.position.x, camera.position.y, camera.position.z);
+  scene.children.filter(c => c.name === 'skybox')[0]
+    .position.set(camera.position.x, camera.position.y, camera.position.z);
 
-  // Update position and state of all npc.
   const npc = dataStore.scene && dataStore.scene.children.filter(child => child.name === 'npc-group');
   if (npc && npc.length && dataStore.npcStates && dataStore.npcStates.length) {
+    // Update position and state of all npc.
     npc[0].children.map((child, index) => {
       // Skip npc  if there is no matching state to update for same index.
       const newState = dataStore.npcStates[index];
-      if (!newState) return;
+      if (!newState) {
+        return;
+      }
 
       // Npc just died, play its death sound.
       if (child.userData.state.life > 0 && newState.life <= 0) {
@@ -28,8 +57,8 @@ const render = (scene, clock, camera, renderer) => {
       child.userData.state.life = newState.life;
       child.userData.state.fightMode = newState.fightMode;
 
-      // Minimum size of any npc is 40.
-      const newSize = (child.userData.state.life > 40) ? child.userData.state.life : 40;
+      // Minimum size of any npc.
+      const newSize = (child.userData.state.life > npcMinimumSize) ? child.userData.state.life : npcMinimumSize;
 
       // Update the size of npc based on its life.
       child.scale.set(newSize, newSize, 1.0);
@@ -45,7 +74,7 @@ const render = (scene, clock, camera, renderer) => {
 
   // Render the scene.
   renderer.render(scene, camera);
-  requestAnimationFrame((timestamp) => {
+  requestAnimationFrame(() => {
     render(scene, clock, camera, renderer);
   });
 

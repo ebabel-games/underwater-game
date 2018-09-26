@@ -12,8 +12,6 @@ const world = (input) => {
   const {
     THREE,
     THREEx,
-    position = [0, 0, 0],
-    rotation = [0, 0, 0],
     color = _color,
     opacity = _opacity
   } = input;
@@ -29,8 +27,8 @@ const world = (input) => {
   // Setup camera as the subjective first person point of view of current player.
   const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 100000);
   camera.name = 'player-first-view-camera';
-  camera.position.set(position[0], position[1], position[2]);
-  camera.rotation.set(rotation[0], rotation[1], rotation[2]);
+  camera.position.set(...dataStore.player.state.position);
+  camera.rotation.set(...dataStore.player.state.rotation);
 
   // Setup keyboard controls.
   const controls = keyboardControls();

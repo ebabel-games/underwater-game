@@ -1,5 +1,17 @@
 # Underwater Game changelog
 
+## 1.10.2
+- Add support for Google Analytics.
+
+## 1.10.1
+- Add script to stop forever before it starts again.
+
+## 1.10.0
+- Display a sprite for each player and attach name of player above the sprite as text.
+
+## 1.9.3
+- Add [browser support](BROWSER_SUPPORT.md) documentation.
+
 ## 1.9.2 
 - Update package.json test file pattern 
 
@@ -63,7 +75,8 @@
 - Multi-player chat.
 
 # Future features to develop
-- Display a sprite for each player and attach name of player above the sprite as text
+- Prevent a player from joining with a name that is currently taken.
+- Remove from all clients a player that has disconnected.
 - Player vs npc fighting.
 - Player vs player fighting.
 - Fix the server failing to continue running after a while. Investigate the logs.
@@ -73,3 +86,6 @@
 - Camera of player looking up and down in a way that feels natural would be a nice addon.
 - Add reporting for test coverage.
 - Write more tests.
+- Document performance targets into PERFORMANCE.md
+- Improve configuration of `forever` to fix 2 warnings: `--minUptime not set. Defaulting to: 1000ms` and `--spinSleepTime not set. Your script will exit if it does not stay up for at least 1000ms`
+- Implement the module Ernesto is developing, to place particles around the environment without impacting server side socket communication load.

@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-32495473-13"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-32495473-13');
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -11,6 +21,7 @@
   <style>
     body {
       margin: 0;
+      padding: 0;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 12px;
       overflow: hidden;
@@ -195,7 +206,7 @@
       <form action="#" id="loginForm">
         <h2>Player name</h2>
         <p>
-          <input type="text" id="playerName" min="3" max="8">
+          <input type="text" id="name" min="3" max="8">
           <input type="submit" id="playButton" value="Play" disabled>
         </p>
         <div id="loading">
@@ -215,30 +226,35 @@
       scene: null,
       camera: null,
       npcStates: [],
-      playerName: null,
+      player: {
+        creation: { name: null, position: [0, 0, 0], rotation: [0, 0, 0] },
+        state: { name: null, position: [0, 0, 0], rotation: [0, 0, 0] }
+      },
+      otherPlayerStates: {},
       disablePlayerControls: false,
-      defaultVolume: 0.35
+      defaultVolume: 0.5
     };
 
     document.getElementById('loginForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
-      var playerName = document.getElementById('playerName').value;
+      var name = document.getElementById('name').value;
 
-      if (!playerName || playerName.trim() === '' || playerName.length < 3 || playerName.length > 8) {
+      if (!name || name.trim() === '' || name.length < 3 || name.length > 8) {
         document.getElementById('loginForm').classList.toggle('error', true);
         return;
       } else {
         document.getElementById('loginForm').classList.toggle('error', false);
       }
 
-      dataStore.playerName = playerName;
+      dataStore.player.creation.name = name;
+      dataStore.player.state.name = name;
       document.getElementById('splashScreen').style.display = 'none';
 
-      socket.emit('playerStarts', playerName);
+      socket.emit('playerStarts', name);
     });
 
-    document.getElementById('playerName').focus();
+    document.getElementById('name').focus();
 
     document.onreadystatechange = function(e) {
       if (document.readyState === 'complete') {

@@ -6,12 +6,14 @@ const chatMessage = () => {
 
   const logsForm = document.getElementById('logsForm');
 
-  // Emit current player chat message to all players, via server side.
   logsForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const chatMessage = document.getElementById('logsInput').value;
-    socket.emit('chatMessage', { chatMessage, playerName: dataStore.playerName });
 
+    // Emit current player chat message to all players, via server side.
+    socket.emit('chatMessage', { chatMessage, name: dataStore.player.state.name });
+
+    // Clear content and remove focus from logs input field.
     const logsInput = document.getElementById('logsInput');
     logsInput.value = '';
     logsInput.blur();

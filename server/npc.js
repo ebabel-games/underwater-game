@@ -24,7 +24,7 @@ module.exports = {
     // Deep copy from creation, so that state stays separate.
     const state = deepCopy(creation);
 
-    io.emit('spawnNpc', { creation, state });
+    io.emit('spawnSprite', { creation, state });
 
     return {
       creation,

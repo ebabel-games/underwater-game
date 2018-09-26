@@ -7,7 +7,7 @@ let moveUp;
 const moveSpeed = 10;
 const turnSpeed = 2;
 
-const updateCamera = (camera) => {
+const updatePlayerPositionRotation = (camera) => {
   if (moveForward) {
     camera.translateZ(-moveSpeed);
   }
@@ -27,6 +27,9 @@ const updateCamera = (camera) => {
   if (moveUp) {
     camera.translateY(moveSpeed / 2);
   }
+
+  dataStore.player.state.position = [camera.position.x, camera.position.y, camera.position.z];
+  dataStore.player.state.rotation = [camera.rotation.x, camera.rotation.y, camera.rotation.z];
 };
 
 const keyboardControls = () => {
@@ -85,4 +88,4 @@ const keyboardControls = () => {
   document.addEventListener('keyup', onKeyUp.bind(this), false);
 };
 
-export { keyboardControls, updateCamera };
+export { keyboardControls, updatePlayerPositionRotation };
