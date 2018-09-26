@@ -13,7 +13,7 @@ const textSprite = (text) => {
   const sprite = new THREE.Sprite(spriteMaterial);
   sprite.name = 'text';
   sprite.scale.set(2, 1, 1.0);
-  sprite.center.set(0, 1);
+  sprite.center.set(0.175, 0.5);
 
   return sprite;
 };

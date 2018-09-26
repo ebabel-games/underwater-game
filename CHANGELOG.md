@@ -3,6 +3,7 @@
 ## 1.11.0
 - Message all players when a player disconnects.
 - Sharpen the text labels attached to sprites.
+- Center the text names above "a wisp".
 - Prevent a player from joining with a name that is currently taken.
 - Remove from all clients a player that has disconnected.
 
