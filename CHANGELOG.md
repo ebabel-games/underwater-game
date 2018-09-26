@@ -93,6 +93,7 @@
 - Improve configuration of `forever` to fix 2 warnings: `--minUptime not set. Defaulting to: 1000ms` and `--spinSleepTime not set. Your script will exit if it does not stay up for at least 1000ms`
 - Implement the module Ernesto is developing, to place particles around the environment without impacting server side socket communication load.
 - Spawn npc in random positions near players instead of spawning anywhere in the large space. When npc die, also respawn them in random positions near players. Reduce the number of npc: instead of 99 npc, have just a few per player. This should improve performance overall.
+- Monitor custom events (player starts, name, player disconnects) with Google Analytics.
 - Persist data to a database, so that despite rebooting the game, the universe can be restored to a previous state and feel more persistent. Take frequent snapshots but not every single state change, overwise that will be too much data. There is no need to log old data, only keep the latest state.
 - Login with Firebase.
 - Store logs and usage in Firebase.
