@@ -1,5 +1,8 @@
 # Underwater Game changelog
 
+## 1.12.0
+- Player vs npc fighting.
+
 ## 1.11.0
 - Message all players when a player disconnects.
 - Sharpen the text labels attached to sprites.
@@ -82,10 +85,8 @@
 - Multi-player chat.
 
 # Future features to develop
-- Improve time to interactive by optimizing images format. See Chrome Audit.
-- Player vs npc fighting.
 - Player vs player fighting.
-- Fix the server failing to continue running after a while. Investigate the logs.
+- Improve time to interactive by optimizing images format. See Chrome Audit.
 - Fix the blinking of sprites and make their movement smoother.
 - Fix some sprites that are not fighting, not dead but not moving either.
 - Fix the label above each sprite rotating based on camera instead of facing straight to camera regardless of angle.
