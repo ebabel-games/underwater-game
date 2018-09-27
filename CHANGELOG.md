@@ -1,6 +1,8 @@
 # Underwater Game changelog
 
 ## 1.12.0
+- Only broadcast name, position, rotation, life, color, attack, defense, and fightMode to other players.
+- If the player moved, broadcast to all other players her new position.
 - Player vs npc fighting.
 
 ## 1.11.0
@@ -106,4 +108,3 @@
 - Publish the game on the Steam store.
 - Publish also on the [Mac](https://electronjs.org/docs/tutorial/mac-app-store-submission-guide) and [Windows](https://electronjs.org/docs/tutorial/windows-store-guide) stores.
 - Fix text labels that are black instead of white on Safari 12 (Mac desktop).
-- Fix theme music not playing on  Safari 12 (Mac desktop). Test if Howler.js fixes this issue https://howlerjs.com/

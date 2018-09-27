@@ -7,6 +7,7 @@ let moveUp;
 const moveSpeed = 10;
 const turnSpeed = 2;
 
+// Update the position and rotation of the current player camera.
 const updatePlayerPositionRotation = (camera) => {
   if (moveForward) {
     camera.translateZ(-moveSpeed);
@@ -30,6 +31,9 @@ const updatePlayerPositionRotation = (camera) => {
 
   dataStore.player.state.position = [camera.position.x, camera.position.y, camera.position.z];
   dataStore.player.state.rotation = [camera.rotation.x, camera.rotation.y, camera.rotation.z];
+
+  // Return whether the player has moved.
+  return moveForward || moveBackward || turnLeft || turnRight || moveUp;
 };
 
 const keyboardControls = () => {
