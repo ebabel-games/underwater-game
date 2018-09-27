@@ -4,6 +4,7 @@
 - Only broadcast name, position, rotation, life, color, attack, defense, and fightMode to other players.
 - If the player moved, broadcast to all other players her new position.
 - For the current player, spawn all previously existing players in game.
+- For previously logged players, the new players also need to appear even if they don't move.
 - Player vs npc fighting.
 
 ## 1.11.0
