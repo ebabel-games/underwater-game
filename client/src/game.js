@@ -41,10 +41,17 @@ const game = (THREE, THREEx) => {
     dataStore.npcStates = npcStates;
   });
 
-  // Spawn a player.
+  // Spawn a new player that just arrived after the current player.
   socket.on('spawnPlayer', (player) => {
     dataStore.player = player;
     dataStore.scene.add(spawnSprite({ spriteData: player, particleTexture, camera }));
+  });
+
+  // Spawn all existing players that are in game before current player.
+  socket.on('spawnAllPreviousPlayers', (players) => {
+    players.map((player) => {
+      dataStore.scene.add(spawnSprite({ spriteData: player, particleTexture, camera }));
+    });
   });
 
   // Update state of a player other than current one.

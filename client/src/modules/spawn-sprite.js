@@ -11,9 +11,8 @@ const spawnSprite = (input) => {
   const spriteMaterial = new THREE.SpriteMaterial({ map: particleTexture, color: 0xffffff });
   const sprite = new THREE.Sprite(spriteMaterial);
 
-  // If creation is null or missing, use state,
-  // which may happen when spawning in a player's client other players that started playing earlier.
-  const data = spriteData.creation || spriteData.state;
+  // If state is null or missing, use creation.
+  const data = spriteData.state || spriteData.creation;
 
   sprite.name = data.name;
   sprite.scale.set(data.life, data.life, 1.0);

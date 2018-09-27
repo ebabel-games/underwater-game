@@ -3,6 +3,7 @@
 ## 1.12.0
 - Only broadcast name, position, rotation, life, color, attack, defense, and fightMode to other players.
 - If the player moved, broadcast to all other players her new position.
+- For the current player, spawn all previously existing players in game.
 - Player vs npc fighting.
 
 ## 1.11.0
