@@ -3,11 +3,11 @@ const soundEffect = (input) => {
   const {
     camera,
     name = 'death',
-    url = 'assets/sound-effects/spells/heal.ogg',
+    src = 'assets/sound-effects/spells/heal.ogg',
     distance = 20,
     loop = false,
     volume = 0.6,
-    autostart = false,
+    autoplay = false,
   } = input;
 
   if (!camera) return;
@@ -19,12 +19,12 @@ const soundEffect = (input) => {
   sound.name = name;
 
   const audioLoader = new THREE.AudioLoader();
-  audioLoader.load(url, (buffer) => {
+  audioLoader.load(src, (buffer) => {
     sound.setBuffer(buffer);
     sound.setRefDistance(distance);
     sound.setLoop(loop);
     sound.setVolume(volume);
-    if (autostart) sound.play();
+    if (autoplay) sound.play();
   });
 
   return sound;

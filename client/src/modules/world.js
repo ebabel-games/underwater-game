@@ -30,11 +30,16 @@ const world = (input) => {
   camera.position.set(...dataStore.player.state.position);
   camera.rotation.set(...dataStore.player.state.rotation);
 
+  // Create an AudioListener and add it to the camera.
+  const listener = new THREE.AudioListener();
+  listener.name = 'camera-listener';
+  camera.add(listener);
+
   // Setup keyboard controls.
   const controls = keyboardControls();
 
   // Setup main theme music.
-  const music = themeMusic({ camera });
+  const music = themeMusic();
 
   // Setup main renderer for WebGL graphics.
   const renderer = new THREE.WebGLRenderer({ antialias: true });

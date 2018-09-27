@@ -10,7 +10,9 @@
     "socket": true,
     "THREE": true,
     "THREEx": true,
-    "dataStore": true
+    "dataStore": true,
+    "Howl": true,
+    "Howler": true
   },
   "extends": "eslint:recommended",
   "rules": {
