@@ -5,7 +5,6 @@
 - If the player moved, broadcast to all other players her new position.
 - For the current player, spawn all previously existing players in game.
 - For previously logged players, the new players also need to appear even if they don't move.
-- Player vs npc fighting.
 
 ## 1.11.0
 - Message all players when a player disconnects.
@@ -89,6 +88,7 @@
 - Multi-player chat.
 
 # Future features to develop
+- Player vs npc fighting.
 - Player vs player fighting.
 - Improve time to interactive by optimizing images format. See Chrome Audit.
 - Fix the blinking of sprites and make their movement smoother.
