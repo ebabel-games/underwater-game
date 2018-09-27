@@ -54,10 +54,14 @@ io.on('connection', (socket) => {
     updatePlayerState(socket);
 
     // Confirm the player has been created.
-    io.to(socket.id).emit('playerCreated', name);
-
     // For the current player, spawn all previously existing players in game.
-    io.to(socket.it).emit('spawnAllPreviousPlayers', dataStore.players);
+    io.to(socket.id).emit('playerCreated', {
+      name,
+      players: dataStore.players
+    });
+
+    // Spawn the current player on all existing player clients.
+    socket.broadcast.emit('addOtherPlayer', dataStore.players[name].state);
   });
 
   socket.on('disconnect', () => {

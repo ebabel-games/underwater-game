@@ -12,7 +12,7 @@ const spawnSprite = (input) => {
   const sprite = new THREE.Sprite(spriteMaterial);
 
   // If state is null or missing, use creation.
-  const data = spriteData.state || spriteData.creation;
+  const data = spriteData.state || spriteData.creation || spriteData;
 
   sprite.name = data.name;
   sprite.scale.set(data.life, data.life, 1.0);
