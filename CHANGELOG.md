@@ -1,6 +1,7 @@
 # Underwater Game changelog
 
 ## 1.13.0
+- Dynamically centre the text of each sprite.
 - Player vs npc fighting.
 
 ## 1.12.0
