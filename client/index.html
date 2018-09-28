@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-32495473-13"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-32495473-13');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="description" content="Aquatic 3D HTML5 game of survival, fighting underwater creatures in a web browser.">
+  <title>Underwater Game</title>
+  <meta name="theme-color" content="#3c6478">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      overflow: hidden;
+      background-color: #3c6478;
+      color: black;
+    }
+
+    .window {
+      position: absolute;
+      background-color: rgba(0, 0, 128, .75);;
+      color: #ffff00;
+      overflow: auto;
+      padding: .5em .75em;
+    }
+
+    .window p {
+      margin: 0;
+      line-height: 1.25em;
+    }
+
+    #logsWindow {
+      bottom: 10px;
+      left: 10px;
+      width: 232px;
+      height: 116px;
+    }
+
+    #logsWindow ul {
+      margin: 0 0 5px;
+      padding: 0;
+      height: 90px;
+      overflow: hidden;
+    }
+
+    #logsWindow input {
+      width: 228px;
+    }
+
+    #splashScreen {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #3c6478;
+      background-image: url('assets/whirlpool/large-files/whirlpool_ft.jpg');
+      background-size: cover;
+      background-position: center center;
+      color: #cff;
+      font-size: 2em;
+    }
+
+    #splashScreen .container {
+      background-color: #3c6478;
+      width: 300px;
+      padding: 1.5em 2em;
+      margin: 100px auto 0;
+      border-radius: 1em;
+    }
+
+    #splashScreen h1,
+    #splashScreen h2 {
+      margin: 0 0 .5em;
+    }
+
+    #splashScreen h1 {
+      font-size: 1.15em;
+      text-transform: uppercase;
+      color: #7fffd4;
+    }
+
+    #splashScreen h2 {
+      font-size: 1em;
+    }
+
+    #splashScreen ul {
+      margin: 0 0 1em;
+      padding-left: 0;
+    }
+
+    #splashScreen ul li {
+      list-style: none;
+    }
+
+    #splashScreen p {
+      margin: 0 0 .25em;
+    }
+
+    #splashScreen .key {
+      width: 140px;
+      display: inline-block;
+      font-weight: 600;
+    }
+
+    #loginForm .error {
+      display: none;
+      color: rgb(255, 150, 150);
+      font-size: .75em;
+    }
+
+    #loginForm.error .error {
+      display: block;
+    }
+
+    /* Loading animation */
+    .lds-ripple {
+      display: inline-block;
+      position: relative;
+      width: 32px;
+      height: 32px;
+    }
+    .lds-ripple div {
+      position: absolute;
+      border: 4px solid #7fffd4;
+      opacity: 1;
+      border-radius: 50%;
+      animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+    }
+    .lds-ripple div:nth-child(2) {
+      animation-delay: -0.5s;
+    }
+    @keyframes lds-ripple {
+      0% {
+        top: 14px;
+        left: 14px;
+        width: 0;
+        height: 0;
+        opacity: 1;
+      }
+      100% {
+        top: -1px;
+        left: -1px;
+        width: 29px;
+        height: 29px;
+        opacity: 0;
+      }
+    }
+
+    #splashScreen #loading {
+      margin: 1em 0 0;
+    }
+
+    #splashScreen #loading p {
+      font-size: .75em;
+      color: #7fffd4;
+      display: inline-block;
+      line-height: 32px;
+      margin: 0;
+      vertical-align: super;
+    }
+
+
+    @media (max-width: 320px) {
+      body {
+        font-size: 10px;
+      }
+    }
+  </style>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="libraries.js"></script>
+</head>
+<body>
+  <div id="logsWindow" class="window">
+    <ul id="logsList"></ul>
+    <form action="#" id="logsForm">
+      <input type="text" id="logsInput" autocomplete="off">
+    </form>
+  </div>
+
+  <div id="splashScreen">
+    <div class="container">
+      <h1>Underwater Game</h1>
+      <h2>Controls</h2>
+      <ul>
+        <li><span class="key">[SPACE]</span> swim up</li>
+        <li><span class="key">[S] or [&darr;]</span> swim down</li>
+        <li><span class="key">[W] or [&uarr;]</span> swim forward</li>
+        <li><span class="key">[A] or [&larr;]</span> turn left</li>
+        <li><span class="key">[D] or [&rarr;]</span> turn right</li>
+      </ul>
+
+      <form action="#" id="loginForm">
+        <h2>Player name</h2>
+        <p>
+          <input type="text" id="name" min="3" max="8">
+          <input type="submit" id="playButton" value="Play" disabled>
+        </p>
+        <div id="loading">
+          <div class="lds-ripple"><div></div><div></div></div>
+          <p>Loading game, please wait...</p>
+        </div>
+        <p class="error">
+          Name is not correct. Please try a player name like "Dave" or "Thomas".
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    var socket = io();
+    var dataStore = {
+      scene: null,
+      camera: null,
+      npcStates: [],
+      player: {
+        creation: { name: null, position: [0, 0, 0], rotation: [0, 0, 0] },
+        state: { name: null, position: [0, 0, 0], rotation: [0, 0, 0] }
+      },
+      otherPlayerStates: {},
+      disablePlayerControls: false,
+      defaultVolume: 0.5
+    };
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+    
+      var name = document.getElementById('name').value;
+    
+      if (!name || name.trim() === '' || name.length < 3 || name.length > 8) {
+        document.getElementById('loginForm').classList.toggle('error', true);
+        return;
+      } else {
+        document.getElementById('loginForm').classList.toggle('error', false);
+      }
+    
+      socket.emit('playerStarts', name);
+    });
+    
+    document.getElementById('name').focus();
+    
+    document.onreadystatechange = function(e) {
+      if (document.readyState === 'complete') {
+        document.getElementById('playButton').disabled = false;
+        document.getElementById('loading').style.display = 'none';
+      }
+    };
+  </script>
+
+  <script src="dist/game.min.js"></script>
+</body>
+</html>

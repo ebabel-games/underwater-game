@@ -1,33 +1,53 @@
 # Underwater Game
 Aquatic 3D HTML5 game of survival, fighting underwater creatures in a web browser.
 
+![Screenshot of Underwater Game](screenshots/2018-09-25-2213.png)
+
 ## Install
-You need Node.js and npm from https://nodejs.org/
+You need [Node.js and npm](https://nodejs.org/) installed on your machine before installing this game dependencies.
 
 ```
 npm install
 ```
 
-## Run locally in Development
+## Development
+
+### Build once
+This build includes map file, which is useful for debugging while developing.
+
+```
+npm run build
+```
+
+### Build continuously for Development
+```
+npm run watch
+```
+
+### Run for Development
 ```
 npm start
 ```
 
 Browse http://localhost:3000
 
-## Deploy to Production
-Any Node.js hosting will do, but I recommend free hosting, easy to deploy service "now", from https://zeit.co/
-```
-npm install -g now
-```
+## Production
+You could use [Digital Ocean](https://m.do.co/c/f500245f6b66) to deploy this game, or any server that can run a Node.js code with socket.io
 
-You can deploy as many versions, each deployment is unique and kept published forever, for free.
+## Build for Production
 ```
-now --public
+npm run build-production
 ```
 
-Browse https://underwater-game-[UNIQUE_KEY].now.sh where [UNIQUE_KEY] is generated during the deployment in your terminal.
+## Run for Production
+In your Production server, install `forever` cli globally, to make sure the node.js process keeps running.
 
-Note: If you never installed `now` before, the first time you do an e-mail challenge will run to setup a token on your machine. If that happens, run `now --public` again to deploy.
+```
+[sudo] npm install forever -g
+```
 
-You can see what you have deployed on https://zeit.co/dashboard/deployments - The free tier of https://zeit.co/ currently allows for up to 3 concurrent deployment. It's possible to remove previous deployments and make room for new ones to stay in the free tier.
+Once that's done (only once per machine), you can start for Production:
+```
+npm run start-production
+```
+

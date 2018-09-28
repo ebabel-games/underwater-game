@@ -1,0 +1,19 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "globals": {
+    "io": true,
+    "socket": true,
+    "THREE": true,
+    "THREEx": true,
+    "dataStore": true
+  },
+  "extends": "eslint:recommended",
+  "rules": {
+    "semi": [2, "always"]
+  }
+}

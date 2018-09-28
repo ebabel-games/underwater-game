@@ -59,3 +59,13 @@ typings/
 
 # next.js build output
 .next
+
+# MacOSX internal tracking
+.DS_Store
+
+# Game build
+client/dist
+package-lock.json
+
+# DigitalOcean generated directory
+v8-compile-cache-0
