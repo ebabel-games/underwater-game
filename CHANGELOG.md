@@ -1,6 +1,7 @@
 # Underwater Game changelog
 
 ## 1.14.0
+- Dynamically centre the text of each sprite.
 - Player vs npc fighting.
 
 ## 1.12.0
@@ -112,3 +113,4 @@
 - Publish the game on the Steam store.
 - Publish also on the [Mac](https://electronjs.org/docs/tutorial/mac-app-store-submission-guide) and [Windows](https://electronjs.org/docs/tutorial/windows-store-guide) stores.
 - Fix text labels that are black instead of white on Safari 12 (Mac desktop).
+- Create re-usable npm packages for the ebabel library to make multiple games from the code in this game, and use these modules in this game.
