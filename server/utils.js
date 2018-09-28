@@ -28,12 +28,6 @@ const randomPosition = (size = [6000, 6000, 6000]) => {
   ];
 };
 
-const highestTick = (ticks) => Math.max(...ticks.map(tick => tick.id));
-
-const randomTick = (ticks, max = 10) => (!ticks || ticks.length === 0) ?
-    random(max)
-    : highestTick(ticks) + random(max);
-
 const deepCopy = (input) => JSON.parse(JSON.stringify(input));
 
 module.exports = {
@@ -43,7 +37,5 @@ module.exports = {
   randomPosOrNeg,
   reducedDistance,
   randomPosition,
-  highestTick,
-  randomTick,
   deepCopy  
 };
