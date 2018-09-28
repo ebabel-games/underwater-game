@@ -182,6 +182,7 @@
   </style>
 
   <script src="/socket.io/socket.io.js"></script>
+  <script src="libraries.js"></script>
 </head>
 <body>
   <div id="logsWindow" class="window">
@@ -237,25 +238,21 @@
 
     document.getElementById('loginForm').addEventListener('submit', function(e) {
       e.preventDefault();
-
+    
       var name = document.getElementById('name').value;
-
+    
       if (!name || name.trim() === '' || name.length < 3 || name.length > 8) {
         document.getElementById('loginForm').classList.toggle('error', true);
         return;
       } else {
         document.getElementById('loginForm').classList.toggle('error', false);
       }
-
-      dataStore.player.creation.name = name;
-      dataStore.player.state.name = name;
-      document.getElementById('splashScreen').style.display = 'none';
-
+    
       socket.emit('playerStarts', name);
     });
-
+    
     document.getElementById('name').focus();
-
+    
     document.onreadystatechange = function(e) {
       if (document.readyState === 'complete') {
         document.getElementById('playButton').disabled = false;
@@ -263,8 +260,7 @@
       }
     };
   </script>
-  
-  <script src="libraries.js"></script>
+
   <script src="dist/game.min.js"></script>
 </body>
 </html>

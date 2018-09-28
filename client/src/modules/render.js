@@ -7,7 +7,7 @@ const render = (scene, clock, camera, renderer) => {
   const delta = clock.getDelta();
 
   // Update position of camera based on where the player moves to.
-  updatePlayerPositionRotation(camera);
+  const hasPlayerMoved = updatePlayerPositionRotation(camera);
 
   // Update position and rotation of current player.
   const player = dataStore.scene && dataStore.scene.children.filter(child => child.name === dataStore.player.state.name);
@@ -15,9 +15,18 @@ const render = (scene, clock, camera, renderer) => {
     player[0].position.set(...dataStore.player.state.position);
   }
 
-  // Broadcast to all other players the position of the current player.
-  if (dataStore.player.state.name && dataStore.player.state.position) {
-    socket.emit('updatePlayerState', dataStore.player.state);
+  // If the player moved, broadcast to all other players her new position, and other useful state values.
+  if (hasPlayerMoved && dataStore.player.state.name && dataStore.player.state.position) {
+    socket.emit('updatePlayerState', {
+      name: dataStore.player.state.name,
+      life: dataStore.player.state.life,
+      position: dataStore.player.state.position,
+      color: dataStore.player.state.color,
+      attack: dataStore.player.state.attack,
+      defence: dataStore.player.state.defence,
+      fightMode: dataStore.player.state.fightMode,
+      rotation: dataStore.player.state.rotation
+    });
   }
 
   // Update position and rotation of other players (not current one).

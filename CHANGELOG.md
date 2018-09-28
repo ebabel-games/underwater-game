@@ -1,5 +1,18 @@
 # Underwater Game changelog
 
+## 1.12.0
+- Only broadcast name, position, rotation, life, color, attack, defense, and fightMode to other players.
+- If the player moved, broadcast to all other players her new position.
+- For the current player, spawn all previously existing players in game.
+- For previously logged players, the new players also need to appear even if they don't move.
+
+## 1.11.0
+- Message all players when a player disconnects.
+- Sharpen the text labels attached to sprites.
+- Center the text names above "a wisp".
+- Prevent a player from joining with a name that is currently taken.
+- Remove from all clients a player that has disconnected.
+
 ## 1.10.2
 - Add support for Google Analytics.
 
@@ -12,8 +25,8 @@
 ## 1.9.3
 - Add [browser support](BROWSER_SUPPORT.md) documentation.
 
-## 1.9.2 
-- Update package.json test file pattern 
+## 1.9.2
+- Update package.json test file pattern
 
 ## 1.9.1
 - Fix the `forever` process, so that game doesn't crash when ssh console is closed.
@@ -75,11 +88,9 @@
 - Multi-player chat.
 
 # Future features to develop
-- Prevent a player from joining with a name that is currently taken.
-- Remove from all clients a player that has disconnected.
 - Player vs npc fighting.
 - Player vs player fighting.
-- Fix the server failing to continue running after a while. Investigate the logs.
+- Improve time to interactive by optimizing images format. See Chrome Audit.
 - Fix the blinking of sprites and make their movement smoother.
 - Fix some sprites that are not fighting, not dead but not moving either.
 - Fix the label above each sprite rotating based on camera instead of facing straight to camera regardless of angle.
@@ -89,3 +100,13 @@
 - Document performance targets into PERFORMANCE.md
 - Improve configuration of `forever` to fix 2 warnings: `--minUptime not set. Defaulting to: 1000ms` and `--spinSleepTime not set. Your script will exit if it does not stay up for at least 1000ms`
 - Implement the module Ernesto is developing, to place particles around the environment without impacting server side socket communication load.
+- Spawn npc in random positions near players instead of spawning anywhere in the large space. When npc die, also respawn them in random positions near players. Reduce the number of npc: instead of 99 npc, have just a few per player. This should improve performance overall.
+- Monitor custom events (player starts, name, player disconnects) with Google Analytics.
+- Persist data to a database, so that despite rebooting the game, the universe can be restored to a previous state and feel more persistent. Take frequent snapshots but not every single state change, overwise that will be too much data. There is no need to log old data, only keep the latest state.
+- Login with Firebase.
+- Store logs and usage in Firebase.
+- Persist state of game in Firebase.
+- Build a downloadable version of the game that can be run as a desktop app with [Electron](https://electronjs.org/) - see [sample project](https://github.com/jeromeetienne/electron-threejs-example)
+- Publish the game on the Steam store.
+- Publish also on the [Mac](https://electronjs.org/docs/tutorial/mac-app-store-submission-guide) and [Windows](https://electronjs.org/docs/tutorial/windows-store-guide) stores.
+- Fix text labels that are black instead of white on Safari 12 (Mac desktop).
