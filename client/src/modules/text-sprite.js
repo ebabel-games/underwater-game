@@ -17,6 +17,9 @@ const textSprite = (text) => {
   const sprite = new THREE.Sprite(spriteMaterial);
   sprite.name = 'text';
   sprite.scale.set(2, 1, 1.0);
+
+  // Dynamically centre based on actual size of text.
+  // See https://stackoverflow.com/questions/118241/calculate-text-width-with-javascript
   sprite.center.set(0.175, 0.5);
 
   return sprite;
