@@ -4,6 +4,9 @@
 - Dynamically centre the text of each sprite.
 - Player vs npc fighting.
 
+## 1.13.0
+- Refactor code into separate, reusable modules.
+
 ## 1.12.0
 - Only broadcast name, position, rotation, life, color, attack, defense, and fightMode to other players.
 - If the player moved, broadcast to all other players her new position.
@@ -92,6 +95,7 @@
 - Multi-player chat.
 
 # Future features to develop
+- Player vs npc fighting.
 - Player vs player fighting.
 - Improve time to interactive by optimizing images format. See Chrome Audit.
 - Fix the blinking of sprites and make their movement smoother.

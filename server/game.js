@@ -1,6 +1,7 @@
 const gameloop = require('node-gameloop');
 
-const { random, randomPosition } = require('./utils.js');
+const { random } = require('ebabel');
+const { randomPosition } = require('./utils.js');
 const { createNpc } = require('./npc.js');
 const { npcMove } = require('./npc-move.js');
 const { npcFight } = require('./npc-fight.js');

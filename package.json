@@ -10,7 +10,7 @@
     "build": "node ./node_modules/.bin/webpack --mode=development --devtool source-map",
     "watch": "node ./node_modules/.bin/webpack --mode=development --devtool source-map --watch --progress",
     "build-production": "node ./node_modules/.bin/webpack --mode=production",
-    "start": "npm run build && node ./server/index.js",
+    "start": "npm run build && node --use_strict ./server/index.js",
     "start-production": "export NODE_ENV=production&& npm run build-production && forever stop ./server/index.js && forever start ./server/index.js"
   },
   "repository": {
@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/ebabel-eu/underwater-game#readme",
   "dependencies": {
+    "ebabel": "^2.0.8",
     "express": "^4.16.3",
     "node-gameloop": "^0.1.4",
     "socket.io": "^2.1.1"
