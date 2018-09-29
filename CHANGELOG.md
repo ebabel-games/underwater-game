@@ -2,8 +2,8 @@
 
 ## 1.14.0
 - Refactor code into separate modules in ebabel.
-  - light
-  - skybox
+  - [light](https://www.npmjs.com/package/ebabel-light)
+  - [skybox](https://www.npmjs.com/package/ebabel-skybox)
 - Dynamically centre the text of each sprite.
 - Player vs npc fighting.
 
