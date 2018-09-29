@@ -1,7 +1,9 @@
 # Underwater Game changelog
 
 ## 1.14.0
-- Refactor light and skybox into separate modules, which are placed in ebabel.
+- Refactor code into separate modules in ebabel.
+  - light
+  - skybox
 - Dynamically centre the text of each sprite.
 - Player vs npc fighting.
 
