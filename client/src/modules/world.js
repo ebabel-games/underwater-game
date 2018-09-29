@@ -49,7 +49,12 @@ const world = (input) => {
   light({ THREE, scene });
 
   // Skybox.
-  skybox({ THREE, scene });
+  skybox({
+    THREE,
+    scene,
+    directions:  ['ft', 'bk', 'up', 'dn', 'rt', 'lf']
+      .map((direction) => `../assets/whirlpool/large-files/whirlpool_${direction}.jpg`)
+  });
 
   return {
     clock,
