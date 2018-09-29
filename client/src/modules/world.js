@@ -1,6 +1,5 @@
-const { light } = require('ebabel');
+const { light, skybox } = require('ebabel');
 
-import { skybox } from './skybox.js';
 import { keyboardControls } from './keyboard-controls.js';
 import { themeMusic } from './theme-music.js';
 
@@ -50,7 +49,7 @@ const world = (input) => {
   light({ THREE, scene });
 
   // Skybox.
-  skybox(scene);
+  skybox({ THREE, scene });
 
   return {
     clock,
