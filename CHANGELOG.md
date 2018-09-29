@@ -1,6 +1,7 @@
 # Underwater Game changelog
 
 ## 1.14.0
+- Refactor light and light test into a separate module, which is placed in ebabel.
 - Dynamically centre the text of each sprite.
 - Player vs npc fighting.
 
