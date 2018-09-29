@@ -1,4 +1,5 @@
-import { light } from './light.js';
+const { light } = require('ebabel');
+
 import { skybox } from './skybox.js';
 import { keyboardControls } from './keyboard-controls.js';
 import { themeMusic } from './theme-music.js';
