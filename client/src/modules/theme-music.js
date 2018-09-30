@@ -35,4 +35,4 @@ const themeMusic = (input) => {
   }
 };
 
-export { themeMusic };
+module.exports = { themeMusic };

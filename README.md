@@ -1,6 +1,5 @@
 # Underwater Game
 [![Build Status](https://travis-ci.org/ebabel-eu/underwater-game.svg?branch=master)](https://travis-ci.org/ebabel-eu/underwater-game)
-[![Coverage Status](https://coveralls.io/repos/github/ebabel-eu/underwater-game/badge.svg?branch=master)](https://coveralls.io/github/ebabel-eu/underwater-game?branch=master)
 
 Aquatic 3D HTML5 game of survival, fighting underwater creatures in a web browser.
 
