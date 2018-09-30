@@ -1,9 +1,7 @@
 # Underwater Game changelog
 
 ## 1.14.0
-- Refactor code into separate modules in ebabel.
-  - [light](https://www.npmjs.com/package/ebabel-light)
-  - [skybox](https://www.npmjs.com/package/ebabel-skybox)
+- Refactor code into separate library of modules: [ebabel](https://www.npmjs.com/package/ebabel).
 - Dynamically centre the text of each sprite.
 - Player vs npc fighting.
 
