@@ -30,4 +30,6 @@ const soundEffect = (input) => {
   return sound;
 };
 
-export { soundEffect };
+module.exports = {
+  soundEffect,
+};

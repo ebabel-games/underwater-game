@@ -1,5 +1,5 @@
-import { textSprite } from './text-sprite.js';
-import { soundEffect } from './sound-effect.js';
+const { textSprite } = require('./text-sprite');
+const { soundEffect } = require('./sound-effect');
 
 const spawnSprite = (input) => {
   const {
@@ -32,4 +32,6 @@ const spawnSprite = (input) => {
   return sprite;
 };
 
-export { spawnSprite };
+module.exports = {
+  spawnSprite,
+};

@@ -1,4 +1,4 @@
-const { createWisp } = require('./create-wisp.js');
+const { createWisp } = require('./create-wisp');
 
 // Blessed wisp, based on wisp.
 const createBlessedWisp = () => {
@@ -16,5 +16,5 @@ const createBlessedWisp = () => {
 };
 
 module.exports = {
-  createBlessedWisp
+  createBlessedWisp,
 };

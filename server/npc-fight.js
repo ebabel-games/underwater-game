@@ -1,5 +1,5 @@
 const { random, distance } = require('ebabel');
-const { reducedDistance, dice } = require('./utils.js');
+const { reducedDistance, dice } = require('./utils');
 
 const agroDistance = 1000;
 
@@ -69,5 +69,5 @@ const npcFight = (npc) => {
 };
 
 module.exports = {
-  npcFight
+  npcFight,
 };

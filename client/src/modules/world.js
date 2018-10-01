@@ -1,7 +1,7 @@
 const { light, skybox } = require('ebabel');
 
-import { keyboardControls } from './keyboard-controls.js';
-import { themeMusic } from './theme-music.js';
+const { keyboardControls } = require('./keyboard-controls');
+const { themeMusic } = require('./theme-music');
 
 // Default renderer clear color.
 const _color = 0x0e0727;
@@ -12,6 +12,7 @@ const world = (input) => {
   const {
     THREE,
     THREEx,
+    dataStore,
     color = _color,
     opacity = _opacity
   } = input;
@@ -34,7 +35,7 @@ const world = (input) => {
   const controls = keyboardControls();
 
   // Setup main theme music.
-  const music = themeMusic({ camera });
+  const music = themeMusic({ THREE, camera, volume: dataStore.defaultVolume });
 
   // Setup main renderer for WebGL graphics.
   const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -67,4 +68,6 @@ const world = (input) => {
   };
 };
 
-export { world };
+module.exports = {
+  world,
+};

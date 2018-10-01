@@ -1,7 +1,7 @@
-const { deepCopy } = require('./utils.js');
-const { createWisp } = require('./create-wisp.js');
+const { deepCopy } = require('./utils');
+const { createWisp } = require('./create-wisp');
 
-module.exports = (name) => {
+const player = (name) => {
   const player = {
     creation: createWisp({
       name,
@@ -13,6 +13,9 @@ module.exports = (name) => {
 
   player.state = deepCopy(player.creation);
 
-
   return player;
+};
+
+module.exports = {
+  player,
 };

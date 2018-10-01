@@ -1,4 +1,4 @@
-import { updatePlayerPositionRotation } from './keyboard-controls.js';
+const { updatePlayerPositionRotation } = require('./keyboard-controls');
 
 const npcMinimumSize = 20;
 
@@ -96,4 +96,6 @@ const render = (scene, clock, camera, renderer) => {
   };
 };
 
-export { render };
+module.exports = {
+  render,
+};

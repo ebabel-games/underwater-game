@@ -92,4 +92,7 @@ const keyboardControls = () => {
   document.addEventListener('keyup', onKeyUp.bind(this), false);
 };
 
-export { keyboardControls, updatePlayerPositionRotation };
+module.exports = {
+  keyboardControls,
+  updatePlayerPositionRotation
+};

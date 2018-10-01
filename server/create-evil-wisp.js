@@ -1,4 +1,4 @@
-const { createWisp } = require('./create-wisp.js');
+const { createWisp } = require('./create-wisp');
 
 // Evil wisp, based on wisp.
 const createEvilWisp = () => {
@@ -17,5 +17,5 @@ const createEvilWisp = () => {
 };
 
 module.exports = {
-  createEvilWisp
+  createEvilWisp,
 };

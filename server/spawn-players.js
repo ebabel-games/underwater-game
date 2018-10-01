@@ -10,5 +10,5 @@ const updatePlayerState = (socket) => {
 
 module.exports = {
   spawnPlayer,
-  updatePlayerState
+  updatePlayerState,
 };

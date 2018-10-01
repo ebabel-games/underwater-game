@@ -37,5 +37,5 @@ module.exports = {
   randomPosOrNeg,
   reducedDistance,
   randomPosition,
-  deepCopy  
+  deepCopy,
 };

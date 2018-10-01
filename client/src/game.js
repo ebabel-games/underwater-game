@@ -1,13 +1,13 @@
-import { init } from './modules/init.js';
-import { chatMessage } from './modules/chat-message.js';
-import { world } from './modules/world.js';
-import { render } from './modules/render.js';
-import { globalEventHandlers } from './modules/global-event-handlers.js';
+const { init } = require('./modules/init');
+const { chatMessage } = require('./modules/chat-message');
+const { world } = require('./modules/world');
+const { render } = require('./modules/render');
+const { globalEventHandlers } = require('./modules/global-event-handlers');
 
 // Main game module that co-ordinates all other modules.
-const game = (THREE, THREEx) => {
+const game = (THREE, THREEx, dataStore) => {
   chatMessage();
-  const { scene, clock, camera, renderer } = world({ THREE, THREEx }); /* no-unused-var: 0 */
+  const { scene, clock, camera, renderer } = world({ THREE, THREEx, dataStore }); /* no-unused-var: 0 */
   render(scene, clock, camera, renderer);
 
   // Link scene and camera to dataStore.
@@ -28,6 +28,8 @@ const game = (THREE, THREEx) => {
   };
 };
 
-game(THREE, THREEx);
+game(THREE, THREEx, dataStore);
 
-export { game };
+module.exports = {
+  game,
+};

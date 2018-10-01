@@ -1,4 +1,4 @@
-const { trait, positive, randomPosition } = require('./utils.js');
+const { trait, positive, randomPosition } = require('./utils');
 
 // Wisp npc.
 const createWisp = (input = {}) => {
@@ -29,5 +29,5 @@ const createWisp = (input = {}) => {
 };
 
 module.exports = {
-  createWisp
+  createWisp,
 };

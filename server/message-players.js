@@ -10,5 +10,5 @@ const messageAllPlayers = (socket, io) => socket.on('chatMessage', (input) => io
 module.exports = {
   greetSinglePlayer,
   waveOtherPlayers,
-  messageAllPlayers
+  messageAllPlayers,
 };
