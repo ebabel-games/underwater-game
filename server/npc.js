@@ -1,7 +1,7 @@
 const { deepCopy } = require('./utils');
-const { createWisp } = require('./create-wisp');
-const { createBlessedWisp } = require('./create-blessed-wisp');
-const { createEvilWisp } = require('./create-evil-wisp');
+const { Wisp } = require('./wisp');
+const { BlessedWisp } = require('./blessed-wisp');
+const { EvilWisp } = require('./evil-wisp');
 
 const npc = {
   // Create a new Non Playing Character.
@@ -11,13 +11,13 @@ const npc = {
 
     switch (name) {
       case 'an evil wisp':
-        creation = createEvilWisp();
+        creation = new EvilWisp();
         break;
       case 'a blessed wisp':
-        creation = createBlessedWisp();
+        creation = new BlessedWisp();
         break;
       default:
-        creation = createWisp();
+        creation = new Wisp();
     }
 
     // State will change based on how the npc evolves.

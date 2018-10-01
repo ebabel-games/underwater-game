@@ -3,6 +3,7 @@
 ## 1.14.0
 - Refactor code into separate library of modules: [ebabel](https://www.npmjs.com/package/ebabel).
 - Dynamically centre the text of each sprite.
+- Refactor create-wisp, create-evil-wisp, create-blessed-wisp, npc, and player as ES6 class files instead of functions.
 - Player vs npc fighting.
 
 ## 1.13.0
@@ -98,7 +99,6 @@
 # Future features to develop
 - Player vs npc fighting.
 - Player vs player fighting.
-- Refactor create-wisp, create-evil-wisp, create-blessed-wisp, npc, and player as ES6 class files instead of functions.
 - Improve time to interactive by optimizing images format. See Chrome Audit.
 - Fix the blinking of sprites and make their movement smoother.
 - Fix some sprites that are not fighting, not dead but not moving either.
