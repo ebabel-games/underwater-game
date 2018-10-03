@@ -1,6 +1,5 @@
-const { light, skybox } = require('ebabel');
+const { light, skybox, keyboardControls } = require('ebabel');
 
-const { keyboardControls } = require('./keyboard-controls');
 const { themeMusic } = require('./theme-music');
 
 // Default renderer clear color.
@@ -32,7 +31,7 @@ const world = (input) => {
   camera.rotation.set(...dataStore.player.state.rotation);
 
   // Setup keyboard controls.
-  const controls = keyboardControls();
+  const controls = keyboardControls(dataStore);
 
   // Setup main theme music.
   const music = themeMusic({ THREE, camera, volume: dataStore.defaultVolume });
