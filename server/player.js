@@ -1,5 +1,5 @@
+const { deepCopy } = require('ebabel');
 const { Wisp } = require('./wisp');
-const { deepCopy } = require('./utils');
 
 class Player extends Wisp {
   constructor(input) {

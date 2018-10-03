@@ -1,5 +1,4 @@
-const { random, distance } = require('ebabel');
-const { reducedDistance, dice } = require('./utils');
+const { random, distance, reducedDistance, dice } = require('ebabel');
 
 const agroDistance = 1000;
 

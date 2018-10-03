@@ -1,4 +1,4 @@
-const { trait, positive, randomPosition } = require('./utils');
+const { trait, positive, randomPosition } = require('ebabel');
 
 class Wisp {
   constructor(input = {}) {

@@ -1,4 +1,4 @@
-const { deepCopy } = require('./utils');
+const { deepCopy } = require('ebabel');
 const { Wisp } = require('./wisp');
 const { BlessedWisp } = require('./blessed-wisp');
 const { EvilWisp } = require('./evil-wisp');

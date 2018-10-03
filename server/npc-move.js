@@ -1,5 +1,4 @@
-const { random } = require('ebabel');
-const { randomPosOrNeg } = require('./utils');
+const { random, randomPosOrNeg } = require('ebabel');
 
 // Move all npc.
 const npcMove = (npc) => npc.map((n) => {
