@@ -3,12 +3,12 @@ const themeMusic = (input) => {
     THREE,
     camera,
     volume,
-    url = 'assets/music/ambient2-nautilus.mp3',
+    url,
     loop = true,
     autostart = true,
   } = input;
 
-  if (!camera) return;
+  if (!camera || !url) return;
 
   // Create an AudioListener and add it to the camera.
   const listener = new THREE.AudioListener();

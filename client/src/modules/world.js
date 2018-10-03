@@ -34,7 +34,12 @@ const world = (input) => {
   const controls = keyboardControls(dataStore);
 
   // Setup main theme music.
-  const music = themeMusic({ THREE, camera, volume: dataStore.defaultVolume });
+  const music = themeMusic({
+    THREE,
+    camera,
+    volume: dataStore.defaultVolume,
+    url: 'assets/music/ambient2-nautilus.mp3',
+  });
 
   // Setup main renderer for WebGL graphics.
   const renderer = new THREE.WebGLRenderer({ antialias: true });

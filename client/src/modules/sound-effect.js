@@ -2,15 +2,15 @@
 const soundEffect = (input) => {
   const {
     camera,
-    name = 'death',
-    url = 'assets/sound-effects/spells/heal.ogg',
+    name,
+    url,
     distance = 20,
     loop = false,
     volume = 0.6,
     autostart = false,
   } = input;
 
-  if (!camera) return;
+  if (!camera || !name || !url) return;
 
   const listener = camera.children.filter((l) => l.name === 'camera-listener');
   if (!listener || !listener[0]) return;

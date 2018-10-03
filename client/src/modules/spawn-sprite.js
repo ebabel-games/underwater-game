@@ -26,7 +26,11 @@ const spawnSprite = (input) => {
   sprite.add(text);
 
   // Add sound effect to sprite.
-  const sound = soundEffect({ camera });
+  const sound = soundEffect({
+    camera,
+    name: 'death',
+    url: 'assets/sound-effects/spells/heal.ogg',
+  });
   sprite.add(sound);
   
   return sprite;
