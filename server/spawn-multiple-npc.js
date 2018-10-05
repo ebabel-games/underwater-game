@@ -2,5 +2,5 @@
 const spawnMultipleNpc = (io, socketId, npc) => io.to(socketId).emit('spawnMultipleNpc', npc);
 
 module.exports = {
-  spawnMultipleNpc
+  spawnMultipleNpc,
 };

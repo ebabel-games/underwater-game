@@ -1,4 +1,4 @@
-import { updatePlayerPositionRotation } from './keyboard-controls.js';
+const { updatePlayerPositionRotation } = require('ebabel');
 
 const npcMinimumSize = 20;
 
@@ -7,7 +7,7 @@ const render = (scene, clock, camera, renderer) => {
   const delta = clock.getDelta();
 
   // Update position of camera based on where the player moves to.
-  const hasPlayerMoved = updatePlayerPositionRotation(camera);
+  const hasPlayerMoved = updatePlayerPositionRotation(camera, dataStore);
 
   // Update position and rotation of current player.
   const player = dataStore.scene && dataStore.scene.children.filter(child => child.name === dataStore.player.state.name);
@@ -96,4 +96,6 @@ const render = (scene, clock, camera, renderer) => {
   };
 };
 
-export { render };
+module.exports = {
+  render,
+};

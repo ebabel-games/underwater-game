@@ -1,18 +1,19 @@
-const { deepCopy } = require('./utils.js');
-const { createWisp } = require('./create-wisp.js');
+const { deepCopy } = require('ebabel');
+const { Wisp } = require('./wisp');
 
-module.exports = (name) => {
-  const player = {
-    creation: createWisp({
-      name,
-      position: [0, 0, 0]
-    })
-  };
+class Player extends Wisp {
+  constructor(input) {
+    super(input);
 
-  player.creation.color[0] = 0.3583; // Hue.
+    this.position = [0, 0, 0];
+    this.color[0] = 0.3583; // Hue.
 
-  player.state = deepCopy(player.creation);
+    this.creation = deepCopy(this);
 
+    this.state = deepCopy(this.creation);
+  }
+}
 
-  return player;
+module.exports = {
+  Player,
 };

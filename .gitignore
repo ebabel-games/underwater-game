@@ -65,7 +65,6 @@ typings/
 
 # Game build
 client/dist
-package-lock.json
 
 # DigitalOcean generated directory
 v8-compile-cache-0

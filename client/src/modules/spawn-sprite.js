@@ -1,5 +1,5 @@
-import { textSprite } from './text-sprite.js';
-import { soundEffect } from './sound-effect.js';
+const { textSprite } = require('./text-sprite');
+const { soundEffect } = require('./sound-effect');
 
 const spawnSprite = (input) => {
   const {
@@ -26,10 +26,16 @@ const spawnSprite = (input) => {
   sprite.add(text);
 
   // Add sound effect to sprite.
-  const sound = soundEffect({ camera });
+  const sound = soundEffect({
+    camera,
+    name: 'death',
+    url: 'assets/sound-effects/spells/heal.ogg',
+  });
   sprite.add(sound);
   
   return sprite;
 };
 
-export { spawnSprite };
+module.exports = {
+  spawnSprite,
+};

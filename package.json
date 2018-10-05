@@ -1,16 +1,15 @@
 {
   "name": "underwater-game",
-  "version": "1.12.0",
+  "version": "1.14.0",
   "description": "Aquatic 3D HTML5 game of survival, fighting underwater creatures in a web browser.",
   "main": "server/index.js",
   "scripts": {
-    "test": "npm run eslint && npm run mocha",
-    "mocha": "node ./node_modules/.bin/mocha-webpack --recursive --webpack-config webpack.config.test.js ./spec/*.spec.js",
+    "test": "npm run eslint && jest --coverage",
     "eslint": "node ./node_modules/.bin/eslint ./server/*.js ./server/**/*.js ./client/*.js ./client/**/*.js",
     "build": "node ./node_modules/.bin/webpack --mode=development --devtool source-map",
     "watch": "node ./node_modules/.bin/webpack --mode=development --devtool source-map --watch --progress",
     "build-production": "node ./node_modules/.bin/webpack --mode=production",
-    "start": "npm run build && node ./server/index.js",
+    "start": "npm run build && node --use_strict ./server/index.js",
     "start-production": "export NODE_ENV=production&& npm run build-production && forever stop ./server/index.js && forever start ./server/index.js"
   },
   "repository": {
@@ -30,22 +29,20 @@
   },
   "homepage": "https://github.com/ebabel-eu/underwater-game#readme",
   "dependencies": {
+    "ebabel": "^2.3.0",
     "express": "^4.16.3",
     "node-gameloop": "^0.1.4",
     "socket.io": "^2.1.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.1",
-    "@babel/preset-env": "^7.0.0",
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
     "babel-eslint": "^9.0.0",
-    "babel-loader": "^8.0.2",
-    "chai": "^4.1.2",
-    "chai-http": "^4.2.0",
-    "eslint": "^5.5.0",
-    "mocha": "^5.2.0",
-    "mocha-webpack": "^2.0.0-beta.0",
-    "webpack": "^4.18.0",
-    "webpack-cli": "^3.1.0",
+    "babel-loader": "^8.0.4",
+    "eslint": "^5.6.1",
+    "jest": "^23.6.0",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
     "webpack-node-externals": "^1.7.2"
   }
 }

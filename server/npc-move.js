@@ -1,4 +1,4 @@
-const { random, randomPosOrNeg } = require('./utils.js');
+const { random, randomPosOrNeg } = require('ebabel');
 
 // Move all npc.
 const npcMove = (npc) => npc.map((n) => {
@@ -27,5 +27,5 @@ const npcMove = (npc) => npc.map((n) => {
 });
 
 module.exports = {
-  npcMove
+  npcMove,
 };

@@ -1,9 +1,9 @@
-const { deepCopy } = require('./utils.js');
-const { createWisp } = require('./create-wisp.js');
-const { createBlessedWisp } = require('./create-blessed-wisp.js');
-const { createEvilWisp } = require('./create-evil-wisp.js');
+const { deepCopy } = require('ebabel');
+const { Wisp } = require('./wisp');
+const { BlessedWisp } = require('./blessed-wisp');
+const { EvilWisp } = require('./evil-wisp');
 
-module.exports = {
+const npc = {
   // Create a new Non Playing Character.
   createNpc: (io, name = 'a wisp') => {
     // Creation characteristics. These will never change in the creation object.
@@ -11,13 +11,13 @@ module.exports = {
 
     switch (name) {
       case 'an evil wisp':
-        creation = createEvilWisp();
+        creation = new EvilWisp();
         break;
       case 'a blessed wisp':
-        creation = createBlessedWisp();
+        creation = new BlessedWisp();
         break;
       default:
-        creation = createWisp();
+        creation = new Wisp();
     }
 
     // State will change based on how the npc evolves.
@@ -28,7 +28,11 @@ module.exports = {
 
     return {
       creation,
-      state
+      state,
     };
   }
+};
+
+module.exports = {
+  npc,
 };

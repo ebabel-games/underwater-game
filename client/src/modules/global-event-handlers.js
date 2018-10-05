@@ -24,4 +24,6 @@ const globalEventHandlers = () => {
   });
 };
 
-export { globalEventHandlers };
+module.exports = {
+  globalEventHandlers,
+};

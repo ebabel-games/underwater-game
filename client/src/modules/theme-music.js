@@ -1,13 +1,14 @@
 const themeMusic = (input) => {
   const {
+    THREE,
     camera,
-    url = 'assets/music/ambient2-nautilus.mp3',
+    volume,
+    url,
     loop = true,
-    volume = dataStore.defaultVolume,
-    autostart = true
+    autostart = true,
   } = input;
 
-  if (!camera) return;
+  if (!camera || !url) return;
 
   // Create an AudioListener and add it to the camera.
   const listener = new THREE.AudioListener();
@@ -35,4 +36,6 @@ const themeMusic = (input) => {
   }
 };
 
-export { themeMusic };
+module.exports = {
+  themeMusic,
+};

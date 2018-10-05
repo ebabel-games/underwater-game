@@ -1,5 +1,14 @@
 # Underwater Game changelog
 
+## 1.14.0
+- Refactor code into separate library of modules: [ebabel](https://www.npmjs.com/package/ebabel).
+- Dynamically centre the text of each sprite.
+- Refactor create-wisp, create-evil-wisp, create-blessed-wisp, npc, and player as ES6 class files instead of functions.
+- Player vs npc fighting.
+
+## 1.13.0
+- Refactor code into separate, reusable modules.
+
 ## 1.12.0
 - Only broadcast name, position, rotation, life, color, attack, defense, and fightMode to other players.
 - If the player moved, broadcast to all other players her new position.
@@ -110,3 +119,4 @@
 - Publish the game on the Steam store.
 - Publish also on the [Mac](https://electronjs.org/docs/tutorial/mac-app-store-submission-guide) and [Windows](https://electronjs.org/docs/tutorial/windows-store-guide) stores.
 - Fix text labels that are black instead of white on Safari 12 (Mac desktop).
+- Create re-usable npm packages for the ebabel library to make multiple games from the code in this game, and use these modules in this game.

@@ -1,3 +1,5 @@
+const scaleWidthFactor = 0.002090;
+
 const textSprite = (text) => {
   const fontface = 'Verdana';
   const fontsize = 32;
@@ -5,8 +7,8 @@ const textSprite = (text) => {
 
   const context = canvas.getContext('2d');
   context.font = `${fontsize}px ${fontface}`;
-  context.fillStyle = 'rgba(255, 255, 255)';
-  context.fillText(text, 0, fontsize);
+  context.fillStyle = '#ffffff';
+  context.fillText(text, 10, fontsize);
 
   const texture = new THREE.Texture(canvas);
   texture.minFilter = THREE.LinearFilter;
@@ -17,9 +19,14 @@ const textSprite = (text) => {
   const sprite = new THREE.Sprite(spriteMaterial);
   sprite.name = 'text';
   sprite.scale.set(2, 1, 1.0);
-  sprite.center.set(0.175, 0.5);
+
+  // Dynamically centre based on actual size of text.
+  const size = context.measureText(text);
+  sprite.center.set(size.width * scaleWidthFactor, 0.4);
 
   return sprite;
 };
 
-export { textSprite };
+module.exports = {
+  textSprite,
+};

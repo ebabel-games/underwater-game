@@ -1,9 +1,9 @@
 const gameloop = require('node-gameloop');
 
-const { random, randomPosition } = require('./utils.js');
-const { createNpc } = require('./npc.js');
-const { npcMove } = require('./npc-move.js');
-const { npcFight } = require('./npc-fight.js');
+const { random, randomPosition } = require('ebabel');
+const { npc } = require('./npc');
+const { npcMove } = require('./npc-move');
+const { npcFight } = require('./npc-fight');
 
 const minNpcPopulation = 66;
 const maxNpcPopulation = 99;
@@ -13,7 +13,7 @@ const respawnHeight = 10000;
 // Main server-side game function.
 // @io: socket.io
 // @fps: number of frames per second.
-module.exports = (input) => {
+const game = (input) => {
   const {
     io,
     dataStore,
@@ -40,14 +40,14 @@ module.exports = (input) => {
       const spawnChance = random(99);
       switch (spawnChance) {
         case 33:
-          dataStore.npc.push(createNpc(io, 'a blessed wisp'));
+          dataStore.npc.push(npc.createNpc(io, 'a blessed wisp'));
           break;
         case 6:
         case 66:
-          dataStore.npc.push(createNpc(io, 'an evil wisp'));
+          dataStore.npc.push(npc.createNpc(io, 'an evil wisp'));
           break;
         default:
-          dataStore.npc.push(createNpc(io));
+          dataStore.npc.push(npc.createNpc(io));
       }
     }
 
@@ -82,4 +82,8 @@ module.exports = (input) => {
 
     frameCount = frameCount + 1;
   }, 1000 / fps);
+};
+
+module.exports = {
+  game,
 };
