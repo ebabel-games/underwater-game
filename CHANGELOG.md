@@ -97,7 +97,6 @@
 - Multi-player chat.
 
 # Future features to develop
-- Player vs npc fighting.
 - Player vs player fighting.
 - Improve time to interactive by optimizing images format. See Chrome Audit.
 - Fix the blinking of sprites and make their movement smoother.
