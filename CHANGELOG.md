@@ -4,6 +4,7 @@
 - Refactor code into separate library of modules: [ebabel](https://www.npmjs.com/package/ebabel).
 - Dynamically centre the text of each sprite.
 - Refactor create-wisp, create-evil-wisp, create-blessed-wisp, npc, and player as ES6 class files instead of functions.
+- Fix 2 warnings in Production when running `forever`.
 - Player vs npc fighting.
 
 ## 1.13.0
