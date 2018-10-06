@@ -97,15 +97,6 @@
 - Multi-player chat.
 
 # Future features to develop
-- Player vs player fighting.
-- Improve time to interactive by optimizing images format. See Chrome Audit.
-- Fix the blinking of sprites and make their movement smoother.
-- Fix some sprites that are not fighting, not dead but not moving either.
-- Fix the label above each sprite rotating based on camera instead of facing straight to camera regardless of angle.
-- Camera of player looking up and down in a way that feels natural would be a nice addon.
-- Add reporting for test coverage.
-- Write more tests.
-- Document performance targets into PERFORMANCE.md
 - Improve configuration of `forever` to fix 2 warnings: `--minUptime not set. Defaulting to: 1000ms` and `--spinSleepTime not set. Your script will exit if it does not stay up for at least 1000ms`
 - Implement the module Ernesto is developing, to place particles around the environment without impacting server side socket communication load.
 - Spawn npc in random positions near players instead of spawning anywhere in the large space. When npc die, also respawn them in random positions near players. Reduce the number of npc: instead of 99 npc, have just a few per player. This should improve performance overall.
