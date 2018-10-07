@@ -59,9 +59,9 @@ const game = (input) => {
 
     // Current player fights nearby npc.
     if (dataStore.player && dataStore.player.name !== null) {
-      const { _player, _npc } = playerVsNpc(dataStore.player, dataStore.npc);
-      dataStore.player = _player;
-      dataStore.npc = _npc;
+      const { player, npc } = playerVsNpc(dataStore.player, dataStore.npc);
+      dataStore.player = player;
+      dataStore.npc = npc;
     }
 
     // Respawn dead npc that have reached a certain height after they drifted upwards.
