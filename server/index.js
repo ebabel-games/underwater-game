@@ -61,7 +61,7 @@ io.on('connection', (socket) => {
     });
 
     // Spawn the current player on all existing player clients.
-    socket.broadcast.emit('addOtherPlayer', dataStore.players[name].state);
+    socket.broadcast.emit('addOtherPlayer', dataStore.players[name]);
   });
 
   socket.on('disconnect', () => {

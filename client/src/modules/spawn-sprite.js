@@ -10,21 +10,18 @@ const spawnSprite = (input) => {
   const spriteMaterial = new THREE.SpriteMaterial({ map: particleTexture, color: 0xffffff });
   const sprite = new THREE.Sprite(spriteMaterial);
 
-  // If state is null or missing, use creation.
-  const data = spriteData.state || spriteData.creation || spriteData;
-
-  sprite.name = data.name;
-  sprite.scale.set(data.life, data.life, 1.0);
-  sprite.position.set(...data.position);
-  sprite.material.color.setHSL(data.color[0], data.color[1], data.color[2]); 
+  sprite.name = spriteData.name;
+  sprite.scale.set(spriteData.life, spriteData.life, 1.0);
+  sprite.position.set(...spriteData.position);
+  sprite.material.color.setHSL(spriteData.color[0], spriteData.color[1], spriteData.color[2]); 
   sprite.material.blending = THREE.AdditiveBlending;
-  sprite.userData = { creation: data, state: data };
+  sprite.userData = spriteData;
 
   // Name above sprite.
   const text = textSprite({
     THREE,
     canvas: document.createElement('canvas'),
-    text: data.name,
+    text: spriteData.name,
   });
   sprite.add(text);
 

@@ -1,4 +1,4 @@
-// Spawn current player with both creation and state.
+// Spawn current player.
 const spawnPlayer = (io, socketId, player) => io.to(socketId).emit('spawnPlayer', player);
 
 // Broadcast to all other players the state of the current player.

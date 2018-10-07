@@ -10,7 +10,10 @@
     "socket": true,
     "THREE": true,
     "THREEx": true,
-    "dataStore": true
+    "dataStore": true,
+    "beforeEach": true,
+    "test": true,
+    "expect": true
   },
   "extends": "eslint:recommended",
   "rules": {

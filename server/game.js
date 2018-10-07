@@ -3,7 +3,8 @@ const gameloop = require('node-gameloop');
 const { random, randomPosition } = require('ebabel');
 const createNpc = require('./create-npc');
 const { npcMove } = require('./npc-move');
-const { npcFight } = require('./npc-fight');
+const npcVsNpc = require('./npc-vs-npc');
+const playerVsNpc = require('./player-vs-npc');
 
 const minNpcPopulation = 66;
 const maxNpcPopulation = 99;
@@ -53,15 +54,22 @@ const game = (input) => {
 
     // All npc that are close to each other will fight (bar exceptions, like blessed wisp).
     if (oneSecondFlag) {
-      dataStore.npc = npcFight(dataStore.npc);
+      dataStore.npc = npcVsNpc(dataStore.npc);
+    }
+
+    // Current player fights nearby npc.
+    if (dataStore.player && dataStore.player.name !== null) {
+      const { _player, _npc } = playerVsNpc(dataStore.player, dataStore.npc);
+      dataStore.player = _player;
+      dataStore.npc = _npc;
     }
 
     // Respawn dead npc that have reached a certain height after they drifted upwards.
     dataStore.npc = dataStore.npc.map((n) => {
-      if (n.state.life <= 0 && n.state.position[1] >= respawnHeight) {
-        n.state.life = n.creation.life;
-        n.state.fightMode = false;
-        n.state.position = randomPosition();
+      if (n.life <= 0 && n.position[1] >= respawnHeight) {
+        n.life = n.respawnedLife;
+        n.fightMode = false;
+        n.position = randomPosition();
       }
 
       return n;
@@ -70,9 +78,9 @@ const game = (input) => {
     // Update life, and fightMode for all npc after their fights.
     const npcStates = dataStore.npc.map((n) => {
       return {
-        position: n.state.position,
-        life: n.state.life,
-        fightMode: n.state.fightMode,
+        position: n.position,
+        life: n.life,
+        fightMode: n.fightMode,
       };
     });
     io.emit('updateNpcStates', npcStates);

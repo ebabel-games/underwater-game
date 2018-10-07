@@ -10,22 +10,22 @@ const render = (scene, clock, camera, renderer) => {
   const hasPlayerMoved = updatePlayerPositionRotation(camera, dataStore);
 
   // Update position and rotation of current player.
-  const player = dataStore.scene && dataStore.scene.children.filter(child => child.name === dataStore.player.state.name);
+  const player = dataStore.scene && dataStore.scene.children.filter(child => child.name === dataStore.player.name);
   if (player && player[0]) {
-    player[0].position.set(...dataStore.player.state.position);
+    player[0].position.set(...dataStore.player.position);
   }
 
   // If the player moved, broadcast to all other players her new position, and other useful state values.
-  if (hasPlayerMoved && dataStore.player.state.name && dataStore.player.state.position) {
+  if (hasPlayerMoved && dataStore.player.name && dataStore.player.position) {
     socket.emit('updatePlayerState', {
-      name: dataStore.player.state.name,
-      life: dataStore.player.state.life,
-      position: dataStore.player.state.position,
-      color: dataStore.player.state.color,
-      attack: dataStore.player.state.attack,
-      defence: dataStore.player.state.defence,
-      fightMode: dataStore.player.state.fightMode,
-      rotation: dataStore.player.state.rotation
+      name: dataStore.player.name,
+      life: dataStore.player.life,
+      position: dataStore.player.position,
+      color: dataStore.player.color,
+      attack: dataStore.player.attack,
+      defence: dataStore.player.defence,
+      fightMode: dataStore.player.fightMode,
+      rotation: dataStore.player.rotation
     });
   }
 
@@ -57,26 +57,26 @@ const render = (scene, clock, camera, renderer) => {
       }
 
       // Npc just died, play its death sound.
-      if (child.userData.state.life > 0 && newState.life <= 0) {
+      if (child.userData.life > 0 && newState.life <= 0) {
         child.children.filter((c) => c.name === 'death')[0].play();
       }
 
       // Update state from dataStore.npcStates when there is one.
-      child.userData.state.position =  newState.position;
-      child.userData.state.life = newState.life;
-      child.userData.state.fightMode = newState.fightMode;
+      child.userData.position =  newState.position;
+      child.userData.life = newState.life;
+      child.userData.fightMode = newState.fightMode;
 
       // Minimum size of any npc.
-      const newSize = (child.userData.state.life > npcMinimumSize) ? child.userData.state.life : npcMinimumSize;
+      const newSize = (child.userData.life > npcMinimumSize) ? child.userData.life : npcMinimumSize;
 
       // Update the size of npc based on its life.
       child.scale.set(newSize, newSize, 1.0);
 
       // Update npc new position.
       child.position.set(
-        child.userData.state.position[0],
-        child.userData.state.position[1],
-        child.userData.state.position[2]
+        child.userData.position[0],
+        child.userData.position[1],
+        child.userData.position[2]
       );
     });
   }

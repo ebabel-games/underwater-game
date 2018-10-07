@@ -48,7 +48,7 @@ const init = (camera) => {
     const otherPlayerExists = dataStore.scene.children.filter(otherPlayer => otherPlayer.name === playerState.name).length;
     if (!otherPlayerExists) {
       // Note: this other player had already spawned before the current one started playing.
-      dataStore.scene.add(spawnSprite({ spriteData: {creation: null, state: playerState}, particleTexture, camera }));
+      dataStore.scene.add(spawnSprite({ spriteData: playerState, particleTexture, camera }));
     }
   });
 
@@ -67,14 +67,13 @@ const init = (camera) => {
       players
     } = input;
   
-    dataStore.player.creation.name = name;
-    dataStore.player.state.name = name;
+    dataStore.player.name = name;
     document.getElementById('splashScreen').style.display = 'none';
   
     Object.keys(players).map((_name) => {
       if (_name !== name) {
-        dataStore.otherPlayerStates[_name] = players[_name].state;
-        dataStore.scene.add(spawnSprite({ spriteData: players[_name].state, particleTexture, camera }));
+        dataStore.otherPlayerStates[_name] = players[_name];
+        dataStore.scene.add(spawnSprite({ spriteData: players[_name], particleTexture, camera }));
       }
     });
   });
