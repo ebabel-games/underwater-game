@@ -1,5 +1,4 @@
-const { textSprite } = require('./text-sprite');
-const { soundEffect } = require('./sound-effect');
+const { soundEffect, textSprite } = require('ebabel');
 
 const spawnSprite = (input) => {
   const {
@@ -22,11 +21,16 @@ const spawnSprite = (input) => {
   sprite.userData = { creation: data, state: data };
 
   // Name above sprite.
-  const text = textSprite(data.name);
+  const text = textSprite({
+    THREE,
+    canvas: document.createElement('canvas'),
+    text: data.name,
+  });
   sprite.add(text);
 
   // Add sound effect to sprite.
   const sound = soundEffect({
+    THREE,
     camera,
     name: 'death',
     url: 'assets/sound-effects/spells/heal.ogg',

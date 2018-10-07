@@ -1,6 +1,4 @@
-const { light, skybox, keyboardControls } = require('ebabel');
-
-const { themeMusic } = require('./theme-music');
+const { light, skybox, keyboardControls, themeMusic } = require('ebabel');
 
 // Default renderer clear color.
 const _color = 0x0e0727;
@@ -39,6 +37,7 @@ const world = (input) => {
     camera,
     volume: dataStore.defaultVolume,
     url: 'assets/music/ambient2-nautilus.mp3',
+    name: 'camera-listener',
   });
 
   // Setup main renderer for WebGL graphics.

@@ -1,7 +1,7 @@
 const gameloop = require('node-gameloop');
 
 const { random, randomPosition } = require('ebabel');
-const { npc } = require('./npc');
+const createNpc = require('./create-npc');
 const { npcMove } = require('./npc-move');
 const { npcFight } = require('./npc-fight');
 
@@ -40,14 +40,14 @@ const game = (input) => {
       const spawnChance = random(99);
       switch (spawnChance) {
         case 33:
-          dataStore.npc.push(npc.createNpc(io, 'a blessed wisp'));
+          dataStore.npc.push(createNpc(io, 'a blessed wisp'));
           break;
         case 6:
         case 66:
-          dataStore.npc.push(npc.createNpc(io, 'an evil wisp'));
+          dataStore.npc.push(createNpc(io, 'an evil wisp'));
           break;
         default:
-          dataStore.npc.push(npc.createNpc(io));
+          dataStore.npc.push(createNpc(io));
       }
     }
 
