@@ -1,3 +1,5 @@
+'strict';
+
 const { random, randomPosOrNeg } = require('ebabel');
 
 // Move all npc.

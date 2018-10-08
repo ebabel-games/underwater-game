@@ -1,3 +1,5 @@
+'strict';
+
 const gameloop = require('node-gameloop');
 
 const { random, randomPosition } = require('ebabel');

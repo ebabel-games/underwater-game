@@ -1,3 +1,5 @@
+'strict';
+
 const { soundEffect, textSprite } = require('ebabel');
 
 const spawnSprite = (input) => {

@@ -1,3 +1,5 @@
+'strict';
+
 const Wisp = require('./wisp');
 
 class Player extends Wisp {

@@ -1,3 +1,5 @@
+'strict';
+
 const { trait, positive, randomPosition } = require('ebabel');
 
 class Wisp {

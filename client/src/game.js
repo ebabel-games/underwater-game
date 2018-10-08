@@ -1,3 +1,5 @@
+'strict';
+
 const init = require('./modules/init');
 const chatMessage = require('./modules/chat-message');
 const world = require('./modules/world');

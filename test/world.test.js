@@ -1,3 +1,5 @@
+'strict';
+
 const {
   mockTHREEx,
   mockTHREE,

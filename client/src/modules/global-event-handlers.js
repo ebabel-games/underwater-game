@@ -1,3 +1,5 @@
+'strict';
+
 // Register global event handlers (only run once).
 const globalEventHandlers = () => {
   window.addEventListener('adjustMasterVolume', (e) => {

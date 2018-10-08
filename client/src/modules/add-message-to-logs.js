@@ -1,3 +1,5 @@
+'strict';
+
 const addMessageToLogs = (message) => {
   const logsList = document.getElementById('logsList');
   const li = document.createElement('li');

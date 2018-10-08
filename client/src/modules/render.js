@@ -1,3 +1,5 @@
+'strict';
+
 const { updatePlayerPositionRotation } = require('ebabel');
 
 const npcMinimumSize = 20;

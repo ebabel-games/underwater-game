@@ -1,3 +1,5 @@
+'strict';
+
 const addMessageToLogs = require('./add-message-to-logs');
 
 // Multi-player chat.

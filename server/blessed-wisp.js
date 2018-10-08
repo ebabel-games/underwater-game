@@ -1,3 +1,5 @@
+'strict';
+
 const Wisp = require('./wisp');
 
 class BlessedWisp extends Wisp {

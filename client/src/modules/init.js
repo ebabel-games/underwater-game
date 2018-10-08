@@ -1,3 +1,5 @@
+'strict';
+
 const spawnSprite = require('./spawn-sprite');
 
 // Particles setup.

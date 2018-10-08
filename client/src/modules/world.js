@@ -1,3 +1,5 @@
+'strict';
+
 const { light, skybox, keyboardControls, themeMusic } = require('ebabel');
 
 // Default renderer clear color.

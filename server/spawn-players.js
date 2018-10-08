@@ -1,3 +1,5 @@
+'strict';
+
 // Spawn current player.
 const spawnPlayer = (io, socketId, player) => io.to(socketId).emit('spawnPlayer', player);
 
@@ -5,6 +7,8 @@ const spawnPlayer = (io, socketId, player) => io.to(socketId).emit('spawnPlayer'
 const updatePlayerState = (socket) => {
   socket.on('updatePlayerState', (playerState) => {
     socket.broadcast.emit('updateOtherPlayerStates', playerState);
+
+    // todo: update dataStore.players ?
   });
 };
 

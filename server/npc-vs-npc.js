@@ -1,3 +1,5 @@
+'strict';
+
 const { random, distance, reducedDistance, dice } = require('ebabel');
 
 const agroDistance = 1000;
