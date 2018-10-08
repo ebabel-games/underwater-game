@@ -4,7 +4,7 @@ const { random, randomPosition } = require('ebabel');
 const createNpc = require('./create-npc');
 const npcMove = require('./npc-move');
 const npcVsNpc = require('./npc-vs-npc');
-const playerVsNpc = require('./player-vs-npc');
+const playersVsNpc = require('./players-vs-npc');
 
 const minNpcPopulation = 66;
 const maxNpcPopulation = 99;
@@ -58,9 +58,9 @@ const game = (input) => {
     }
 
     // Current player fights nearby npc.
-    if (dataStore.player && dataStore.player.name !== null) {
-      const { player, npc } = playerVsNpc(dataStore.player, dataStore.npc);
-      dataStore.player = player;
+    if (dataStore.players && Object.keys(dataStore.players).length > 0) {
+      const { players, npc } = playersVsNpc(dataStore.players, dataStore.npc);
+      dataStore.players = players;
       dataStore.npc = npc;
     }
 
