@@ -9,16 +9,14 @@ const game = require('./game');
 const Player = require('./player');
 const spawnMultipleNpc = require('./spawn-multiple-npc');
 
+const spawnPlayer = require('./spawn-player');
+const updatePlayerState = require('./update-player-state');
+
 const {
   greetSinglePlayer,
   waveOtherPlayers,
   messageAllPlayers,
 } = require('./message-players');
-
-const {
-  spawnPlayer,
-  updatePlayerState,
-} = require('./spawn-players');
 
 // Central store that keeps state of the whole game.
 const dataStore = {
