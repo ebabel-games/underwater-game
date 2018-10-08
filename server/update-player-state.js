@@ -5,8 +5,8 @@ const updatePlayerState = (socket) => {
     // Broadcast to all other players the state of the current player.
     socket.broadcast.emit('updateOtherPlayerStates', playerState);
 
-    // Update centra store for all states.
-    // todo: update dataStore.
+    // Update central store for a single player whose state has changed.
+    global.dataStore.players[playerState.name] = playerState;
   });
 };
 

@@ -19,7 +19,6 @@ const respawnHeight = 10000;
 const game = (input) => {
   const {
     io,
-    dataStore,
     fps = defaultFps
   } = input;
 
@@ -30,7 +29,7 @@ const game = (input) => {
   // Note: run gameloop.clearGameLoop(id); to stop the loop from running.
   const id = gameloop.setGameLoop((delta) => {  /* eslint no-unused-vars: 0 */
     // Move all npc sprites.
-    dataStore.npc = npcMove(dataStore.npc);
+    global.dataStore.npc = npcMove(global.dataStore.npc);
 
     // Runs every 1 second.
     oneSecond += delta;
@@ -38,47 +37,49 @@ const game = (input) => {
 
     // Spawn very fast if the npc population is lower than minimum,
     // or spawn every second as long as the population is less than the maximum.
-    if ((oneSecondFlag && dataStore.npc.length < maxNpcPopulation) || dataStore.npc.length < minNpcPopulation) {
+    if ((oneSecondFlag && global.dataStore.npc.length < maxNpcPopulation) || global.dataStore.npc.length < minNpcPopulation) {
       // Random changes to spawn a certain npc.
       const spawnChance = random(99);
       switch (spawnChance) {
         case 33:
-          dataStore.npc.push(createNpc(io, 'a blessed wisp'));
+          global.dataStore.npc.push(createNpc(io, 'a blessed wisp'));
           break;
         case 6:
         case 66:
-          dataStore.npc.push(createNpc(io, 'an evil wisp'));
+          global.dataStore.npc.push(createNpc(io, 'an evil wisp'));
           break;
         default:
-          dataStore.npc.push(createNpc(io));
+          global.dataStore.npc.push(createNpc(io));
       }
     }
 
     // All npc that are close to each other will fight (bar exceptions, like blessed wisp).
     if (oneSecondFlag) {
-      dataStore.npc = npcVsNpc(dataStore.npc);
+      global.dataStore.npc = npcVsNpc(global.dataStore.npc);
     }
 
     // Current player fights nearby npc.
-    if (dataStore.players && Object.keys(dataStore.players).length > 0) {
-      const { players, npc } = playersVsNpc(dataStore.players, dataStore.npc);
-      dataStore.players = players;
-      dataStore.npc = npc;
+    if (oneSecondFlag && global.dataStore.players && Object.keys(global.dataStore.players).length > 0) {
+      const { players, npc } = playersVsNpc(global.dataStore.players, global.dataStore.npc);
+      global.dataStore.players = players;
+      global.dataStore.npc = npc;
     }
 
     // Respawn dead npc that have reached a certain height after they drifted upwards.
-    dataStore.npc = dataStore.npc.map((n) => {
-      if (n.life <= 0 && n.position[1] >= respawnHeight) {
-        n.life = n.respawnedLife;
-        n.fightMode = false;
-        n.position = randomPosition();
-      }
-
-      return n;
-    });
+    if (oneSecondFlag) {
+      global.dataStore.npc = global.dataStore.npc.map((n) => {
+        if (n.life <= 0 && n.position[1] >= respawnHeight) {
+          n.life = n.respawnedLife;
+          n.fightMode = false;
+          n.position = randomPosition();
+        }
+  
+        return n;
+      });
+    }
 
     // Update life, and fightMode for all npc after their fights.
-    const npcStates = dataStore.npc.map((n) => {
+    const npcStates = global.dataStore.npc.map((n) => {
       return {
         position: n.position,
         life: n.life,

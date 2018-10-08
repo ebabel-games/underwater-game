@@ -6,6 +6,7 @@
 - Refactor create-wisp, create-evil-wisp, create-blessed-wisp, npc, and player as ES6 class files instead of functions.
 - Fix 2 warnings in Production when running `forever`.
 - Remove concept of creation and state to merge them into one single collection of properties.
+- Make the server-side dataStore global.
 - Player vs npc fighting.
 
 ## 1.13.0
