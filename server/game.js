@@ -2,7 +2,7 @@ const gameloop = require('node-gameloop');
 
 const { random, randomPosition } = require('ebabel');
 const createNpc = require('./create-npc');
-const { npcMove } = require('./npc-move');
+const npcMove = require('./npc-move');
 const npcVsNpc = require('./npc-vs-npc');
 const playerVsNpc = require('./player-vs-npc');
 
@@ -92,6 +92,4 @@ const game = (input) => {
   }, 1000 / fps);
 };
 
-module.exports = {
-  game,
-};
+module.exports = game;

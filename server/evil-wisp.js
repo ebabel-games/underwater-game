@@ -1,4 +1,4 @@
-const { Wisp } = require('./wisp');
+const Wisp = require('./wisp');
 
 class EvilWisp extends Wisp {
   constructor(input) {
@@ -16,6 +16,4 @@ class EvilWisp extends Wisp {
   }
 }
 
-module.exports = {
-  EvilWisp,
-};
+module.exports = EvilWisp;

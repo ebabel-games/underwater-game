@@ -1,6 +1,6 @@
-const { Wisp } = require('./wisp');
-const { BlessedWisp } = require('./blessed-wisp');
-const { EvilWisp } = require('./evil-wisp');
+const Wisp = require('./wisp');
+const BlessedWisp = require('./blessed-wisp');
+const EvilWisp = require('./evil-wisp');
 
 // Create a new Non Playing Character.
 const createNpc = (io, name = 'a wisp') => {

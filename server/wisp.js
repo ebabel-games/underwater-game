@@ -27,6 +27,4 @@ class Wisp {
   }
 }
 
-module.exports = {
-  Wisp,
-};
+module.exports = Wisp;

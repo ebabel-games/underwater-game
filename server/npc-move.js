@@ -26,6 +26,4 @@ const npcMove = (npc) => npc.map((n) => {
   return n;
 });
 
-module.exports = {
-  npcMove,
-};
+module.exports = npcMove;
