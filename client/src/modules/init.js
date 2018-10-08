@@ -1,4 +1,4 @@
-const { spawnSprite } = require('./spawn-sprite');
+const spawnSprite = require('./spawn-sprite');
 
 // Particles setup.
 const particleTexture = new THREE.TextureLoader().load('assets/spark.png');
@@ -83,6 +83,4 @@ const init = (camera) => {
   });  
 };
 
-module.exports = {
-  init,
-};
+module.exports = init;

@@ -96,6 +96,4 @@ const render = (scene, clock, camera, renderer) => {
   };
 };
 
-module.exports = {
-  render,
-};
+module.exports = render;

@@ -37,6 +37,4 @@ const spawnSprite = (input) => {
   return sprite;
 };
 
-module.exports = {
-  spawnSprite,
-};
+module.exports = spawnSprite;

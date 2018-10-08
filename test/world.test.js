@@ -1,5 +1,10 @@
-const { mockTHREEx, mockTHREE, mockDataStore } = require('ebabel');
-const { world } = require('../client/src/modules/world');
+const {
+  mockTHREEx,
+  mockTHREE,
+  mockDataStore,
+} = require('ebabel');
+
+const world = require('../client/src/modules/world');
 
 let THREEx;
 let THREE;

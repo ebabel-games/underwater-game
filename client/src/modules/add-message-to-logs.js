@@ -17,6 +17,4 @@ const addMessageToLogs = (message) => {
   logsList.scrollTop = logsList.scrollHeight;
 };
 
-module.exports = {
-  addMessageToLogs,
-};
+module.exports = addMessageToLogs;

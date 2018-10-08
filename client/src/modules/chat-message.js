@@ -1,4 +1,4 @@
-const { addMessageToLogs } = require('./add-message-to-logs');
+const addMessageToLogs = require('./add-message-to-logs');
 
 // Multi-player chat.
 const chatMessage = () => {
@@ -24,6 +24,4 @@ const chatMessage = () => {
   };
 };
 
-module.exports = {
-  chatMessage,
-};
+module.exports = chatMessage;

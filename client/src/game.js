@@ -1,8 +1,8 @@
-const { init } = require('./modules/init');
-const { chatMessage } = require('./modules/chat-message');
-const { world } = require('./modules/world');
-const { render } = require('./modules/render');
-const { globalEventHandlers } = require('./modules/global-event-handlers');
+const init = require('./modules/init');
+const chatMessage = require('./modules/chat-message');
+const world = require('./modules/world');
+const render = require('./modules/render');
+const globalEventHandlers = require('./modules/global-event-handlers');
 
 // Main game module that co-ordinates all other modules.
 const game = (THREE, THREEx, dataStore) => {
@@ -30,6 +30,4 @@ const game = (THREE, THREEx, dataStore) => {
 
 game(THREE, THREEx, dataStore);
 
-module.exports = {
-  game,
-};
+module.exports = game;

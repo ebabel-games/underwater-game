@@ -71,6 +71,4 @@ const world = (input) => {
   };
 };
 
-module.exports = {
-  world,
-};
+module.exports = world;
