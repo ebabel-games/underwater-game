@@ -5,7 +5,7 @@ const { distance } = require('ebabel');
 const c = require('./constants');
 const resolveFight = require('./resolve-fight');
 
-const playersVsNpc = (players, npc) => {
+const playersVsNpc = (players, npc, io) => {
   const l = (players && Object.keys(players).length) || 0;
   const l2 = (npc && npc.length) || 0;
 
@@ -38,8 +38,10 @@ const playersVsNpc = (players, npc) => {
       player.life = fighterOneLife;
       opponentNpc.life = fighterTwoLife;
 
-      // todo: Update ***all clients*** the current player has lost or gained life, including client of current player.
       console.log(`${player.name}: ${player.life} vs ${opponentNpc.name}: ${opponentNpc.life}`);  /* eslint no-console: 0 */
+
+      // Update all clients the current player has lost or gained life.
+      io.emit('updatePlayerLife', { name: player.name, life: player.life });
 
       // Update dataStore.
       players[player.name].life = fighterOneLife;

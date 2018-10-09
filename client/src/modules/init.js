@@ -45,13 +45,31 @@ const init = (camera) => {
   // Update position of a player other than current one.
   socket.on('updateOtherPlayerPosition', (playerState) => {
     dataStore.otherPlayerStates[playerState.name].position = playerState.position;
+  });
 
-    // If that player state isn't in the scene of current player, add that other player now.
-    // const otherPlayerExists = dataStore.scene.children.filter(otherPlayer => otherPlayer.name === playerState.name).length;
-    // if (!otherPlayerExists) {
-    //   // Note: this other player had already spawned before the current one started playing.
-    //   dataStore.scene.add(spawnSprite({ spriteData: playerState, particleTexture, camera }));
-    // }
+  // Update life of players, only from server to all clients
+  // because the single source of truth for life is on the server-side.
+  socket.on('updatePlayerLife', (playerState) => {
+    if (dataStore.player.name === playerState.name) {
+      // Update current player.
+      dataStore.player.life = playerState.life;
+
+      // Update life of current player in scene.
+      dataStore.scene.children.filter(player => player.name === playerState.name)[0].userData.life = playerState.life;
+    }
+    
+    if (dataStore.player.name !== playerState.name) {
+      // Update other player.
+      dataStore.otherPlayerStates[playerState.name].life = playerState.life;
+
+      // Check if the other player is already in dataStore.scene.
+      const otherPlayer = dataStore.scene.children.filter(otherPlayer => otherPlayer.name === playerState.name);
+
+      // If the other player is in scene, update the life.
+      if (otherPlayer.length === 1) {
+        otherPlayer[0].userData.life = playerState.life;
+      }
+    }
   });
 
   socket.on('removePlayer', (name) => {

@@ -11,10 +11,13 @@ const render = (scene, clock, camera, renderer) => {
   // Update position of camera based on where the player moves to.
   const hasPlayerMoved = updatePlayerPositionRotation(camera, dataStore);
 
-  // Update position and rotation of current player.
+  // Update position and size of current player.
   const player = dataStore.scene && dataStore.scene.children.filter(child => child.name === dataStore.player.name);
   if (player && player[0]) {
     player[0].position.set(...dataStore.player.position);
+
+    const newSize = (dataStore.player.life > npcMinimumSize) ? dataStore.player.life : npcMinimumSize;
+    player[0].scale.set(newSize, newSize, 1.0);
   }
 
   // If the player moved, broadcast to all other players her new position.
@@ -25,7 +28,7 @@ const render = (scene, clock, camera, renderer) => {
     });
   }
 
-  // Update position and rotation of other players (not current one).
+  // Update position and life of other players (not current one).
   const otherPlayerStates = Object.keys(dataStore.otherPlayerStates).map((key) => dataStore.otherPlayerStates[key]);
   if (otherPlayerStates && otherPlayerStates.length) {
     otherPlayerStates.map((otherPlayerState) => {
@@ -34,7 +37,9 @@ const render = (scene, clock, camera, renderer) => {
       if (!otherPlayer || !otherPlayer.length || !otherPlayer[0].position) return;
 
       otherPlayer[0].position.set(...otherPlayerState.position);
-      otherPlayer[0].rotation.set(...otherPlayerState.rotation);
+
+      const newSize = (otherPlayerState.life > npcMinimumSize) ? otherPlayerState.life : npcMinimumSize;
+      otherPlayer[0].scale.set(newSize, newSize, 1.0);
     });
   }
 

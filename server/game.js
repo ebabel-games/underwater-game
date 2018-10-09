@@ -57,7 +57,7 @@ const game = (input) => {
 
     // Current player fights nearby npc.
     if (oneSecondFlag && global.dataStore.players && Object.keys(global.dataStore.players).length > 0) {
-      const { players, npc } = playersVsNpc(global.dataStore.players, global.dataStore.npc);
+      const { players, npc } = playersVsNpc(global.dataStore.players, global.dataStore.npc, io);
       global.dataStore.players = players;
       global.dataStore.npc = npc;
     }
