@@ -17,6 +17,9 @@ const playersVsNpc = (players, npc) => {
     if (player.life <= 0) return;
 
     for (let i2 = 0; i2 < l2; i2++) {
+      // If the player died with a previous sprite in this loop, skip all sprites.
+      if (player.life <= 0) continue;
+
       // Opponent npc.
       const opponentNpc = npc[i2];
   
@@ -27,6 +30,7 @@ const playersVsNpc = (players, npc) => {
       if (_distance > c.agroDistance || player.life <= 0) continue;
   
       // Set npc fightMode to true, so it stops moving in a random direction.
+      player.fightMode = true;
       opponentNpc.fightMode = true;
   
       // Fight resolution.
@@ -40,7 +44,14 @@ const playersVsNpc = (players, npc) => {
       global.dataStore.players[player.name].life = fighterOneLife;
 
       // Reset fightMode of opponentNpc if the player lost all life and opponentNpc is still alive.
-      if (player.life <= 0 && opponentNpc.life > 0) opponentNpc.fightMode = false;
+      if (player.life <= 0 && opponentNpc.life > 0) {
+        opponentNpc.fightMode = false;
+      }
+
+      // Reset fightMode of player if the opponentNpc lost all life and player is still alive.
+      if (opponentNpc <= 0 && player.life > 0) {
+        player.fightMode = false;
+      }
     }
   });
 
