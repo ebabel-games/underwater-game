@@ -3,15 +3,12 @@
 const gameloop = require('node-gameloop');
 
 const { random, randomPosition } = require('ebabel');
+
+const c = require('./constants');
 const createNpc = require('./create-npc');
 const npcMove = require('./npc-move');
 const npcVsNpc = require('./npc-vs-npc');
 const playersVsNpc = require('./players-vs-npc');
-
-const minNpcPopulation = 66;
-const maxNpcPopulation = 99;
-const defaultFps = 24;
-const respawnHeight = 10000;
 
 // Main server-side game function.
 // @io: socket.io
@@ -19,7 +16,7 @@ const respawnHeight = 10000;
 const game = (input) => {
   const {
     io,
-    fps = defaultFps
+    fps = c.defaultFps
   } = input;
 
   let frameCount = 0;
@@ -37,7 +34,7 @@ const game = (input) => {
 
     // Spawn very fast if the npc population is lower than minimum,
     // or spawn every second as long as the population is less than the maximum.
-    if ((oneSecondFlag && global.dataStore.npc.length < maxNpcPopulation) || global.dataStore.npc.length < minNpcPopulation) {
+    if ((oneSecondFlag && global.dataStore.npc.length < c.maxNpcPopulation) || global.dataStore.npc.length < c.minNpcPopulation) {
       // Random changes to spawn a certain npc.
       const spawnChance = random(99);
       switch (spawnChance) {
@@ -68,7 +65,7 @@ const game = (input) => {
     // Respawn dead npc that have reached a certain height after they drifted upwards.
     if (oneSecondFlag) {
       global.dataStore.npc = global.dataStore.npc.map((n) => {
-        if (n.life <= 0 && n.position[1] >= respawnHeight) {
+        if (n.life <= 0 && n.position[1] >= c.respawnHeight) {
           n.life = n.respawnedLife;
           n.fightMode = false;
           n.position = randomPosition();

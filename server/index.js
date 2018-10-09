@@ -5,6 +5,7 @@ const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
+const c = require('./constants');
 const game = require('./game');
 const Player = require('./player');
 const spawnMultipleNpc = require('./spawn-multiple-npc');
@@ -19,10 +20,7 @@ const {
 } = require('./message-players');
 
 // Central store that keeps state of the whole game, server-side.
-global.dataStore = {
-  npc: [],
-  players: {}
-};
+global.dataStore = c.dataStore;
 
 app.use(express.static('client'));
 

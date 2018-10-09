@@ -2,7 +2,8 @@
 
 const { distance } = require('ebabel');
 
-const agroDistance = 1000;
+const c = require('./constants');
+const resolveFight = require('./resolve-fight');
 
 const playersVsNpc = (players, npc) => {
   const l = (players && Object.keys(players).length) || 0;
@@ -16,22 +17,31 @@ const playersVsNpc = (players, npc) => {
     if (player.life <= 0) return;
 
     for (let i2 = 0; i2 < l2; i2++) {
-      // Defending npc.
-      const defenceNpc = npc[i2];
+      // Opponent npc.
+      const opponentNpc = npc[i2];
   
-      // Calculate distance from attackNpc to defenceNpc.
-      const _distance = distance(player.position, defenceNpc.position);
+      // Calculate distance from player to opponentNpc.
+      const _distance = distance(player.position, opponentNpc.position);
   
-      // Skip npc that are too far appart to fight each other.
-      if (_distance > agroDistance) continue;
+      // Skip npc that are too far appart to fight each other, or player with no life.
+      if (_distance > c.agroDistance || player.life <= 0) continue;
   
       // Set npc fightMode to true, so it stops moving in a random direction.
-      defenceNpc.fightMode = true;
+      opponentNpc.fightMode = true;
   
-      // todo: replace this automatic loss of life for npc by an actual fight.
-      defenceNpc.life = defenceNpc.life - 50;
-    }
+      // Fight resolution.
+      const { fighterOneLife, fighterTwoLife } = resolveFight(player, opponentNpc);
+      player.life = fighterOneLife;
+      opponentNpc.life = fighterTwoLife;
+      console.log(`${player.name}: ${player.life} vs ${opponentNpc.name}: ${opponentNpc.life}`);
 
+      // Update dataStore.
+      players[player.name].life = fighterOneLife;
+      global.dataStore.players[player.name].life = fighterOneLife;
+
+      // Reset fightMode of opponentNpc if the player lost all life and opponentNpc is still alive.
+      if (player.life <= 0 && opponentNpc.life > 0) opponentNpc.fightMode = false;
+    }
   });
 
   return { players, npc };
