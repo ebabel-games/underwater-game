@@ -11,7 +11,7 @@ const Player = require('./player');
 const spawnMultipleNpc = require('./spawn-multiple-npc');
 
 const spawnPlayer = require('./spawn-player');
-const updatePlayerState = require('./update-player-state');
+const updatePlayerPosition = require('./update-player-position');
 
 const {
   greetSinglePlayer,
@@ -58,7 +58,7 @@ io.on('connection', (socket) => {
 
     // Players.
     spawnPlayer(io, socket.id, global.dataStore.players[name]);
-    updatePlayerState(socket);
+    updatePlayerPosition(socket);
 
     // Confirm the player has been created.
     // For the current player, spawn all previously existing players in game.

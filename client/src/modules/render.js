@@ -17,17 +17,11 @@ const render = (scene, clock, camera, renderer) => {
     player[0].position.set(...dataStore.player.position);
   }
 
-  // If the player moved, broadcast to all other players her new position, and other useful state values.
+  // If the player moved, broadcast to all other players her new position.
   if (hasPlayerMoved && dataStore.player.name && dataStore.player.position) {
-    socket.emit('updatePlayerState', {
+    socket.emit('updatePlayerPosition', {
       name: dataStore.player.name,
-      life: dataStore.player.life,
       position: dataStore.player.position,
-      color: dataStore.player.color,
-      attack: dataStore.player.attack,
-      defence: dataStore.player.defence,
-      fightMode: dataStore.player.fightMode,
-      rotation: dataStore.player.rotation
     });
   }
 

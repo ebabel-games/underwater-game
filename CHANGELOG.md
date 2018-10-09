@@ -7,6 +7,8 @@
 - Fix 2 warnings in Production when running `forever`.
 - Remove concept of creation and state to merge them into one single collection of properties.
 - Make the server-side dataStore global.
+- When the player dies, he gets life back for no valid reason.
+- When the player dies, after a while, global.dataStore.players lose track of her.
 - Player vs npc fighting.
 
 ## 1.13.0

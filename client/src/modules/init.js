@@ -42,16 +42,16 @@ const init = (camera) => {
     dataStore.scene.add(spawnSprite({ spriteData: otherPlayerState, particleTexture, camera }));
   });
 
-  // Update state of a player other than current one.
-  socket.on('updateOtherPlayerStates', (playerState) => {
-    dataStore.otherPlayerStates[playerState.name] = playerState;
+  // Update position of a player other than current one.
+  socket.on('updateOtherPlayerPosition', (playerState) => {
+    dataStore.otherPlayerStates[playerState.name].position = playerState.position;
 
     // If that player state isn't in the scene of current player, add that other player now.
-    const otherPlayerExists = dataStore.scene.children.filter(otherPlayer => otherPlayer.name === playerState.name).length;
-    if (!otherPlayerExists) {
-      // Note: this other player had already spawned before the current one started playing.
-      dataStore.scene.add(spawnSprite({ spriteData: playerState, particleTexture, camera }));
-    }
+    // const otherPlayerExists = dataStore.scene.children.filter(otherPlayer => otherPlayer.name === playerState.name).length;
+    // if (!otherPlayerExists) {
+    //   // Note: this other player had already spawned before the current one started playing.
+    //   dataStore.scene.add(spawnSprite({ spriteData: playerState, particleTexture, camera }));
+    // }
   });
 
   socket.on('removePlayer', (name) => {
