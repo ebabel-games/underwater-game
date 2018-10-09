@@ -4,6 +4,9 @@ const { updatePlayerPositionRotation } = require('ebabel');
 
 const npcMinimumSize = 20;
 
+// Get the new size or the minimum size of any wisp sprite.
+const getNewSize = (life) => (life > npcMinimumSize) ? life : npcMinimumSize;
+
 const render = (scene, clock, camera, renderer) => {
   // Calculate Delta.
   const delta = clock.getDelta();
@@ -16,7 +19,7 @@ const render = (scene, clock, camera, renderer) => {
   if (player && player[0]) {
     player[0].position.set(...dataStore.player.position);
 
-    const newSize = (dataStore.player.life > npcMinimumSize) ? dataStore.player.life : npcMinimumSize;
+    const newSize = getNewSize(dataStore.player.life);
     player[0].scale.set(newSize, newSize, 1.0);
   }
 
@@ -38,7 +41,7 @@ const render = (scene, clock, camera, renderer) => {
 
       otherPlayer[0].position.set(...otherPlayerState.position);
 
-      const newSize = (otherPlayerState.life > npcMinimumSize) ? otherPlayerState.life : npcMinimumSize;
+      const newSize = getNewSize(otherPlayerState.life);
       otherPlayer[0].scale.set(newSize, newSize, 1.0);
     });
   }
@@ -67,10 +70,8 @@ const render = (scene, clock, camera, renderer) => {
       child.userData.life = newState.life;
       child.userData.fightMode = newState.fightMode;
 
-      // Minimum size of any npc.
-      const newSize = (child.userData.life > npcMinimumSize) ? child.userData.life : npcMinimumSize;
-
       // Update the size of npc based on its life.
+      const newSize = getNewSize(child.userData.life);
       child.scale.set(newSize, newSize, 1.0);
 
       // Update npc new position.
