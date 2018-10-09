@@ -1,6 +1,6 @@
 'strict';
 
-const { distance, reducedDistance, dice } = require('ebabel');
+const { distance, reducedDistance } = require('ebabel');
 
 const c = require('./constants');
 const resolveFight = require('./resolve-fight');

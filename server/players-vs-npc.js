@@ -33,7 +33,7 @@ const playersVsNpc = (players, npc) => {
       const { fighterOneLife, fighterTwoLife } = resolveFight(player, opponentNpc);
       player.life = fighterOneLife;
       opponentNpc.life = fighterTwoLife;
-      console.log(`${player.name}: ${player.life} vs ${opponentNpc.name}: ${opponentNpc.life}`);
+      console.log(`${player.name}: ${player.life} vs ${opponentNpc.name}: ${opponentNpc.life}`);  /* eslint no-console: 0 */
 
       // Update dataStore.
       players[player.name].life = fighterOneLife;
