@@ -2,7 +2,7 @@
 
 const updatePlayerPosition = (socket) => {
   socket.on('updatePlayerPosition', (playerState) => {
-    // Broadcast to all other players the state of the current player.
+    // Broadcast to all other players the position of the current player.
     socket.broadcast.emit('updateOtherPlayerPosition', playerState);
 
     // Update central store for a single player whose state has changed.

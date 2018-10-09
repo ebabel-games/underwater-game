@@ -37,6 +37,8 @@ const playersVsNpc = (players, npc) => {
       const { fighterOneLife, fighterTwoLife } = resolveFight(player, opponentNpc);
       player.life = fighterOneLife;
       opponentNpc.life = fighterTwoLife;
+
+      // todo: Update ***all clients*** the current player has lost or gained life, including client of current player.
       console.log(`${player.name}: ${player.life} vs ${opponentNpc.name}: ${opponentNpc.life}`);  /* eslint no-console: 0 */
 
       // Update dataStore.
