@@ -1,5 +1,8 @@
 # Underwater Game changelog
 
+## 1.15.0
+- Toggle combat music when a player enters a fight with an npc.
+
 ## 1.14.0
 - Refactor code into separate library of modules: [ebabel](https://www.npmjs.com/package/ebabel).
 - Dynamically centre the text of each sprite.
