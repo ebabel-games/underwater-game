@@ -9,8 +9,20 @@ const globalEventHandlers = require('./modules/global-event-handlers');
 // Main game module that co-ordinates all other modules.
 const game = (THREE, THREEx, dataStore) => {
   chatMessage();
-  const { scene, clock, camera, renderer } = world({ THREE, THREEx, dataStore }); /* no-unused-var: 0 */
-  render(scene, clock, camera, renderer);
+
+  const {
+    clock,
+    scene,
+    camera,
+    renderer,
+  } = world({ THREE, THREEx, dataStore }); /* no-unused-var: 0 */
+
+  render(
+    clock,
+    scene,
+    camera,
+    renderer,
+  );
 
   // Link scene and camera to dataStore.
   dataStore.scene = scene;
@@ -23,10 +35,10 @@ const game = (THREE, THREEx, dataStore) => {
   globalEventHandlers();
 
   return {
-    scene,
     clock,
+    scene,
     camera,
-    renderer
+    renderer,
   };
 };
 

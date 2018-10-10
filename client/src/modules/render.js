@@ -7,7 +7,12 @@ const npcMinimumSize = 20;
 // Get the new size or the minimum size of any wisp sprite.
 const getNewSize = (life) => (life > npcMinimumSize) ? life : npcMinimumSize;
 
-const render = (scene, clock, camera, renderer) => {
+const render = (
+    clock,
+    scene,
+    camera,
+    renderer,
+  ) => {
   // Calculate Delta.
   const delta = clock.getDelta();
 
@@ -86,7 +91,12 @@ const render = (scene, clock, camera, renderer) => {
   // Render the scene.
   renderer.render(scene, camera);
   requestAnimationFrame(() => {
-    render(scene, clock, camera, renderer);
+    render(
+      clock,
+      scene,
+      camera,
+      renderer,
+    );
   });
 
   return {
@@ -94,7 +104,7 @@ const render = (scene, clock, camera, renderer) => {
     scene,
     clock,
     camera,
-    renderer
+    renderer,
   };
 };
 

@@ -32,6 +32,9 @@ const playersVsNpc = (players, npc, io) => {
       // Set npc fightMode to true, so it stops moving in a random direction.
       player.fightMode = true;
       opponentNpc.fightMode = true;
+
+      // Update all clients the current player is in fightMode.
+      io.emit('updatePlayerFightMode', { name: player.name, fightMode: true });
   
       // Fight resolution.
       const { fighterOneLife, fighterTwoLife } = resolveFight(player, opponentNpc);
@@ -48,11 +51,13 @@ const playersVsNpc = (players, npc, io) => {
       // Reset fightMode of opponentNpc if the player lost all life and opponentNpc is still alive.
       if (player.life <= 0 && opponentNpc.life > 0) {
         opponentNpc.fightMode = false;
+        io.emit('updatePlayerFightMode', { name: player.name, fightMode: false });
       }
 
       // Reset fightMode of player if the opponentNpc lost all life and player is still alive.
       if (opponentNpc <= 0 && player.life > 0) {
         player.fightMode = false;
+        io.emit('updatePlayerFightMode', { name: player.name, fightMode: false });
       }
     }
   });
