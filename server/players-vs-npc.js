@@ -38,8 +38,6 @@ const playersVsNpc = (players, npc, io) => {
       player.life = fighterOneLife;
       opponentNpc.life = fighterTwoLife;
 
-      console.log(`${player.name}: ${player.life} vs ${opponentNpc.name}: ${opponentNpc.life}`);  /* eslint no-console: 0 */
-
       // Update all clients the current player has lost or gained life.
       io.emit('updatePlayerLife', { name: player.name, life: player.life });
 
