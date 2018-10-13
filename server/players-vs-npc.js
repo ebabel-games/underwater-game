@@ -55,7 +55,7 @@ const playersVsNpc = (players, npc, io) => {
       }
 
       // Reset fightMode of player if the opponentNpc lost all life and player is still alive.
-      if (opponentNpc <= 0 && player.life > 0) {
+      if (opponentNpc.life <= 0 && player.life > 0) {
         player.fightMode = false;
         io.emit('updatePlayerFightMode', { name: player.name, fightMode: false });
       }

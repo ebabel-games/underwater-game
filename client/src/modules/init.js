@@ -84,14 +84,20 @@ const init = (camera) => {
   socket.on('updatePlayerFightMode', (playerState) => {
     if (playerState.name ===  dataStore.player.name && playerState.fightMode) {
       dataStore.player.fightMode = true;
-      dataStore.scene.children.filter(c => c.name === 'default-music')[0].pause()
-      dataStore.scene.children.filter(c => c.name === 'combat-music')[0].play()
+      const audio = dataStore.scene.children.filter(c => c.type === 'Audio');
+      audio.map((a) => {
+        if (a.name === 'default-theme') a.pause();
+        if (a.name === 'combat-theme') a.play();
+      });
     }
 
     if (playerState.name ===  dataStore.player.name && !playerState.fightMode) {
       dataStore.player.fightMode = false;
-      dataStore.scene.children.filter(c => c.name === 'combat-music')[0].pause()
-      dataStore.scene.children.filter(c => c.name === 'default-music')[0].play()
+      const audio = dataStore.scene.children.filter(c => c.type === 'Audio');
+      audio.map((a) => {
+        if (a.name === 'default-theme') a.play();
+        if (a.name === 'combat-theme') a.pause();
+      });
     }
   });
 

@@ -4,9 +4,9 @@
 const globalEventHandlers = () => {
   window.addEventListener('adjustMasterVolume', (e) => {
     const masterVolume = e.detail.masterVolume;
-    const cameraListener = dataStore.camera.children.filter(c => c.name === 'camera-listener');
-    if (cameraListener && cameraListener[0])
-      cameraListener[0].setMasterVolume(masterVolume);
+    const cameraListeners = dataStore.camera.children.filter(c => c.type === 'AudioListener');
+    if (cameraListeners && cameraListeners.length)
+      cameraListeners.map((listener) => listener.setMasterVolume(masterVolume));
   });
 
   window.addEventListener('blur', () => {
