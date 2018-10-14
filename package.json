@@ -31,7 +31,7 @@
   "homepage": "https://github.com/ebabel-games/underwater-game#readme",
   "dependencies": {
     "ebabel": "^4.0.0",
-    "express": "^4.16.3",
+    "express": "^4.16.4",
     "node-gameloop": "^0.1.4",
     "socket.io": "^2.1.1"
   },
@@ -40,7 +40,7 @@
     "@babel/preset-env": "^7.1.0",
     "babel-eslint": "^9.0.0",
     "babel-loader": "^8.0.4",
-    "eslint": "^5.6.1",
+    "eslint": "^5.7.0",
     "jest": "^23.6.0",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2",
