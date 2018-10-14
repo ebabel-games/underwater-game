@@ -9,7 +9,7 @@ particleGroup.name = 'npc-group';
 
 const addNpc = (sprite) => {
   particleGroup.add(sprite);
-  dataStore.scene.add(particleGroup);
+  EG.scene.add(particleGroup);
 };
 
 const init = (camera) => {
@@ -27,43 +27,43 @@ const init = (camera) => {
 
   // Update npc states.
   socket.on('updateNpcStates', (npcStates) => {
-    dataStore.npcStates = npcStates;
+    EG.dataStore.npcStates = npcStates;
   });
 
   // Spawn current player.
   socket.on('spawnPlayer', (player) => {
-    dataStore.player = player;
-    dataStore.scene.add(spawnSprite({ spriteData: player, particleTexture, camera }));
+    EG.dataStore.player = player;
+    EG.scene.add(spawnSprite({ spriteData: player, particleTexture, camera }));
   });
 
   //  Spawn other player state that spawns after the current player.
   socket.on('addOtherPlayer', (otherPlayerState) => {
-    dataStore.otherPlayerStates[otherPlayerState.name] = otherPlayerState;
-    dataStore.scene.add(spawnSprite({ spriteData: otherPlayerState, particleTexture, camera }));
+    EG.dataStore.otherPlayerStates[otherPlayerState.name] = otherPlayerState;
+    EG.scene.add(spawnSprite({ spriteData: otherPlayerState, particleTexture, camera }));
   });
 
   // Update position of a player other than current one.
   socket.on('updateOtherPlayerPosition', (playerState) => {
-    dataStore.otherPlayerStates[playerState.name].position = playerState.position;
+    EG.dataStore.otherPlayerStates[playerState.name].position = playerState.position;
   });
 
   // Update life of players, only from server to all clients
   // because the single source of truth for life is on the server-side.
   socket.on('updatePlayerLife', (playerState) => {
-    if (dataStore.player.name === playerState.name) {
+    if (EG.dataStore.player.name === playerState.name) {
       // Update current player.
-      dataStore.player.life = playerState.life;
+      EG.dataStore.player.life = playerState.life;
 
       // Update life of current player in scene.
-      dataStore.scene.children.filter(player => player.name === playerState.name)[0].userData.life = playerState.life;
+      EG.scene.children.filter(player => player.name === playerState.name)[0].userData.life = playerState.life;
     }
     
-    if (dataStore.player.name !== playerState.name) {
+    if (EG.dataStore.player.name !== playerState.name) {
       // Update other player.
-      dataStore.otherPlayerStates[playerState.name].life = playerState.life;
+      EG.dataStore.otherPlayerStates[playerState.name].life = playerState.life;
 
-      // Check if the other player is already in dataStore.scene.
-      const otherPlayer = dataStore.scene.children.filter(otherPlayer => otherPlayer.name === playerState.name);
+      // Check if the other player is already in EG.scene.
+      const otherPlayer = EG.scene.children.filter(otherPlayer => otherPlayer.name === playerState.name);
 
       // If the other player is in scene, update the life.
       if (otherPlayer.length === 1) {
@@ -73,27 +73,27 @@ const init = (camera) => {
   });
 
   socket.on('removePlayer', (name) => {
-    // Remove other player from dataStore.
-    dataStore.otherPlayerStates[name] = undefined;
-    delete dataStore.otherPlayerStates[name];
+    // Remove other player from EG.dataStore.
+    EG.dataStore.otherPlayerStates[name] = undefined;
+    delete EG.dataStore.otherPlayerStates[name];
 
     // Remove other player from THREE.js scene.
-    dataStore.scene.remove(dataStore.scene.getObjectByName(name));
+    EG.scene.remove(EG.scene.getObjectByName(name));
   });
 
   socket.on('updatePlayerFightMode', (playerState) => {
-    if (playerState.name ===  dataStore.player.name && playerState.fightMode) {
-      dataStore.player.fightMode = true;
-      const sounds = dataStore.scene.children.filter(c => c.type === 'Audio');
+    if (playerState.name ===  EG.dataStore.player.name && playerState.fightMode) {
+      EG.dataStore.player.fightMode = true;
+      const sounds = EG.scene.children.filter(c => c.type === 'Audio');
       sounds.map((s) => {
         if (s.name === 'default-theme') s.pause();
         if (s.name === 'combat-theme') s.play();
       });
     }
 
-    if (playerState.name ===  dataStore.player.name && !playerState.fightMode) {
-      dataStore.player.fightMode = false;
-      const sounds = dataStore.scene.children.filter(c => c.type === 'Audio');
+    if (playerState.name ===  EG.dataStore.player.name && !playerState.fightMode) {
+      EG.dataStore.player.fightMode = false;
+      const sounds = EG.scene.children.filter(c => c.type === 'Audio');
       sounds.map((s) => {
         if (s.name === 'default-theme') s.play();
         if (s.name === 'combat-theme') s.stop();
@@ -107,13 +107,13 @@ const init = (camera) => {
       players
     } = input;
   
-    dataStore.player.name = name;
+    EG.dataStore.player.name = name;
     document.getElementById('splashScreen').style.display = 'none';
   
     Object.keys(players).map((_name) => {
       if (_name !== name) {
-        dataStore.otherPlayerStates[_name] = players[_name];
-        dataStore.scene.add(spawnSprite({ spriteData: players[_name], particleTexture, camera }));
+        EG.dataStore.otherPlayerStates[_name] = players[_name];
+        EG.scene.add(spawnSprite({ spriteData: players[_name], particleTexture, camera }));
       }
     });
   });

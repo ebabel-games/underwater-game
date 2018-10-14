@@ -24,9 +24,9 @@ const game = (THREE, THREEx, dataStore) => {
     renderer,
   );
 
-  // Link scene and camera to dataStore.
-  dataStore.scene = scene;
-  dataStore.camera = camera;
+  // Link scene and camera to EG namespace.
+  EG.scene = scene;
+  EG.camera = camera;
 
   // Initialise the socket listeners.
   init(camera);
@@ -42,6 +42,6 @@ const game = (THREE, THREEx, dataStore) => {
   };
 };
 
-game(THREE, THREEx, dataStore);
+game(THREE, THREEx, EG.dataStore);
 
 module.exports = game;

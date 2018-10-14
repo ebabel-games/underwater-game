@@ -4,7 +4,6 @@
 - Toggle combat music when a player enters a fight with an npc.
 - Use a new module: ebabel-audio, to handle both default theme, combat theme, and sound effects. ebabel-theme-music and ebabel-sound-effect will effectively be deprecated in favor of ebabel-audio.
 - On the client side, place global scope under EG (eBabel Games) namespace.
-- The camera.children has a large number of children AudioListener and they are duplicates. This must be improved: the duplicates are not needed. There is a duplicate listener for each sprite.
 
 ## 1.14.0
 - Refactor code into separate library of modules: [ebabel](https://www.npmjs.com/package/ebabel).

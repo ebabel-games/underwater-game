@@ -31,7 +31,7 @@ const spawnSprite = (input) => {
   const sound = audio({
     THREE,
     camera,
-    volume: dataStore.defaultVolume,
+    volume: EG.dataStore.defaultVolume,
     name: 'death',
     url: 'assets/sound-effects/spells/heal.ogg',
     distance: 20,

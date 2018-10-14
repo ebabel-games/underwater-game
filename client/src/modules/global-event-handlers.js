@@ -4,7 +4,7 @@
 const globalEventHandlers = () => {
   window.addEventListener('adjustMasterVolume', (e) => {
     const masterVolume = e.detail.masterVolume;
-    const cameraListeners = dataStore.camera.children.filter(c => c.type === 'AudioListener');
+    const cameraListeners = EG.camera.children.filter(c => c.type === 'AudioListener');
     if (cameraListeners && cameraListeners.length)
       cameraListeners.map((listener) => listener.setMasterVolume(masterVolume));
   });
@@ -14,15 +14,15 @@ const globalEventHandlers = () => {
   });
 
   window.addEventListener('focus', () => {
-    window.dispatchEvent(new CustomEvent('adjustMasterVolume', { detail: { masterVolume: dataStore.defaultVolume } }));
+    window.dispatchEvent(new CustomEvent('adjustMasterVolume', { detail: { masterVolume: EG.dataStore.defaultVolume } }));
   });
 
   document.getElementById('logsInput').addEventListener('focus', () => {
-    dataStore.disablePlayerControls = true;
+    EG.dataStore.disablePlayerControls = true;
   });
 
   document.getElementById('logsInput').addEventListener('blur', () => {
-    dataStore.disablePlayerControls = false;
+    EG.dataStore.disablePlayerControls = false;
   });
 };
 

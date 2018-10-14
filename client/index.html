@@ -223,18 +223,20 @@
 
   <script>
     var socket = io();
-    var dataStore = {
+    var EG = {
       scene: null,
       camera: null,
-      npcStates: [],
-      player: {
-        name: null,
-        position: [0, 0, 0],
-        rotation: [0, 0, 0],
-      },
-      otherPlayerStates: {},
-      disablePlayerControls: false,
-      defaultVolume: 1,
+      dataStore: {
+        npcStates: [],
+        player: {
+          name: null,
+          position: [0, 0, 0],
+          rotation: [0, 0, 0],
+        },
+        otherPlayerStates: {},
+        disablePlayerControls: false,
+        defaultVolume: 1,
+      }
     };
 
     document.getElementById('loginForm').addEventListener('submit', function(e) {
