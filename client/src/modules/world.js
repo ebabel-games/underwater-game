@@ -1,6 +1,6 @@
 'strict';
 
-const { light, skybox, keyboardControls, themeMusic } = require('ebabel');
+const { light, skybox, keyboardControls, audio } = require('ebabel');
 
 // Default renderer clear color.
 const _color = 0x0e0727;
@@ -34,27 +34,27 @@ const world = (input) => {
   const controls = keyboardControls(dataStore);
 
   // Setup main theme music.
-  const defaultTheme = themeMusic({
+  const defaultTheme = audio({
     THREE,
     camera,
     volume: dataStore.defaultVolume,
     url: 'assets/music/ambient2-nautilus.mp3',
     name: 'default-theme',
+    autostart: true,
+    loop: true,
   });
-  defaultTheme.sound.name = 'default-theme';
-  scene.add(defaultTheme.sound);
+  scene.add(defaultTheme);
 
   // Combat music.
-  const combatTheme = themeMusic({
+  const combatTheme = audio({
     THREE,
     camera,
     volume: 0.2,
     url: 'assets/music/hold-the-line.ogg',
     name: 'combat-theme',
-    autostart: false,
+    loop: true,
   });
-  combatTheme.sound.name = 'combat-theme';
-  scene.add(combatTheme.sound);
+  scene.add(combatTheme);
 
   // Setup main renderer for WebGL graphics.
   const renderer = new THREE.WebGLRenderer({ antialias: true });

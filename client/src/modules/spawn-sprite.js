@@ -1,6 +1,6 @@
 'strict';
 
-const { soundEffect, textSprite } = require('ebabel');
+const { audio, textSprite } = require('ebabel');
 
 const spawnSprite = (input) => {
   const {
@@ -28,11 +28,13 @@ const spawnSprite = (input) => {
   sprite.add(text);
 
   // Add sound effect to sprite.
-  const sound = soundEffect({
+  const sound = audio({
     THREE,
     camera,
+    volume: dataStore.defaultVolume,
     name: 'death',
     url: 'assets/sound-effects/spells/heal.ogg',
+    distance: 20,
   });
   sprite.add(sound);
   
