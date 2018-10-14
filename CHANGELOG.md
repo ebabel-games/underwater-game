@@ -1,5 +1,8 @@
 # Underwater Game changelog
 
+## 1.16.0
+- Give the player feedback on how much life she has.
+
 ## 1.15.0
 - Toggle combat music when a player enters a fight with an npc.
 - Use a new module: ebabel-audio, to handle both default theme, combat theme, and sound effects. ebabel-theme-music and ebabel-sound-effect will effectively be deprecated in favor of ebabel-audio.
