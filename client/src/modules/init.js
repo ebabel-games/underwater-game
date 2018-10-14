@@ -96,7 +96,7 @@ const init = (camera) => {
       const sounds = EG.scene.children.filter(c => c.type === 'Audio');
       sounds.map((s) => {
         if (s.name === 'default-theme') s.play();
-        if (s.name === 'combat-theme') s.stop();
+        if (s.name === 'combat-theme') s.pause();
       });
     }
   });

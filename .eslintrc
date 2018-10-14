@@ -10,7 +10,7 @@
     "socket": true,
     "THREE": true,
     "THREEx": true,
-    "dataStore": true,
+    "EG": true,
     "beforeEach": true,
     "test": true,
     "expect": true

@@ -11,7 +11,7 @@ const world = (input) => {
   const {
     THREE,
     THREEx,
-    dataStore,
+    EG,
     color = _color,
     opacity = _opacity
   } = input;
@@ -31,7 +31,7 @@ const world = (input) => {
   camera.rotation.set(...EG.dataStore.player.rotation);
 
   // Setup keyboard controls.
-  const controls = keyboardControls(dataStore);
+  const controls = keyboardControls(EG.dataStore);
 
   // Setup main theme music.
   const defaultTheme = audio({

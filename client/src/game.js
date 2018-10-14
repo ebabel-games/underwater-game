@@ -7,7 +7,7 @@ const render = require('./modules/render');
 const globalEventHandlers = require('./modules/global-event-handlers');
 
 // Main game module that co-ordinates all other modules.
-const game = (THREE, THREEx, dataStore) => {
+const game = (THREE, THREEx, EG) => {
   chatMessage();
 
   const {
@@ -15,7 +15,7 @@ const game = (THREE, THREEx, dataStore) => {
     scene,
     camera,
     renderer,
-  } = world({ THREE, THREEx, dataStore }); /* no-unused-var: 0 */
+  } = world({ THREE, THREEx, EG }); /* no-unused-var: 0 */
 
   render(
     clock,
@@ -42,6 +42,6 @@ const game = (THREE, THREEx, dataStore) => {
   };
 };
 
-game(THREE, THREEx, EG.dataStore);
+game(THREE, THREEx, EG);
 
 module.exports = game;
