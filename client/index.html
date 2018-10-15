@@ -45,7 +45,7 @@
     #playerWindow {
       top: 10px;
       right: 10px;
-      width: 232px;
+      min-width: 116px;
       height: auto;
     }
 
@@ -219,7 +219,7 @@
       <form action="#" id="loginForm">
         <h2>Player name</h2>
         <p>
-          <input type="text" id="name" min="3" max="8">
+          <input type="text" id="name" minlength="3" maxlength="8">
           <input type="submit" id="playButton" value="Play" disabled>
         </p>
         <div id="loading">
