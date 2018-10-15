@@ -37,12 +37,15 @@ const playersVsNpc = (players, npc, io) => {
       io.emit('updatePlayerFightMode', { name: player.name, fightMode: true });
   
       // Fight resolution.
-      const { fighterOneLife, fighterTwoLife } = resolveFight(player, opponentNpc);
+      const { fighterOneLife, fighterTwoLife, fightMessages } = resolveFight(player, opponentNpc);
       player.life = fighterOneLife;
       opponentNpc.life = fighterTwoLife;
 
       // Update all clients the current player has lost or gained life.
       io.emit('updatePlayerLife', { name: player.name, life: player.life });
+
+      // Message only the relevant player that she lost or gained life.
+      fightMessages.map((fightMessage) => io.to(player.socketId).emit('chatMessage', fightMessage));
 
       // Update dataStore.
       players[player.name].life = fighterOneLife;

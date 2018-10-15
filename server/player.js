@@ -11,6 +11,9 @@ class Player extends Wisp {
 
     this.position = [0, 0, 0];
     this.color[0] = 0.3583; // Hue.
+
+    // Communication to a single player: socketId.
+    this.socketId = input.socketId;
   }
 }
 

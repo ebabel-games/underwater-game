@@ -46,7 +46,7 @@ io.on('connection', (socket) => {
     }
 
     // Create the new player.
-    global.dataStore.players[name] = new Player({ name });
+    global.dataStore.players[name] = new Player({ name, socketId: socket.id });
 
     // Messages
     greetSinglePlayer(io, socket.id, name);
