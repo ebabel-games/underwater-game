@@ -54,6 +54,8 @@ const init = (camera) => {
       // Update current player.
       EG.dataStore.player.life = playerState.life;
 
+      document.getElementById('playerLife').textContent = playerState.life;
+
       // Update life of current player in scene.
       EG.scene.children.filter(player => player.name === playerState.name)[0].userData.life = playerState.life;
     }
@@ -106,6 +108,9 @@ const init = (camera) => {
       name,
       players
     } = input;
+
+    document.getElementById('playerName').textContent = name;
+    document.getElementById('playerLife').textContent = players[name].life;
   
     EG.dataStore.player.name = name;
     document.getElementById('splashScreen').style.display = 'none';

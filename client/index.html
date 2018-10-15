@@ -31,7 +31,7 @@
 
     .window {
       position: absolute;
-      background-color: rgba(0, 0, 128, .75);;
+      background-color: rgba(0, 0, 128, .5);;
       color: #ffff00;
       overflow: auto;
       padding: .5em .75em;
@@ -40,6 +40,13 @@
     .window p {
       margin: 0;
       line-height: 1.25em;
+    }
+
+    #playerWindow {
+      top: 10px;
+      right: 10px;
+      width: 232px;
+      height: auto;
     }
 
     #logsWindow {
@@ -185,6 +192,11 @@
   <script src="libraries.js"></script>
 </head>
 <body>
+  <div id="playerWindow" class="window">
+    <span id="playerName"></span>:
+    <span id="playerLife"></span> life
+  </div>
+
   <div id="logsWindow" class="window">
     <ul id="logsList"></ul>
     <form action="#" id="logsForm">
