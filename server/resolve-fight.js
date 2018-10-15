@@ -19,14 +19,14 @@ const fightRound = (attacker, defender) => {
     roundMessages.push(`${attacker.name} hits ${defender.name} for ${damage} life.`);
   } else {
     roundMessages.push(`${attacker.name} tries to hit ${defender.name} but misses.`);
-  };
+  }
 
   // When a blessed wisp gets attacked, if he still alive, he will heal the attacking npc.
   if (defender.name === 'a blessed wisp' && defender.life > 0) {
     const heal = random(3) * c.lifeMultiplier;
     attacker.life += heal;
     roundMessages.push(`${attacker.name} is healed for ${heal} life by ${defender.name}.`);
-  };
+  }
 
   return { attacker, defender, roundMessages };
 };
