@@ -65,7 +65,7 @@ const playersVsNpc = (players, npc, io) => {
         io.emit('updatePlayerFightMode', { name: player.name, fightMode: false });
       }
 
-      // If player has just died, signal this to player.
+      // If player has just died, signal this to all players.
       if (fighterOneLife <= 0) {
         io.emit('playerDied', player.name);
       }
