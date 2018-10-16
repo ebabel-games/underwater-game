@@ -1,6 +1,7 @@
 'strict';
 
 const spawnSprite = require('./spawn-sprite');
+const addMessageToLogs = require('./add-message-to-logs');
 
 // Particles setup.
 const particleTexture = new THREE.TextureLoader().load('assets/spark.png');
@@ -72,6 +73,10 @@ const init = (camera) => {
         otherPlayer[0].userData.life = playerState.life;
       }
     }
+  });
+
+  socket.on('playerDied', (name) => {
+    addMessageToLogs(`${name} has died.`);
   });
 
   socket.on('removePlayer', (name) => {

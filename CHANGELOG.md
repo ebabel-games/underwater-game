@@ -1,7 +1,12 @@
 # Underwater Game changelog
 
 ## 1.17.0
-- Add sound effect for a hit missing, a hit landing, a very large hit landing, the player dying.
+- Message all players when a player dies.
+- Add sound effect for a:
+  - hit missing,
+  - a hit landing,
+  - a very large hit landing,
+  - the player dying.
 
 ## 1.16.0
 - Give the player feedback on how much life she has.
