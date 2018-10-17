@@ -2,6 +2,8 @@
 
 ## 1.17.0
 - Message all players when a player dies.
+- Prevent elements selection on webpage.
+- Reset all margin and padding for all webpage elements.
 - Add sound effect for a:
   - hit missing,
   - a hit landing,

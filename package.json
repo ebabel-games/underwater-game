@@ -5,7 +5,7 @@
   "main": "server/index.js",
   "scripts": {
     "test": "npm run eslint && jest --coverage",
-    "eslint": "node ./node_modules/.bin/eslint ./server/*.js ./server/**/*.js ./client/*.js ./client/**/*.js",
+    "eslint": "node ./node_modules/.bin/eslint ./server/*.js ./server/**/*.js ./client/*.js ./client/**/*.js ./test/**/*.test.js",
     "build": "node ./node_modules/.bin/webpack --mode=development --devtool source-map",
     "watch": "node ./node_modules/.bin/webpack --mode=development --devtool source-map --watch --progress",
     "build-production": "node ./node_modules/.bin/webpack --mode=production",
