@@ -6,8 +6,17 @@ const {
   messageAllPlayers,
 } = require('../../server/message-players');
 
+let io;
+
+beforeEach(() => {
+  // Mock io.
+  io = {
+    emit: () => {},
+  };
+});
+
 test('greetSinglePlayer calls io.to() with socket id parameter', () => {
-  const result = greetSinglePlayer();
+  const result = greetSinglePlayer(io, 1, 'Thomas');
   expect(result).toBe(undefined);
 });
 
