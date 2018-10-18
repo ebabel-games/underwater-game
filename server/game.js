@@ -1,23 +1,22 @@
+'strict';
+
 const gameloop = require('node-gameloop');
 
-const { random, randomPosition } = require('./utils.js');
-const { createNpc } = require('./npc.js');
-const { npcMove } = require('./npc-move.js');
-const { npcFight } = require('./npc-fight.js');
+const { random, randomPosition } = require('ebabel');
 
-const minNpcPopulation = 66;
-const maxNpcPopulation = 99;
-const defaultFps = 6;
-const respawnHeight = 10000;
+const c = require('./constants');
+const createNpc = require('./create-npc');
+const npcMove = require('./npc-move');
+const npcVsNpc = require('./npc-vs-npc');
+const playersVsNpc = require('./players-vs-npc');
 
 // Main server-side game function.
 // @io: socket.io
 // @fps: number of frames per second.
-module.exports = (input) => {
+const game = (input) => {
   const {
     io,
-    dataStore,
-    fps = defaultFps
+    fps = c.defaultFps
   } = input;
 
   let frameCount = 0;
@@ -27,7 +26,7 @@ module.exports = (input) => {
   // Note: run gameloop.clearGameLoop(id); to stop the loop from running.
   const id = gameloop.setGameLoop((delta) => {  /* eslint no-unused-vars: 0 */
     // Move all npc sprites.
-    dataStore.npc = npcMove(dataStore.npc);
+    global.dataStore.npc = npcMove(global.dataStore.npc);
 
     // Runs every 1 second.
     oneSecond += delta;
@@ -35,44 +34,53 @@ module.exports = (input) => {
 
     // Spawn very fast if the npc population is lower than minimum,
     // or spawn every second as long as the population is less than the maximum.
-    if ((oneSecondFlag && dataStore.npc.length < maxNpcPopulation) || dataStore.npc.length < minNpcPopulation) {
+    if ((oneSecondFlag && global.dataStore.npc.length < c.maxNpcPopulation) || global.dataStore.npc.length < c.minNpcPopulation) {
       // Random changes to spawn a certain npc.
       const spawnChance = random(99);
       switch (spawnChance) {
         case 33:
-          dataStore.npc.push(createNpc(io, 'a blessed wisp'));
+          global.dataStore.npc.push(createNpc(io, 'a blessed wisp'));
           break;
         case 6:
         case 66:
-          dataStore.npc.push(createNpc(io, 'an evil wisp'));
+          global.dataStore.npc.push(createNpc(io, 'an evil wisp'));
           break;
         default:
-          dataStore.npc.push(createNpc(io));
+          global.dataStore.npc.push(createNpc(io));
       }
     }
 
     // All npc that are close to each other will fight (bar exceptions, like blessed wisp).
     if (oneSecondFlag) {
-      dataStore.npc = npcFight(dataStore.npc);
+      global.dataStore.npc = npcVsNpc(global.dataStore.npc);
+    }
+
+    // Current player fights nearby npc.
+    if (oneSecondFlag && global.dataStore.players && Object.keys(global.dataStore.players).length > 0) {
+      const { players, npc } = playersVsNpc(global.dataStore.players, global.dataStore.npc, io);
+      global.dataStore.players = players;
+      global.dataStore.npc = npc;
     }
 
     // Respawn dead npc that have reached a certain height after they drifted upwards.
-    dataStore.npc = dataStore.npc.map((n) => {
-      if (n.state.life <= 0 && n.state.position[1] >= respawnHeight) {
-        n.state.life = n.creation.life;
-        n.state.fightMode = false;
-        n.state.position = randomPosition();
-      }
-
-      return n;
-    });
+    if (oneSecondFlag) {
+      global.dataStore.npc = global.dataStore.npc.map((n) => {
+        if (n.life <= 0 && n.position[1] >= c.respawnHeight) {
+          n.life = n.respawnedLife;
+          n.fightMode = false;
+          n.position = randomPosition();
+        }
+  
+        return n;
+      });
+    }
 
     // Update life, and fightMode for all npc after their fights.
-    const npcStates = dataStore.npc.map((n) => {
+    const npcStates = global.dataStore.npc.map((n) => {
       return {
-        position: n.state.position,
-        life: n.state.life,
-        fightMode: n.state.fightMode,
+        position: n.position,
+        life: n.life,
+        fightMode: n.fightMode,
       };
     });
     io.emit('updateNpcStates', npcStates);
@@ -83,3 +91,5 @@ module.exports = (input) => {
     frameCount = frameCount + 1;
   }, 1000 / fps);
 };
+
+module.exports = game;

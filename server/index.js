@@ -1,19 +1,26 @@
+'strict';
+
 const express = require('express');
 const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
-const game = require('./game.js');
-const player = require('./player.js');
-const { greetSinglePlayer, waveOtherPlayers, messageAllPlayers } = require('./message-players.js');
-const { spawnMultipleNpc } = require('./spawn-multiple-npc.js');
-const { spawnPlayer, updatePlayerState  } = require('./spawn-players.js');
+const c = require('./constants');
+const game = require('./game');
+const Player = require('./player');
+const spawnMultipleNpc = require('./spawn-multiple-npc');
 
-// Central store that keeps state of the whole game.
-const dataStore = {
-  npc: [],
-  players: {}
-};
+const spawnPlayer = require('./spawn-player');
+const updatePlayerPosition = require('./update-player-position');
+
+const {
+  greetSinglePlayer,
+  waveOtherPlayers,
+  messageAllPlayers,
+} = require('./message-players');
+
+// Central store that keeps state of the whole game, server-side.
+global.dataStore = c.dataStore;
 
 app.use(express.static('client'));
 
@@ -33,13 +40,13 @@ io.on('connection', (socket) => {
     _name = name;
 
     // Check if that name isn't used by a player.
-    if (dataStore.players[name] !== undefined) {
+    if (global.dataStore.players[name] !== undefined) {
       io.to(socket.id).emit('nameNotAvailable', name);
       return;
     }
 
     // Create the new player.
-    dataStore.players[name] = player(name);
+    global.dataStore.players[name] = new Player({ name, socketId: socket.id });
 
     // Messages
     greetSinglePlayer(io, socket.id, name);
@@ -47,21 +54,21 @@ io.on('connection', (socket) => {
     messageAllPlayers(socket, io);
 
     // NPC.
-    spawnMultipleNpc(io, socket.id, dataStore.npc);
+    spawnMultipleNpc(io, socket.id, global.dataStore.npc);
 
     // Players.
-    spawnPlayer(io, socket.id, dataStore.players[name]);
-    updatePlayerState(socket);
+    spawnPlayer(io, socket.id, global.dataStore.players[name]);
+    updatePlayerPosition(socket);
 
     // Confirm the player has been created.
     // For the current player, spawn all previously existing players in game.
     io.to(socket.id).emit('playerCreated', {
       name,
-      players: dataStore.players
+      players: global.dataStore.players
     });
 
     // Spawn the current player on all existing player clients.
-    socket.broadcast.emit('addOtherPlayer', dataStore.players[name].state);
+    socket.broadcast.emit('addOtherPlayer', global.dataStore.players[name]);
   });
 
   socket.on('disconnect', () => {
@@ -70,7 +77,7 @@ io.on('connection', (socket) => {
     socket.broadcast.emit('chatMessage', `${_name} has left.`);
 
     // Delete player.
-    delete dataStore.players[_name];
+    delete global.dataStore.players[_name];
 
     // Remove player from all other clients when he stops playing.
     socket.broadcast.emit('removePlayer', _name);
@@ -84,4 +91,4 @@ http.listen(port, () => {
 });
 
 // Start the server-side game.
-game({ io, dataStore });
+game({ io });

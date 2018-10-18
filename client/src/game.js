@@ -1,18 +1,32 @@
-import { init } from './modules/init.js';
-import { chatMessage } from './modules/chat-message.js';
-import { world } from './modules/world.js';
-import { render } from './modules/render.js';
-import { globalEventHandlers } from './modules/global-event-handlers.js';
+'strict';
+
+const init = require('./modules/init');
+const chatMessage = require('./modules/chat-message');
+const world = require('./modules/world');
+const render = require('./modules/render');
+const globalEventHandlers = require('./modules/global-event-handlers');
 
 // Main game module that co-ordinates all other modules.
-const game = (THREE, THREEx) => {
+const game = (THREE, THREEx, EG) => {
   chatMessage();
-  const { scene, clock, camera, renderer } = world({ THREE, THREEx }); /* no-unused-var: 0 */
-  render(scene, clock, camera, renderer);
 
-  // Link scene and camera to dataStore.
-  dataStore.scene = scene;
-  dataStore.camera = camera;
+  const {
+    clock,
+    scene,
+    camera,
+    renderer,
+  } = world({ THREE, THREEx, EG }); /* no-unused-var: 0 */
+
+  render(
+    clock,
+    scene,
+    camera,
+    renderer,
+  );
+
+  // Link scene and camera to EG namespace.
+  EG.scene = scene;
+  EG.camera = camera;
 
   // Initialise the socket listeners.
   init(camera);
@@ -21,13 +35,13 @@ const game = (THREE, THREEx) => {
   globalEventHandlers();
 
   return {
-    scene,
     clock,
+    scene,
     camera,
-    renderer
+    renderer,
   };
 };
 
-game(THREE, THREEx);
+game(THREE, THREEx, EG);
 
-export { game };
+module.exports = game;

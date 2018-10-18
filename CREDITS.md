@@ -86,3 +86,8 @@ Source: http://hslpicker.com/
 
 ## Animation of a group of fishes
 Source: http://altspacevr.github.io/AltspaceJam/fish/fish.html
+
+## Fight music
+- assets/music/hold-the-line.ogg
+Author: Bart Kelsey
+Source: https://opengameart.org/content/hold-line-boss-theme

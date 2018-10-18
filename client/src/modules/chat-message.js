@@ -1,4 +1,6 @@
-import { addMessageToLogs } from './add-message-to-logs.js';
+'strict';
+
+const addMessageToLogs = require('./add-message-to-logs');
 
 // Multi-player chat.
 const chatMessage = () => {
@@ -11,7 +13,7 @@ const chatMessage = () => {
     const chatMessage = document.getElementById('logsInput').value;
 
     // Emit current player chat message to all players, via server side.
-    socket.emit('chatMessage', { chatMessage, name: dataStore.player.state.name });
+    socket.emit('chatMessage', { chatMessage, name: EG.dataStore.player.name });
 
     // Clear content and remove focus from logs input field.
     const logsInput = document.getElementById('logsInput');
@@ -24,4 +26,4 @@ const chatMessage = () => {
   };
 };
 
-export { chatMessage };
+module.exports = chatMessage;

@@ -1,7 +1,6 @@
-import { light } from './light.js';
-import { skybox } from './skybox.js';
-import { keyboardControls } from './keyboard-controls.js';
-import { themeMusic } from './theme-music.js';
+'strict';
+
+const { light, skybox, keyboardControls, audio } = require('ebabel');
 
 // Default renderer clear color.
 const _color = 0x0e0727;
@@ -12,6 +11,7 @@ const world = (input) => {
   const {
     THREE,
     THREEx,
+    EG,
     color = _color,
     opacity = _opacity
   } = input;
@@ -27,14 +27,34 @@ const world = (input) => {
   // Setup camera as the subjective first person point of view of current player.
   const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 100000);
   camera.name = 'player-first-view-camera';
-  camera.position.set(...dataStore.player.state.position);
-  camera.rotation.set(...dataStore.player.state.rotation);
+  camera.position.set(...EG.dataStore.player.position);
+  camera.rotation.set(...EG.dataStore.player.rotation);
 
   // Setup keyboard controls.
-  const controls = keyboardControls();
+  const controls = keyboardControls(EG.dataStore);
 
   // Setup main theme music.
-  const music = themeMusic({ camera });
+  const defaultTheme = audio({
+    THREE,
+    camera,
+    volume: EG.dataStore.defaultVolume,
+    url: 'assets/music/ambient2-nautilus.mp3',
+    name: 'default-theme',
+    autostart: true,
+    loop: true,
+  });
+  scene.add(defaultTheme);
+
+  // Combat music.
+  const combatTheme = audio({
+    THREE,
+    camera,
+    volume: 0.2,
+    url: 'assets/music/hold-the-line.ogg',
+    name: 'combat-theme',
+    loop: true,
+  });
+  scene.add(combatTheme);
 
   // Setup main renderer for WebGL graphics.
   const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -49,7 +69,12 @@ const world = (input) => {
   light({ THREE, scene });
 
   // Skybox.
-  skybox(scene);
+  skybox({
+    THREE,
+    scene,
+    directions:  ['ft', 'bk', 'up', 'dn', 'rt', 'lf']
+      .map((direction) => `../assets/whirlpool/large-files/whirlpool_${direction}.jpg`)
+  });
 
   return {
     clock,
@@ -58,8 +83,7 @@ const world = (input) => {
     renderer,
     controls,
     windowResize,
-    music
   };
 };
 
-export { world };
+module.exports = world;
