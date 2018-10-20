@@ -1,32 +1,19 @@
 'strict';
 
+const { mockSocket, mockIo } = require('ebabel');
+
 const {
   greetSinglePlayer,
   waveOtherPlayers,
   messageAllPlayers,
 } = require('../../server/message-players');
 
-let io;
 let socket;
+let io;
 
 beforeEach(() => {
-  // Mock io.
-  io = {
-    emit: () => {},
-    to: () => {
-      return {
-        emit: () => {} 
-      };
-    },
-  };
-
-  // Mock socket.
-  socket = {
-    on: () => {},
-    broadcast: {
-      emit: () => {},
-    },
-  };
+  socket = mockSocket;
+  io = mockIo;
 });
 
 test('greetSinglePlayer calls io.to() with socket id parameter', () => {

@@ -1,19 +1,13 @@
 'strict';
 
+const { mockIo } = require('ebabel');
+
 const spawnPlayer = require('../../server/spawn-player');
 
 let io;
 
 beforeEach(() => {
-  // Mock io.
-  io = {
-    emit: () => {},
-    to: () => {
-      return {
-        emit: () => {} 
-      };
-    },
-  };
+  io = mockIo;
 });
 
 test('spawnPlayer returns undefined', () => {

@@ -1,19 +1,13 @@
 'strict';
 
+const { mockIo } = require('ebabel');
+
 const spawnMultipleNpc = require('../../server/spawn-multiple-npc');
 
 let io;
 
 beforeEach(() => {
-  // Mock io.
-  io = {
-    emit: () => {},
-    to: () => {
-      return {
-        emit: () => {} 
-      };
-    },
-  };
+  io = mockIo;
 });
 
 test('spawnMultipleNpc returns undefined.', () => {

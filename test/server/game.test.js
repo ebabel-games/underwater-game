@@ -1,19 +1,15 @@
 'strict';
 
+const { mockEG, mockIo } = require('ebabel');
+
 const game = require('../../server/game');
 
-const { mockEG } = require('ebabel');
-
-let io;
 let EG;
+let io;
 
 beforeEach(() => {
-  // Mock io.
-  io = {
-    emit: () => {},
-  };
-
   EG = mockEG;
+  io = mockIo;
   global.dataStore = EG.dataStore;
   global.dataStore.npc = [];
 });

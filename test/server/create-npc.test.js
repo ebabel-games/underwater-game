@@ -1,14 +1,13 @@
 'strict';
 
+const { mockIo } = require('ebabel');
+
 const createNpc = require('../../server/create-npc');
 
 let io;
 
 beforeEach(() => {
-  // Mock io.
-  io = {
-    emit: () => {},
-  };
+  io = mockIo;
 });
 
 test('createNpc creates a wisp by default.', () => {
