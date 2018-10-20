@@ -6,7 +6,7 @@ const {
   mockEG,
 } = require('ebabel');
 
-const world = require('../client/src/modules/world');
+const world = require('../../client/src/modules/world');
 
 let THREEx;
 let THREE;

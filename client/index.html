@@ -19,9 +19,19 @@
   <meta name="theme-color" content="#3c6478">
 
   <style>
-    body {
+    * {
+      /* Prevent selecting items on webpage */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+
+      /* Global reset of all default margin and padding */
       margin: 0;
       padding: 0;
+    }
+
+    body {
       font-family: Arial, Helvetica, sans-serif;
       font-size: 12px;
       overflow: hidden;
@@ -38,7 +48,6 @@
     }
 
     .window p {
-      margin: 0;
       line-height: 1.25em;
     }
 
@@ -57,8 +66,7 @@
     }
 
     #logsWindow ul {
-      margin: 0 0 5px;
-      padding: 0;
+      margin-bottom: 5px;
       height: 90px;
       overflow: hidden;
     }
@@ -91,7 +99,7 @@
 
     #splashScreen h1,
     #splashScreen h2 {
-      margin: 0 0 .5em;
+      margin-bottom: .5em;
     }
 
     #splashScreen h1 {
@@ -105,8 +113,7 @@
     }
 
     #splashScreen ul {
-      margin: 0 0 1em;
-      padding-left: 0;
+      margin-bottom: 1em;
     }
 
     #splashScreen ul li {
@@ -114,7 +121,7 @@
     }
 
     #splashScreen p {
-      margin: 0 0 .25em;
+      margin-bottom: .25em;
     }
 
     #splashScreen .key {
@@ -168,7 +175,7 @@
     }
 
     #splashScreen #loading {
-      margin: 1em 0 0;
+      margin-top: 1em;
     }
 
     #splashScreen #loading p {
@@ -176,7 +183,6 @@
       color: #7fffd4;
       display: inline-block;
       line-height: 32px;
-      margin: 0;
       vertical-align: super;
     }
 

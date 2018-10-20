@@ -90,6 +90,8 @@ const game = (input) => {
 
     frameCount = frameCount + 1;
   }, 1000 / fps);
+
+  return id;
 };
 
 module.exports = game;
