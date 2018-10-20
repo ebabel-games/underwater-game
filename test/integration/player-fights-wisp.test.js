@@ -121,6 +121,51 @@ test('Round 6 - Setup a player (with 100 life) and a mob then fight until either
   expect(thomas.life <= 0 || mob.life <= 0).toBe(true);
 });
 
-// todo: get a player to fight multiple wisps, one after the other, until the player dies, and record how many fights the player fought.
+test('Player fights multiple wisps, one after the other, until the player dies', () => {
+  let mobsFought = 1;
 
-// todo: get a player to fight several wisps at the same time and see how many mobs he can handle at the same time. Record this.
+  logger.info(`Fight start: ${thomas.name} ${thomas.life} life.`);
+
+  const fightMessages = [];
+  while(thomas.life > 0) {
+    const result = resolveFight(thomas, mob);
+    fightMessages.push(...result.fightMessages);
+
+    if (mob.life <= 0) {
+      mob = new Wisp();
+      mobsFought += 1;
+    }
+  }
+  fightMessages.map((message) => logger.info(message));
+
+  logger.info(`Fight result: ${fightMessages.length} rounds, ${thomas.name} ${thomas.life} life, ${mobsFought} mobs fought.`);
+
+  expect(thomas.life <= 0).toBe(true);
+});
+
+test('Player fights 2 wisps at the same time.', () => {
+  const mob1 = new Wisp();
+  const mob2 = new Wisp();
+
+  logger.info(`Fight start: ${thomas.name} ${thomas.life} life, 2 mobs ${mob1.life} life and ${mob2.life} life.`);
+
+  const fightMessages = [];
+  while(thomas.life > 0) {
+    const result1 = resolveFight(thomas, mob1);
+    fightMessages.push(...result1.fightMessages);
+
+    // Only keep fighting if player is still alive.
+    if (thomas.life > 0) {
+      const result2 = resolveFight(thomas, mob2);
+      fightMessages.push(...result2.fightMessages);
+    }
+
+    // Stop fightings if both mob1 and mob2 are dead.
+    if (mob1.life <= 0 && mob2.life <= 0) break;
+  }
+  fightMessages.map((message) => logger.info(message));
+
+  logger.info(`Fight result: ${fightMessages.length} rounds, ${thomas.name} ${thomas.life} life, 2 mobs fought, ${mob1.life} life and ${mob2.life} life.`);
+
+  expect(thomas.life <= 0 || (mob1.life <= 0 && mob2.life <= 0)).toBe(true);
+});
