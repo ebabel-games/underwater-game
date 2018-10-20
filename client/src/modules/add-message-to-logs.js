@@ -1,3 +1,5 @@
+'strict';
+
 const addMessageToLogs = (message) => {
   const logsList = document.getElementById('logsList');
   const li = document.createElement('li');
@@ -17,6 +19,4 @@ const addMessageToLogs = (message) => {
   logsList.scrollTop = logsList.scrollHeight;
 };
 
-module.exports = {
-  addMessageToLogs,
-};
+module.exports = addMessageToLogs;

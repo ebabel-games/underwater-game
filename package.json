@@ -1,6 +1,6 @@
 {
   "name": "underwater-game",
-  "version": "1.14.0",
+  "version": "1.16.0",
   "description": "Aquatic 3D HTML5 game of survival, fighting underwater creatures in a web browser.",
   "main": "server/index.js",
   "scripts": {
@@ -10,11 +10,12 @@
     "watch": "node ./node_modules/.bin/webpack --mode=development --devtool source-map --watch --progress",
     "build-production": "node ./node_modules/.bin/webpack --mode=production",
     "start": "npm run build && node --use_strict ./server/index.js",
-    "start-production": "export NODE_ENV=production&& npm run build-production && forever stop ./server/index.js && forever start ./server/index.js"
+    "stop-production": "forever stopall",
+    "start-production": "export NODE_ENV=production&& npm run build-production && npm run stop-production && forever --minUptime 5000 --spinSleepTime 5000 start ./server/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ebabel-eu/underwater-game.git"
+    "url": "git+https://github.com/ebabel-games/underwater-game.git"
   },
   "keywords": [
     "game"
@@ -25,12 +26,12 @@
   ],
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/ebabel-eu/underwater-game/issues"
+    "url": "https://github.com/ebabel-games/underwater-game/issues"
   },
-  "homepage": "https://github.com/ebabel-eu/underwater-game#readme",
+  "homepage": "https://github.com/ebabel-games/underwater-game#readme",
   "dependencies": {
-    "ebabel": "^2.3.0",
-    "express": "^4.16.3",
+    "ebabel": "^4.1.1",
+    "express": "^4.16.4",
     "node-gameloop": "^0.1.4",
     "socket.io": "^2.1.1"
   },
@@ -39,7 +40,7 @@
     "@babel/preset-env": "^7.1.0",
     "babel-eslint": "^9.0.0",
     "babel-loader": "^8.0.4",
-    "eslint": "^5.6.1",
+    "eslint": "^5.7.0",
     "jest": "^23.6.0",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2",

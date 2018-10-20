@@ -1,3 +1,5 @@
+'strict';
+
 const { trait, positive, randomPosition } = require('ebabel');
 
 class Wisp {
@@ -21,9 +23,10 @@ class Wisp {
       || false;
     this.color = input.color
       || [0.64, 0.9, 0.7]; // Hue, saturation, and lightness.
+
+    // Life when respawned.
+    this.respawnedLife = this.life;
   }
 }
 
-module.exports = {
-  Wisp,
-};
+module.exports = Wisp;
