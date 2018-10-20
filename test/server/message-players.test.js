@@ -12,6 +12,11 @@ beforeEach(() => {
   // Mock io.
   io = {
     emit: () => {},
+    to: () => {
+      return {
+        emit: () => {} 
+      };
+    },
   };
 });
 
