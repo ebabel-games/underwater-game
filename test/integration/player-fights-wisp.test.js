@@ -121,10 +121,6 @@ test('Round 6 - Setup a player (with 100 life) and a mob then fight until either
   expect(thomas.life <= 0 || mob.life <= 0).toBe(true);
 });
 
+// todo: get a player to fight multiple wisps, one after the other, until the player dies, and record how many fights the player fought.
 
-//test('analyze and summarise log file - average and standard deviation for battle rounds over all the tests', () => {
-// tbc - but want to run:
-// grep result player_fights_wisp.log|awk '{sum+=$7; sumsq+=$7*$7} END {print "AVG :" sum/NR " STD_DEV:" sqrt(sumsq/NR - (sum/NR)**2)}'
-//});
-
-
+// todo: get a player to fight several wisps at the same time and see how many mobs he can handle at the same time. Record this.
