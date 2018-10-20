@@ -31,8 +31,6 @@ test('Fight 1 - Setup a player and a mob then fight until either of them dies.',
   expect(thomas.life <= 0 || mob.life <= 0).toBe(true);
 });
 
-
-
 test('Fight 2 - Setup a player (with 500 life) and a mob then fight until either of them dies.', () => {
   thomas.life = 500;
 
@@ -51,7 +49,6 @@ test('Fight 2 - Setup a player (with 500 life) and a mob then fight until either
 
   expect(thomas.life <= 0 || mob.life <= 0).toBe(true);
 });
-
 
 test('Fight 3 - Setup a player (with 400 life) and a mob then fight until either of them dies.', () => {
   thomas.life = 400;
@@ -72,7 +69,6 @@ test('Fight 3 - Setup a player (with 400 life) and a mob then fight until either
   expect(thomas.life <= 0 || mob.life <= 0).toBe(true);
 });
 
-
 test('Fight 4 - Setup a player (with 300 life) and a mob then fight until either of them dies.', () => {
   thomas.life = 300;
 
@@ -92,7 +88,6 @@ test('Fight 4 - Setup a player (with 300 life) and a mob then fight until either
   expect(thomas.life <= 0 || mob.life <= 0).toBe(true);
 });
 
-
 test('Fight 5 - Setup a player (with 200 life) and a mob then fight until either of them dies.', () => {
   thomas.life = 200;
 
@@ -111,8 +106,6 @@ test('Fight 5 - Setup a player (with 200 life) and a mob then fight until either
 
   expect(thomas.life <= 0 || mob.life <= 0).toBe(true);
 });
-
-
 
 test('Round 6 - Setup a player (with 100 life) and a mob then fight until either of them dies.', () => {
   thomas.life = 100;
