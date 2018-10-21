@@ -31,10 +31,10 @@ const spawnSprite = (input) => {
   let url;
   switch (sprite.name) {
     case 'a wisp':
-      url = 'assets/sound-effects/spells/curse2.ogg';
+      url = 'assets/sound-effects/spells/magicdrop.ogg';
       break;
     case 'an evil wisp':
-      url = 'assets/sound-effects/spells/curse4.ogg';
+      url = 'assets/sound-effects/spells/zap.ogg';
       break;
     case 'a blessed wisp':
       url = 'assets/sound-effects/spells/heal.ogg';

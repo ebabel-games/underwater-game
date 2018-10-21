@@ -5,7 +5,7 @@ const log4jsConfig = (filename) => {
     appenders: {
       summary: {
         type: 'file',
-        filename: `logs/integration/${filename}.${date}.log`,
+        filename: `logs/integration-summary/${filename}.${date}.log`,
       },
       full: {
         type: 'file',
