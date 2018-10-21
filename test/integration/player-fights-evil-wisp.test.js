@@ -2,7 +2,7 @@
 
 const log4js = require('log4js');
 const log4jsConfig = require('./log4js-config');
-log4js.configure(log4jsConfig('player-fights-wisp'));
+log4js.configure(log4jsConfig('player-fights-evil-wisp'));
 
 const summaryLogger = log4js.getLogger('summary');
 summaryLogger.level = 'all';
@@ -11,7 +11,7 @@ const fullLogger = log4js.getLogger('full');
 fullLogger.level = 'all';
 
 const Player = require('../../server/player');
-const Wisp = require('../../server/wisp');
+const EvilWisp = require('../../server/evil-wisp');
 const resolveFight = require('../../server/resolve-fight');
 
 let thomas;
@@ -22,7 +22,7 @@ const logMessage = (message) => `Fight summary: ${message.playerName} ${message.
 beforeEach(() => {
   thomas = new Player({ socketId: 1, name: 'Thomas' });
   fullLogger.info(`Player ${thomas.name} pops ${JSON.stringify(thomas)}.`);
-  mob = new Wisp();
+  mob = new EvilWisp();
   fullLogger.info(`${mob.name} pops ${JSON.stringify(mob)}.`);
 });
 
