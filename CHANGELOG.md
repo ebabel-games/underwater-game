@@ -4,10 +4,11 @@
 - Message all players when a player dies.
 - Prevent elements selection on webpage.
 - Reset all margin and padding for all webpage elements.
-- Add sound effect for a:
+- Add unit and integration tests, with integration tests logging (log4js).
+- Add sound effect for:
   - hit missing,
-  - a hit landing,
-  - a very large hit landing,
+  - hit landing,
+  - very large hit landing,
   - the player dying.
 
 ## 1.16.0

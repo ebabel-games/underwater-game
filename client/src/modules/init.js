@@ -77,6 +77,23 @@ const init = (camera) => {
 
   socket.on('playerDied', (name) => {
     addMessageToLogs(`${name} has died.`);
+
+    let player;
+    if (EG.dataStore.player.name === name) {
+      player = EG.scene.children.filter(c => c.name === name);
+    }
+
+    if (!player || player.length !== 1) {
+      return;
+    }
+
+    const deathAudio = player[0].children.filter(c => c.type === 'Audio' && c.name === 'death');
+
+    if (!deathAudio || deathAudio.length !== 1) {
+      return;
+    }
+
+    deathAudio[0].play();
   });
 
   socket.on('removePlayer', (name) => {
