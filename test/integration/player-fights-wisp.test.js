@@ -38,9 +38,9 @@ const resolveFight = require('../../server/resolve-fight');
 let thomas;
 let mob;
 
-const logMessage1 = (message) => `Fight summary: ${message.fightRounds} rounds, ${message.playerName} started with ${message.playerStartLife} life and ended with ${message.playerEndLife} life, ${message.mobName} started with ${message.mobStartLife} life and ended with ${message.mobEndLife}.`;
-const logMessage2 = (message) => `Fight summary: ${message.fightRounds} rounds, ${message.playerName} started with ${message.playerStartLife} life and ended with ${message.playerEndLife} life, fought ${message.mobsFought} ${message.mobName}.`;
-const logMessage3 = (message) => `Fight summary: ${message.fightRounds} rounds, ${message.playerName} started with ${message.playerStartLife} life and ended with ${message.playerEndLife} life, first ${message.mob1Name} started with ${message.mob1StartLife} life and ended with ${message.mob1EndLife}, second ${message.mob2Name} started with ${message.mob2StartLife} life and ended with ${message.mob2EndLife}.`;
+const logMessage1 = (message) => `Fight summary: ${message.playerName} ${message.playerEndLife <=0 ? 'dies' : 'wins'} after ${message.fightRounds} rounds, ${message.playerName} started with ${message.playerStartLife} life and ended with ${message.playerEndLife} life, ${message.mobName} started with ${message.mobStartLife} life and ended with ${message.mobEndLife}.`;
+const logMessage2 = (message) => `Fight summary: ${message.playerName} ${message.playerEndLife <=0 ? 'dies' : 'wins'} after ${message.fightRounds} rounds, ${message.playerName} started with ${message.playerStartLife} life and ended with ${message.playerEndLife} life, fought ${message.mobsFought} ${message.mobName}.`;
+const logMessage3 = (message) => `Fight summary: ${message.playerName} ${message.playerEndLife <=0 ? 'dies' : 'wins'} after ${message.fightRounds} rounds, ${message.playerName} started with ${message.playerStartLife} life and ended with ${message.playerEndLife} life, first ${message.mob1Name} started with ${message.mob1StartLife} life and ended with ${message.mob1EndLife}, second ${message.mob2Name} started with ${message.mob2StartLife} life and ended with ${message.mob2EndLife}.`;
 
 beforeEach(() => {
   thomas = new Player({ socketId: 1, name: 'Thomas' });
