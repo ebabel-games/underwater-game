@@ -12,7 +12,7 @@
     "start": "npm run build && node --use_strict ./server/index.js",
     "stop-production": "forever stopall",
     "start-production": "export NODE_ENV=production&& npm run build-production && npm run stop-production && forever --minUptime 5000 --spinSleepTime 5000 start ./server/index.js",
-    "analyse": "grep result player-fights-wisp.log|awk '{sum+=$7; sumsq+=$7*$7} END {print \"Average: \" sum/NR \" - Standard Deviation: \" sqrt(sumsq/NR - (sum/NR)**2)}'"
+    "analyse": "grep result ./logs/integration/player-fights-wisp.log|awk '{sum+=$7; sumsq+=$7*$7} END {print \"Average: \" sum/NR \" - Standard Deviation: \" sqrt(sumsq/NR - (sum/NR)**2)}'"
   },
   "repository": {
     "type": "git",

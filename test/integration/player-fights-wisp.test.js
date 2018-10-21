@@ -6,11 +6,11 @@ log4js.configure({
   appenders: {
     summary: {
       type: 'file',
-      filename: 'player-fights-wisp.log',
+      filename: 'logs/integration/player-fights-wisp.log',
     },
     full: {
       type: 'file',
-      filename: 'player-fights-wisp-full.log',
+      filename: 'logs/integration/player-fights-wisp-full.log',
     },
   },
   categories: {
