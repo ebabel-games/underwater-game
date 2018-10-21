@@ -6,6 +6,10 @@ class Player extends Wisp {
   constructor(input) {
     super(input);
 
+    if (!input || input.socketId === null || input.socketId === undefined) {
+      throw Error('Missing input parameters.');
+    }
+
     // Extra life so that players last a bit longer than wisps.
     this.life = this.life + 200;
 

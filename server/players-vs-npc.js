@@ -38,6 +38,8 @@ const playersVsNpc = (players, npc, io) => {
   
       // Fight resolution.
       const { fighterOneLife, fighterTwoLife, fightMessages } = resolveFight(player, opponentNpc);
+
+      // Update player and opponent npc life.
       player.life = fighterOneLife;
       opponentNpc.life = fighterTwoLife;
 
@@ -61,6 +63,11 @@ const playersVsNpc = (players, npc, io) => {
       if (opponentNpc.life <= 0 && player.life > 0) {
         player.fightMode = false;
         io.emit('updatePlayerFightMode', { name: player.name, fightMode: false });
+      }
+
+      // If player has just died, signal this to all players.
+      if (fighterOneLife <= 0) {
+        io.emit('playerDied', player.name);
       }
     }
   });

@@ -27,7 +27,7 @@ const spawnSprite = (input) => {
   });
   sprite.add(text);
 
-  // Add sound effect to sprite.
+  // Death sound effect.
   const sound = audio({
     THREE,
     camera,
@@ -37,7 +37,12 @@ const spawnSprite = (input) => {
     distance: 20,
   });
   sprite.add(sound);
-  
+
+  // todo: Hit missing sound effect.
+  // todo: Hit landing sound effect.
+  // todo: A very large hit landing sound effect.
+  // todo: Player dying sound effect.
+
   return sprite;
 };
 
