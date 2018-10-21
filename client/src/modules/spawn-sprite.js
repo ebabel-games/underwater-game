@@ -28,12 +28,23 @@ const spawnSprite = (input) => {
   sprite.add(text);
 
   // Death sound effect.
+  let url;
+  switch (sprite.name) {
+    case 'a wisp':
+    case 'an evil wisp':
+    case 'a blessed wisp':
+      url = 'assets/sound-effects/spells/heal.ogg';
+      break;
+    default:
+      // Players.
+      url = 'assets/sound-effects/spells/disenchant.ogg';
+  }
   const sound = audio({
     THREE,
     camera,
     volume: EG.dataStore.defaultVolume,
     name: 'death',
-    url: 'assets/sound-effects/spells/heal.ogg',
+    url,
     distance: 20,
   });
   sprite.add(sound);
