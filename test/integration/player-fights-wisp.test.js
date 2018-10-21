@@ -18,6 +18,10 @@ log4js.configure({
       level: 'all',
       appenders: [ 'summary' ],
     },
+    full: {
+      level: 'all',
+      appenders: [ 'full' ],
+    },
   },
 });
 
@@ -55,12 +59,14 @@ test('Fight 1 - Setup a player and a mob then fight until either of them dies.',
   while(thomas.life > 0 && mob.life > 0) {
     const result = resolveFight(thomas, mob);
     message.fightRounds += result.fightMessages.length;
+    result.fightMessages.map((m) => fullLogger.info(m));
   }
 
   message.playerEndLife = thomas.life;
   message.mobEndLife = mob.life;
 
   summaryLogger.info(logMessage1(message));
+  fullLogger.info(logMessage1(message));
 
   expect(thomas.life <= 0 || mob.life <= 0).toBe(true);
 });
@@ -79,12 +85,14 @@ test('Fight 2 - Setup a player (with 500 life) and a mob then fight until either
   while(thomas.life > 0 && mob.life > 0) {
     const result = resolveFight(thomas, mob);
     message.fightRounds += result.fightMessages.length;
+    result.fightMessages.map((m) => fullLogger.info(m));
   }
 
   message.playerEndLife = thomas.life;
   message.mobEndLife = mob.life;
 
   summaryLogger.info(logMessage1(message));
+  fullLogger.info(logMessage1(message));
 
   expect(thomas.life <= 0 || mob.life <= 0).toBe(true);
 });
@@ -103,12 +111,14 @@ test('Fight 3 - Setup a player (with 400 life) and a mob then fight until either
   while(thomas.life > 0 && mob.life > 0) {
     const result = resolveFight(thomas, mob);
     message.fightRounds += result.fightMessages.length;
+    result.fightMessages.map((m) => fullLogger.info(m));
   }
 
   message.playerEndLife = thomas.life;
   message.mobEndLife = mob.life;
 
   summaryLogger.info(logMessage1(message));
+  fullLogger.info(logMessage1(message));
 
   expect(thomas.life <= 0 || mob.life <= 0).toBe(true);
 });
@@ -127,12 +137,14 @@ test('Fight 4 - Setup a player (with 300 life) and a mob then fight until either
   while(thomas.life > 0 && mob.life > 0) {
     const result = resolveFight(thomas, mob);
     message.fightRounds += result.fightMessages.length;
+    result.fightMessages.map((m) => fullLogger.info(m));
   }
 
   message.playerEndLife = thomas.life;
   message.mobEndLife = mob.life;
 
   summaryLogger.info(logMessage1(message));
+  fullLogger.info(logMessage1(message));
 
   expect(thomas.life <= 0 || mob.life <= 0).toBe(true);
 });
@@ -151,12 +163,14 @@ test('Fight 5 - Setup a player (with 200 life) and a mob then fight until either
   while(thomas.life > 0 && mob.life > 0) {
     const result = resolveFight(thomas, mob);
     message.fightRounds += result.fightMessages.length;
+    result.fightMessages.map((m) => fullLogger.info(m));
   }
 
   message.playerEndLife = thomas.life;
   message.mobEndLife = mob.life;
 
   summaryLogger.info(logMessage1(message));
+  fullLogger.info(logMessage1(message));
 
   expect(thomas.life <= 0 || mob.life <= 0).toBe(true);
 });
@@ -175,12 +189,14 @@ test('Round 6 - Setup a player (with 100 life) and a mob then fight until either
   while(thomas.life > 0 && mob.life > 0) {
     const result = resolveFight(thomas, mob);
     message.fightRounds += result.fightMessages.length;
+    result.fightMessages.map((m) => fullLogger.info(m));
   }
 
   message.playerEndLife = thomas.life;
   message.mobEndLife = mob.life;
 
   summaryLogger.info(logMessage1(message));
+  fullLogger.info(logMessage1(message));
 
   expect(thomas.life <= 0 || mob.life <= 0).toBe(true);
 });
@@ -197,6 +213,7 @@ test('Player fights multiple wisps, one after the other, until the player dies.'
   while(thomas.life > 0) {
     const result = resolveFight(thomas, mob);
     message.fightRounds += result.fightMessages.length;
+    result.fightMessages.map((m) => fullLogger.info(m));
 
     if (mob.life <= 0) {
       mob = new Wisp();
@@ -207,6 +224,7 @@ test('Player fights multiple wisps, one after the other, until the player dies.'
   message.playerEndLife = thomas.life;
 
   summaryLogger.info(logMessage2(message));
+  fullLogger.info(logMessage2(message));
 
   expect(thomas.life <= 0).toBe(true);
 });
@@ -229,11 +247,13 @@ test('Player fights 2 wisps at the same time until either the player or both wis
   while(thomas.life > 0) {
     const result1 = resolveFight(thomas, mob1);
     message.fightRounds += result1.fightMessages.length;
+    result1.fightMessages.map((m) => fullLogger.info(m));
 
     // Only keep fighting if player is still alive.
     if (thomas.life > 0) {
       const result2 = resolveFight(thomas, mob2);
       message.fightRounds += result2.fightMessages.length;
+      result2.fightMessages.map((m) => fullLogger.info(m));
     }
 
     // Stop fightings if both mob1 and mob2 are dead.
@@ -245,6 +265,7 @@ test('Player fights 2 wisps at the same time until either the player or both wis
   message.mob2EndLife = mob2.life;
 
   summaryLogger.info(logMessage3(message));
+  fullLogger.info(logMessage3(message));
 
   expect(thomas.life <= 0 || (mob1.life <= 0 && mob2.life <= 0)).toBe(true);
 });
