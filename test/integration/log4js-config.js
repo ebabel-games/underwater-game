@@ -1,13 +1,15 @@
+const date = require('./date');
+
 const log4jsConfig = (filename) => {
   return {
     appenders: {
       summary: {
         type: 'file',
-        filename: `logs/integration/${filename}.log`,
+        filename: `logs/integration/${filename}.${date}.log`,
       },
       full: {
         type: 'file',
-        filename: `logs/integration/${filename}-full.log`,
+        filename: `logs/integration/${filename}-full.${date}.log`,
       },
     },
     categories: {
