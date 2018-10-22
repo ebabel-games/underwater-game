@@ -23,6 +23,8 @@ beforeEach(() => {
   fullLogger.info(`Player ${thomas.name} pops ${JSON.stringify(thomas)}.`);
 });
 
+fullLogger.info("Test Case version 0.1 for player-fights-two-wisps.test.js - standard life only");
+
 test('Player fights 2 wisps at the same time until either the player or both wisps are dead.', () => {
   const mob1 = new Wisp();
   const mob2 = new Wisp();

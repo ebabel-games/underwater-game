@@ -26,6 +26,8 @@ beforeEach(() => {
   fullLogger.info(`${mob.name} pops ${JSON.stringify(mob)}.`);
 });
 
+fullLogger.info("Test Case version 0.1 for player-fights-multiple-wisps.test.js - standard life only");
+
 test('Player fights multiple wisps, one after the other, until the player dies.', () => {
   const message = {
     playerName: thomas.name,
