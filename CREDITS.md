@@ -91,3 +91,19 @@ Source: http://altspacevr.github.io/AltspaceJam/fish/fish.html
 - assets/music/hold-the-line.ogg
 Author: Bart Kelsey
 Source: https://opengameart.org/content/hold-line-boss-theme
+
+## Battle sound effects
+- assets/sound-effects/battle-sound-effects/Bow.wav
+- assets/sound-effects/battle-sound-effects/swish_2.wav
+- assets/sound-effects/battle-sound-effects/swish_3.wav
+- assets/sound-effects/battle-sound-effects/swish_4.wav
+Author: artisticdude
+Source: https://opengameart.org/content/battle-sound-effects
+
+## Wind, hit, and time morph sound effects
+- assets/sound-effects/qubodup-timehitwind/60009__qubodup__swosh_22.flac
+- assets/sound-effects/qubodup-timehitwind/qubodup-megaswosh1.wav
+- assets/sound-effects/qubodup-timehitwind/qubodup-megaswosh2.wav
+- assets/sound-effects/qubodup-timehitwind/qubodup-slomo1.wav
+Author: Iwan Gabovitch (https://qubodup.github.io/)
+Source: https://opengameart.org/content/wind-hit-time-morph

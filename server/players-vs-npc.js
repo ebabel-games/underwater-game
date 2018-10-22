@@ -46,6 +46,8 @@ const playersVsNpc = (players, npc, io) => {
       // Update all clients the current player has lost or gained life.
       io.emit('updatePlayerLife', { name: player.name, life: player.life });
 
+      // todo: Emit to relevant player the sound of sprites getting hit?
+
       // Message only the relevant player that she lost or gained life.
       fightMessages.map((fightMessage) => io.to(player.socketId).emit('chatMessage', fightMessage));
 
