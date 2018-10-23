@@ -37,7 +37,7 @@ const playersVsNpc = (players, npc, io) => {
       io.emit('updatePlayerFightMode', { name: player.name, fightMode: true });
   
       // Fight resolution.
-      const { fighterOneLife, fighterTwoLife, fightMessages } = resolveFight(player, opponentNpc);
+      const { fighterOneLife, fighterTwoLife, fightMessages, actions } = resolveFight(player, opponentNpc);
 
       // Update player and opponent npc life.
       player.life = fighterOneLife;
@@ -46,10 +46,11 @@ const playersVsNpc = (players, npc, io) => {
       // Update all clients the current player has lost or gained life.
       io.emit('updatePlayerLife', { name: player.name, life: player.life });
 
-      // todo: Emit to relevant player the sound of sprites getting hit?
-
       // Message only the relevant player that she lost or gained life.
       fightMessages.map((fightMessage) => io.to(player.socketId).emit('chatMessage', fightMessage));
+
+      // Message only the relevant player the actions involving herself and sprites she interacts with.
+      actions.map((action) => io.to(player.socketId).emit('action', action));
 
       // Update dataStore.
       players[player.name].life = fighterOneLife;

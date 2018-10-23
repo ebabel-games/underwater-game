@@ -43,31 +43,41 @@ const spawnSprite = (input) => {
   switch (sprite.name) {
     case 'a wisp':
       url.death = 'assets/sound-effects/spells/magicdrop.ogg';
-      url.getHit = 'assets/sound-effects/battle-sound-effects/swish_2.wav';
+      url.hits = 'assets/sound-effects/battle-sound-effects/swish_2.wav';
+      url.misses = 'assets/sound-effects/battle-sound-effects/Bow.wav';
+      url.heals = 'assets/sound-effects/healspell/healspell2.ogg';
       break;
     case 'an evil wisp':
       url.death = 'assets/sound-effects/spells/zap.ogg';
-      url.getHit = 'assets/sound-effects/battle-sound-effects/swish_3.wav';
+      url.hits = 'assets/sound-effects/battle-sound-effects/swish_3.wav';
+      url.misses = 'assets/sound-effects/battle-sound-effects/Bow.wav';
+      url.heals = 'assets/sound-effects/healspell/healspell2.ogg';
       break;
     case 'a blessed wisp':
       url.death = 'assets/sound-effects/spells/heal.ogg';
-      url.getHit = 'assets/sound-effects/battle-sound-effects/swish_4.wav';
+      url.hits = 'assets/sound-effects/battle-sound-effects/swish_4.wav';
+      url.misses = 'assets/sound-effects/battle-sound-effects/Bow.wav';
+      url.heals = 'assets/sound-effects/healspell/healspell2.ogg';
       break;
     default:
       // Players.
       url.death = 'assets/sound-effects/spells/disenchant.ogg';
-      url.getHit = 'assets/sound-effects/qubodup-timehitwind/qubodup-megaswosh2.wav';
+      url.hits = 'assets/sound-effects/qubodup-timehitwind/qubodup-megaswosh2.wav';
+      url.misses = 'assets/sound-effects/battle-sound-effects/Bow.wav';
+      url.heals = 'assets/sound-effects/healspell/healspell2.ogg';
   }
 
   // Sound effect when the sprite dies.
-  const deathSound = audio(audioConfig(THREE, camera, 'death', url.death));
-  sprite.add(deathSound);
+  sprite.add(audio(audioConfig(THREE, camera, 'death', url.death)));
 
-  // Sound effect when the sprite gets hit.
-  const getHitSound = audio(audioConfig(THREE, camera, 'get-hit', url.getHit));
-  sprite.add(getHitSound);
+  // Sound effect when the sprite hits a target.
+  sprite.add(audio(audioConfig(THREE, camera, 'hits', url.hits)));
 
-  // todo: Hit missing sound effect.
+  // Sound effect when the sprite misses a target.
+  sprite.add(audio(audioConfig(THREE, camera, 'misses', url.misses)));
+
+  // Sound effect when the sprite heals a target.
+  sprite.add(audio(audioConfig(THREE, camera, 'heals', url.heals)));
 
   return sprite;
 };

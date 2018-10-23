@@ -76,6 +76,20 @@ const init = (camera) => {
     }
   });
 
+  socket.on('action', (action) => {
+    // Play all sound effects when the Player is the agent.
+    if (action.agentType === 'Player') {
+      playerSoundEffect(action.agentName, action.name);
+    }
+
+    // Only a blessed wisp can heal, but the player is the target.
+    if (action.targetType === 'Player' && action.name === 'heals') {
+      playerSoundEffect(action.targetName, action.name);
+    }
+
+    // Note: not all possible sound effects are played, in particular the npc sound effects, because their name is not unique and there would be too many sound effects competing to play at the same time.
+  });
+
   socket.on('playerDied', (name) => {
     addMessageToLogs(`${name} has died.`);
     playerSoundEffect(name, 'death');

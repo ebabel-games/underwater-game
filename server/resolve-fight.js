@@ -6,6 +6,7 @@ const c = require('./constants');
 
 const fightRound = (attacker, defender) => {
   const roundMessages = [];
+  const roundActions = [];
 
   if (attacker.life <= 0 || defender.life <= 0) return { attacker, defender };
 
@@ -17,8 +18,24 @@ const fightRound = (attacker, defender) => {
     const damage = dice() * c.lifeMultiplier;
     defender.life -= damage;
     roundMessages.push(`${attacker.name} hits ${defender.name} for ${damage} life.`);
+    roundActions.push({
+      agentName: attacker.name,
+      agentType: attacker.constructor.name,
+      name: 'hits',
+      targetName: defender.name,
+      targetType: defender.constructor.name,
+      amount: damage,
+    });
   } else {
     roundMessages.push(`${attacker.name} tries to hit ${defender.name} but misses.`);
+    roundActions.push({
+      agentName: attacker.name,
+      agentType: attacker.constructor.name,
+      name: 'misses',
+      targetName: defender.name,
+      targetType: defender.constructor.name,
+      amount: 0,
+    });
   }
 
   // When a blessed wisp gets attacked, if he still alive, he will heal the attacking npc.
@@ -26,9 +43,17 @@ const fightRound = (attacker, defender) => {
     const heal = random(3) * c.lifeMultiplier;
     attacker.life += heal;
     roundMessages.push(`${attacker.name} is healed for ${heal} life by ${defender.name}.`);
+    roundActions.push({
+      agentName: defender.name,
+      agentType: defender.constructor.name,
+      name: 'heals',
+      targetName: attacker.name,
+      targetType: attacker.constructor.name,
+      amount: heal,
+    });
   }
 
-  return { attacker, defender, roundMessages };
+  return { attacker, defender, roundMessages, roundActions };
 };
 
 /**
@@ -41,27 +66,31 @@ const fightRound = (attacker, defender) => {
  */
 const resolveFight = (fighterOne, fighterTwo) => {
   const fightMessages = [];
+  const actions = [];
 
   // Round 1: fighterOne tries to hit fighterTwo.
   if (fighterOne.name !== 'a blessed wisp') {
-    let { attacker, defender, roundMessages } = fightRound(fighterOne, fighterTwo);
+    let { attacker, defender, roundMessages, roundActions } = fightRound(fighterOne, fighterTwo);
     fighterOne = attacker;
     fighterTwo = defender;
-    Array.prototype.push.apply(fightMessages, roundMessages);
+    Array.prototype.push.apply(fightMessages, roundMessages); // Note: faster than fightMessages.push(roundMessages);
+    Array.prototype.push.apply(actions, roundActions);
   }
 
   // Round 2: fighterTwo tries to hit fighterOne.
   if (fighterTwo.name !== 'a blessed wisp') {
-    let { attacker, defender, roundMessages } = fightRound(fighterTwo, fighterOne);
+    let { attacker, defender, roundMessages, roundActions } = fightRound(fighterTwo, fighterOne);
     fighterOne = defender;
     fighterTwo = attacker;
     Array.prototype.push.apply(fightMessages, roundMessages);
+    Array.prototype.push.apply(actions, roundActions);
   }
 
   return {
     fighterOneLife: fighterOne.life,
     fighterTwoLife: fighterTwo.life,
     fightMessages,
+    actions,
   };
 };
 
