@@ -1,5 +1,8 @@
 # Underwater Game changelog
 
+## 1.17.1
+- Fix multiple sounds playing at the same time.
+
 ## 1.17.0
 - Message all players when a player dies.
 - Prevent elements selection on webpage.
