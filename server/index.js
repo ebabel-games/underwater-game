@@ -86,6 +86,7 @@ io.on('connection', (socket) => {
 
 let port = 3000;
 if (process.env.NODE_ENV === 'production') port = 80;
+if (process.env.NODE_ENV === 'cloud9') port = process.env.PORT;
 http.listen(port, () => {
   console.log(`Underwater Game listening on port ${port}.`); /* eslint no-console: 0 */
 });
