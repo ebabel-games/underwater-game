@@ -91,7 +91,6 @@ const init = (camera) => {
   });
 
   socket.on('playerDied', (name) => {
-    addMessageToLogs(`${name} has died.`);
     playerSoundEffect(name, 'death');
   });
 

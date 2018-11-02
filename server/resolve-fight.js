@@ -53,6 +53,16 @@ const fightRound = (attacker, defender) => {
     });
   }
 
+  // Attacker is dead.
+  if (attacker.life <= 0) {
+    roundMessages.push(`${attacker.name} has died in a fight with ${defender.name}.`);
+  }
+
+  // Defender is dead.
+  if (defender.life <= 0) {
+    roundMessages.push(`${defender.name} has died in a fight with ${attacker.name}.`);
+  }
+
   return { attacker, defender, roundMessages, roundActions };
 };
 
