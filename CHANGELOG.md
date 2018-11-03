@@ -1,6 +1,9 @@
 # Underwater Game changelog
 
 ## 1.18.0
+- Move sound class to be a reusable, external dependency.
+- Message all other players when a player died.
+- Set master volume for Web Audio API sounds.
 - npc no longer fight npc.
 - npc move only on client side, with a small animation, but not from server-side, to lighten the load.
 

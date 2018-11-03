@@ -33,7 +33,7 @@
   "homepage": "https://github.com/ebabel-games/underwater-game#readme",
   "dependencies": {
     "compression": "^1.7.3",
-    "ebabel": "^4.2.0",
+    "ebabel": "^4.3.0",
     "express": "^4.16.4",
     "node-gameloop": "^0.1.4",
     "socket.io": "^2.1.1"

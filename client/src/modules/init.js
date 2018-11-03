@@ -2,6 +2,7 @@
 
 const spawnSprite = require('./spawn-sprite');
 const playSoundEffect = require('./play-sound-effect');
+const addMessageToLogs = require('./add-message-to-logs');
 
 // Particles setup.
 const particleTexture = new THREE.TextureLoader().load('assets/spark.png');
@@ -91,6 +92,10 @@ const init = () => {
 
   socket.on('playerDied', (name) => {
     playSoundEffect(name, 'death');
+    // Display death message to all players except the the player who died.
+    if (EG.dataStore.player.name !== name) {
+      addMessageToLogs(`${name} has died.`);
+    }
   });
 
   socket.on('removePlayer', (name) => {

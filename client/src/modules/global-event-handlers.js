@@ -4,9 +4,15 @@
 const globalEventHandlers = () => {
   window.addEventListener('adjustMasterVolume', (e) => {
     const masterVolume = e.detail.masterVolume;
+
+    // Update camera audio listeners volume (binary audio).
     const cameraListeners = EG.camera.children.filter(c => c.type === 'AudioListener');
-    if (cameraListeners && cameraListeners.length)
+    if (cameraListeners && cameraListeners.length) {
       cameraListeners.map((listener) => listener.setMasterVolume(masterVolume));
+    }
+
+    // Update master volume for Web Audio API sounds.
+    EG.dataStore.masterVolume = masterVolume;
   });
 
   window.addEventListener('blur', () => {

@@ -1,5 +1,5 @@
 const c = require('../constants');
-const Sound = require('./sound');
+const { Sound } = require('ebabel');
 
 const death = new Sound(0.5, 220, 1, 'triangle', 1, 0.2, 0, 0.2, 'bandpass', 10000, 440);
 const hits = new Sound(0, 440, 0.2, 'triangle', 1, 0.2, 0, 0.2, 'bandpass', 10000, 440);
@@ -9,6 +9,11 @@ const heals = new Sound(0, 880, 0.2, 'triangle', 1, 0.2, 0, 0.2, 'bandpass', 100
 const playSoundEffect = (playerName, soundName) => {
   if (EG.dataStore.player.name !== playerName) {
     // Only play sound effects for the current player.
+    return;
+  }
+
+  if (EG.dataStore.masterVolume === 0) {
+    // Do not play any Web Audio API sound if the volume is set to 0.
     return;
   }
 
