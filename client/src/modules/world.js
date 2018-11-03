@@ -1,4 +1,4 @@
-'strict';
+'use strict';
 
 const { light, skybox, keyboardControls, audio } = require('ebabel');
 

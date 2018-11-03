@@ -1,4 +1,4 @@
-'strict';
+'use strict';
 
 const addMessageToLogs = (message) => {
   const logsList = document.getElementById('logsList');

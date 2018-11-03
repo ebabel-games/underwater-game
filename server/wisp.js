@@ -1,4 +1,4 @@
-'strict';
+'use strict';
 
 const { trait, positive, randomPosition } = require('ebabel');
 

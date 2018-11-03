@@ -1,4 +1,4 @@
-'strict';
+'use strict';
 
 module.exports = {
   agroDistance: 1000,

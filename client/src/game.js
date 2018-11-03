@@ -1,4 +1,4 @@
-'strict';
+'use strict';
 
 const init = require('./modules/init');
 const chatMessage = require('./modules/chat-message');

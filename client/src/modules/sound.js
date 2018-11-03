@@ -1,4 +1,4 @@
-'strict';
+'use strict';
 
 const gain = (audioContext, gainST, gainSTC, gainET, gainETC, startTime, endTime) => {
   const envelope = audioContext.createGain();

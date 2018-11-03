@@ -1,4 +1,4 @@
-'strict';
+'use strict';
 
 const spawnSprite = require('./spawn-sprite');
 const playSoundEffect = require('./play-sound-effect');

@@ -1,4 +1,4 @@
-'strict';
+'use strict';
 
 const { updatePlayerPositionRotation } = require('ebabel');
 

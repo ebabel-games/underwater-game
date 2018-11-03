@@ -1,4 +1,4 @@
-'strict';
+'use strict';
 
 // Greet single player directly.
 const greetSinglePlayer =  (io, socketId, name) => io.to(socketId).emit('chatMessage', `Welcome ${name}!`);

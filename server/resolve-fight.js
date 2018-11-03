@@ -1,4 +1,4 @@
-'strict';
+'use strict';
 
 const { dice, random } = require('ebabel');
 

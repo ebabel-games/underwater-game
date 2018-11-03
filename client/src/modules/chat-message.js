@@ -1,4 +1,4 @@
-'strict';
+'use strict';
 
 const addMessageToLogs = require('./add-message-to-logs');
 

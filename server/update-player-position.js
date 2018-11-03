@@ -1,4 +1,4 @@
-'strict';
+'use strict';
 
 const updatePlayerPosition = (socket) => {
   if (!socket) return;

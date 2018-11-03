@@ -1,4 +1,4 @@
-'strict';
+'use strict';
 
 const gameloop = require('node-gameloop');
 
