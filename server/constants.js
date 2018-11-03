@@ -7,7 +7,6 @@ module.exports = {
   minNpcPopulation: 66,
   maxNpcPopulation: 99,
   defaultFps: 24,
-  respawnHeight: 10000,
   dataStore: {
     npc: [],
     players: {},
