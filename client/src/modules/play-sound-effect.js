@@ -1,7 +1,7 @@
 const c = require('../constants');
 const Sound = require('./sound');
 
-const death = new Sound(0, 220, 1, 'triangle', 1, 0.2, 0, 0.2, 'bandpass', 10000, 440);
+const death = new Sound(0.5, 220, 1, 'triangle', 1, 0.2, 0, 0.2, 'bandpass', 10000, 440);
 const hits = new Sound(0, 440, 0.2, 'triangle', 1, 0.2, 0, 0.2, 'bandpass', 10000, 440);
 const misses = new Sound(0, 217, 0.2, 'triangle', 1, 0.2, 0, 0.2, 'bandpass', 10000, 440);
 const heals = new Sound(0, 880, 0.2, 'triangle', 1, 0.2, 0, 0.2, 'bandpass', 10000, 440);
