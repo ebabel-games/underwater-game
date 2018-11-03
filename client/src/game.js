@@ -29,7 +29,7 @@ const game = (THREE, THREEx, EG) => {
   EG.camera = camera;
 
   // Initialise the socket listeners.
-  init(camera);
+  init();
 
   // Register all global event handlers.
   globalEventHandlers();

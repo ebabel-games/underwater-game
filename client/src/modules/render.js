@@ -2,8 +2,6 @@
 
 const { updatePlayerPositionRotation } = require('ebabel');
 
-const { npcSoundEffect } = require('./play-sound-effect');
-
 const npcMinimumSize = 20;
 
 // Get the new size or the minimum size of any wisp sprite.
@@ -65,11 +63,6 @@ const render = (
       const newState = EG.dataStore.npcStates[index];
       if (!newState) {
         return;
-      }
-
-      // Npc just died, play its death sound.
-      if (child.userData.life > 0 && newState.life <= 0) {
-        npcSoundEffect(child, 'death');
       }
 
       // Update state from EG.dataStore.npcStates when there is one.

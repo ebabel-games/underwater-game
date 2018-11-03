@@ -1,0 +1,134 @@
+[2018-11-02T21:55:45.148] [INFO] full - Test Case version 0.1 for player-fights-evil-wisp.test.js - standard life, 500 life, 400 life .. 100 life 
+[2018-11-02T21:55:45.153] [INFO] full - Player Thomas pops {"name":"Thomas","strength":9,"stamina":5,"agility":9,"position":[0,0,0],"rotation":[0,0,0],"life":300,"attack":14,"defence":14,"fightMode":false,"color":[0.3583,0.9,0.7],"respawnedLife":100,"socketId":1}.
+[2018-11-02T21:55:45.154] [INFO] full - an evil wisp pops {"name":"an evil wisp","strength":18,"stamina":1,"agility":1,"position":[1393,717,47],"rotation":[0,0,0],"life":320,"attack":53,"defence":24,"fightMode":false,"color":[0,1,0.5],"respawnedLife":320}.
+[2018-11-02T21:55:45.154] [INFO] full - Thomas hits an evil wisp for 50 life.
+[2018-11-02T21:55:45.154] [INFO] full - an evil wisp hits Thomas for 40 life.
+[2018-11-02T21:55:45.154] [INFO] full - Thomas hits an evil wisp for 10 life.
+[2018-11-02T21:55:45.154] [INFO] full - an evil wisp hits Thomas for 10 life.
+[2018-11-02T21:55:45.154] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.154] [INFO] full - an evil wisp hits Thomas for 10 life.
+[2018-11-02T21:55:45.154] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.154] [INFO] full - an evil wisp hits Thomas for 30 life.
+[2018-11-02T21:55:45.154] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.154] [INFO] full - an evil wisp hits Thomas for 20 life.
+[2018-11-02T21:55:45.155] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.155] [INFO] full - an evil wisp hits Thomas for 40 life.
+[2018-11-02T21:55:45.155] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.155] [INFO] full - an evil wisp hits Thomas for 50 life.
+[2018-11-02T21:55:45.155] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.155] [INFO] full - an evil wisp hits Thomas for 40 life.
+[2018-11-02T21:55:45.155] [INFO] full - Thomas hits an evil wisp for 10 life.
+[2018-11-02T21:55:45.155] [INFO] full - an evil wisp hits Thomas for 60 life.
+[2018-11-02T21:55:45.155] [INFO] full - Thomas has died in a fight with an evil wisp.
+[2018-11-02T21:55:45.155] [INFO] full - Fight summary: Thomas dies after 19 rounds, Thomas started with 300 life and ended with 0 life, an evil wisp started with 320 life and ended with 250.
+[2018-11-02T21:55:45.155] [INFO] full - Player Thomas pops {"name":"Thomas","strength":7,"stamina":11,"agility":8,"position":[0,0,0],"rotation":[0,0,0],"life":440,"attack":9,"defence":14,"fightMode":false,"color":[0.3583,0.9,0.7],"respawnedLife":240,"socketId":1}.
+[2018-11-02T21:55:45.156] [INFO] full - an evil wisp pops {"name":"an evil wisp","strength":18,"stamina":1,"agility":1,"position":[2430,-3108,2544],"rotation":[0,0,0],"life":320,"attack":53,"defence":24,"fightMode":false,"color":[0,1,0.5],"respawnedLife":320}.
+[2018-11-02T21:55:45.156] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.156] [INFO] full - an evil wisp hits Thomas for 30 life.
+[2018-11-02T21:55:45.156] [INFO] full - Thomas hits an evil wisp for 50 life.
+[2018-11-02T21:55:45.156] [INFO] full - an evil wisp hits Thomas for 30 life.
+[2018-11-02T21:55:45.156] [INFO] full - Thomas hits an evil wisp for 10 life.
+[2018-11-02T21:55:45.156] [INFO] full - an evil wisp hits Thomas for 40 life.
+[2018-11-02T21:55:45.156] [INFO] full - Thomas hits an evil wisp for 20 life.
+[2018-11-02T21:55:45.156] [INFO] full - an evil wisp hits Thomas for 20 life.
+[2018-11-02T21:55:45.156] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.156] [INFO] full - an evil wisp hits Thomas for 60 life.
+[2018-11-02T21:55:45.156] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.156] [INFO] full - an evil wisp hits Thomas for 50 life.
+[2018-11-02T21:55:45.156] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.156] [INFO] full - an evil wisp hits Thomas for 60 life.
+[2018-11-02T21:55:45.156] [INFO] full - Thomas hits an evil wisp for 50 life.
+[2018-11-02T21:55:45.156] [INFO] full - an evil wisp hits Thomas for 60 life.
+[2018-11-02T21:55:45.156] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.156] [INFO] full - an evil wisp hits Thomas for 40 life.
+[2018-11-02T21:55:45.156] [INFO] full - Thomas hits an evil wisp for 50 life.
+[2018-11-02T21:55:45.156] [INFO] full - an evil wisp hits Thomas for 50 life.
+[2018-11-02T21:55:45.156] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.156] [INFO] full - an evil wisp hits Thomas for 50 life.
+[2018-11-02T21:55:45.156] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.156] [INFO] full - an evil wisp hits Thomas for 20 life.
+[2018-11-02T21:55:45.156] [INFO] full - Thomas has died in a fight with an evil wisp.
+[2018-11-02T21:55:45.156] [INFO] full - Fight summary: Thomas dies after 25 rounds, Thomas started with 500 life and ended with -10 life, an evil wisp started with 320 life and ended with 140.
+[2018-11-02T21:55:45.156] [INFO] full - Player Thomas pops {"name":"Thomas","strength":15,"stamina":13,"agility":12,"position":[0,0,0],"rotation":[0,0,0],"life":400,"attack":27,"defence":14,"fightMode":false,"color":[0.3583,0.9,0.7],"respawnedLife":200,"socketId":1}.
+[2018-11-02T21:55:45.157] [INFO] full - an evil wisp pops {"name":"an evil wisp","strength":18,"stamina":1,"agility":1,"position":[5449,48,-2555],"rotation":[0,0,0],"life":320,"attack":53,"defence":24,"fightMode":false,"color":[0,1,0.5],"respawnedLife":320}.
+[2018-11-02T21:55:45.157] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.157] [INFO] full - an evil wisp hits Thomas for 30 life.
+[2018-11-02T21:55:45.157] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.157] [INFO] full - an evil wisp hits Thomas for 40 life.
+[2018-11-02T21:55:45.157] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.157] [INFO] full - an evil wisp hits Thomas for 30 life.
+[2018-11-02T21:55:45.157] [INFO] full - Thomas hits an evil wisp for 60 life.
+[2018-11-02T21:55:45.157] [INFO] full - an evil wisp hits Thomas for 30 life.
+[2018-11-02T21:55:45.157] [INFO] full - Thomas hits an evil wisp for 60 life.
+[2018-11-02T21:55:45.157] [INFO] full - an evil wisp hits Thomas for 30 life.
+[2018-11-02T21:55:45.157] [INFO] full - Thomas hits an evil wisp for 60 life.
+[2018-11-02T21:55:45.157] [INFO] full - an evil wisp hits Thomas for 50 life.
+[2018-11-02T21:55:45.157] [INFO] full - Thomas hits an evil wisp for 30 life.
+[2018-11-02T21:55:45.157] [INFO] full - an evil wisp hits Thomas for 30 life.
+[2018-11-02T21:55:45.157] [INFO] full - Thomas hits an evil wisp for 20 life.
+[2018-11-02T21:55:45.157] [INFO] full - an evil wisp hits Thomas for 30 life.
+[2018-11-02T21:55:45.157] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.157] [INFO] full - an evil wisp hits Thomas for 20 life.
+[2018-11-02T21:55:45.157] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.157] [INFO] full - an evil wisp hits Thomas for 40 life.
+[2018-11-02T21:55:45.157] [INFO] full - Thomas hits an evil wisp for 40 life.
+[2018-11-02T21:55:45.157] [INFO] full - an evil wisp hits Thomas for 30 life.
+[2018-11-02T21:55:45.157] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.157] [INFO] full - an evil wisp hits Thomas for 30 life.
+[2018-11-02T21:55:45.157] [INFO] full - Thomas hits an evil wisp for 60 life.
+[2018-11-02T21:55:45.157] [INFO] full - an evil wisp has died in a fight with Thomas.
+[2018-11-02T21:55:45.157] [INFO] full - Fight summary: Thomas wins after 26 rounds, Thomas started with 400 life and ended with 10 life, an evil wisp started with 320 life and ended with -10.
+[2018-11-02T21:55:45.157] [INFO] full - Player Thomas pops {"name":"Thomas","strength":11,"stamina":10,"agility":7,"position":[0,0,0],"rotation":[0,0,0],"life":320,"attack":23,"defence":5,"fightMode":false,"color":[0.3583,0.9,0.7],"respawnedLife":120,"socketId":1}.
+[2018-11-02T21:55:45.158] [INFO] full - an evil wisp pops {"name":"an evil wisp","strength":18,"stamina":1,"agility":1,"position":[-5650,1088,-3547],"rotation":[0,0,0],"life":320,"attack":53,"defence":24,"fightMode":false,"color":[0,1,0.5],"respawnedLife":320}.
+[2018-11-02T21:55:45.158] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.158] [INFO] full - an evil wisp hits Thomas for 50 life.
+[2018-11-02T21:55:45.158] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.158] [INFO] full - an evil wisp hits Thomas for 10 life.
+[2018-11-02T21:55:45.158] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.158] [INFO] full - an evil wisp hits Thomas for 30 life.
+[2018-11-02T21:55:45.158] [INFO] full - Thomas hits an evil wisp for 10 life.
+[2018-11-02T21:55:45.158] [INFO] full - an evil wisp hits Thomas for 30 life.
+[2018-11-02T21:55:45.158] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.158] [INFO] full - an evil wisp hits Thomas for 60 life.
+[2018-11-02T21:55:45.158] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.158] [INFO] full - an evil wisp hits Thomas for 20 life.
+[2018-11-02T21:55:45.158] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.158] [INFO] full - an evil wisp hits Thomas for 50 life.
+[2018-11-02T21:55:45.158] [INFO] full - Thomas hits an evil wisp for 30 life.
+[2018-11-02T21:55:45.158] [INFO] full - an evil wisp hits Thomas for 60 life.
+[2018-11-02T21:55:45.158] [INFO] full - Thomas has died in a fight with an evil wisp.
+[2018-11-02T21:55:45.158] [INFO] full - Fight summary: Thomas dies after 17 rounds, Thomas started with 300 life and ended with -10 life, an evil wisp started with 320 life and ended with 280.
+[2018-11-02T21:55:45.158] [INFO] full - Player Thomas pops {"name":"Thomas","strength":9,"stamina":10,"agility":12,"position":[0,0,0],"rotation":[0,0,0],"life":460,"attack":9,"defence":23,"fightMode":false,"color":[0.3583,0.9,0.7],"respawnedLife":260,"socketId":1}.
+[2018-11-02T21:55:45.158] [INFO] full - an evil wisp pops {"name":"an evil wisp","strength":18,"stamina":1,"agility":1,"position":[-11,-487,-4432],"rotation":[0,0,0],"life":320,"attack":53,"defence":24,"fightMode":false,"color":[0,1,0.5],"respawnedLife":320}.
+[2018-11-02T21:55:45.158] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.158] [INFO] full - an evil wisp hits Thomas for 10 life.
+[2018-11-02T21:55:45.158] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.158] [INFO] full - an evil wisp hits Thomas for 20 life.
+[2018-11-02T21:55:45.158] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.158] [INFO] full - an evil wisp hits Thomas for 20 life.
+[2018-11-02T21:55:45.159] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.159] [INFO] full - an evil wisp hits Thomas for 10 life.
+[2018-11-02T21:55:45.159] [INFO] full - Thomas hits an evil wisp for 20 life.
+[2018-11-02T21:55:45.159] [INFO] full - an evil wisp hits Thomas for 10 life.
+[2018-11-02T21:55:45.159] [INFO] full - Thomas hits an evil wisp for 30 life.
+[2018-11-02T21:55:45.159] [INFO] full - an evil wisp hits Thomas for 40 life.
+[2018-11-02T21:55:45.159] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.159] [INFO] full - an evil wisp hits Thomas for 50 life.
+[2018-11-02T21:55:45.159] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.159] [INFO] full - an evil wisp hits Thomas for 20 life.
+[2018-11-02T21:55:45.159] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.159] [INFO] full - an evil wisp hits Thomas for 10 life.
+[2018-11-02T21:55:45.159] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.159] [INFO] full - an evil wisp hits Thomas for 10 life.
+[2018-11-02T21:55:45.159] [INFO] full - Thomas has died in a fight with an evil wisp.
+[2018-11-02T21:55:45.159] [INFO] full - Fight summary: Thomas dies after 21 rounds, Thomas started with 200 life and ended with 0 life, an evil wisp started with 320 life and ended with 270.
+[2018-11-02T21:55:45.159] [INFO] full - Player Thomas pops {"name":"Thomas","strength":12,"stamina":13,"agility":13,"position":[0,0,0],"rotation":[0,0,0],"life":480,"attack":17,"defence":21,"fightMode":false,"color":[0.3583,0.9,0.7],"respawnedLife":280,"socketId":1}.
+[2018-11-02T21:55:45.159] [INFO] full - an evil wisp pops {"name":"an evil wisp","strength":18,"stamina":1,"agility":1,"position":[-2756,1136,1816],"rotation":[0,0,0],"life":320,"attack":53,"defence":24,"fightMode":false,"color":[0,1,0.5],"respawnedLife":320}.
+[2018-11-02T21:55:45.159] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.159] [INFO] full - an evil wisp hits Thomas for 10 life.
+[2018-11-02T21:55:45.159] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.159] [INFO] full - an evil wisp hits Thomas for 40 life.
+[2018-11-02T21:55:45.159] [INFO] full - Thomas tries to hit an evil wisp but misses.
+[2018-11-02T21:55:45.159] [INFO] full - an evil wisp hits Thomas for 60 life.
+[2018-11-02T21:55:45.159] [INFO] full - Thomas has died in a fight with an evil wisp.
+[2018-11-02T21:55:45.159] [INFO] full - Fight summary: Thomas dies after 7 rounds, Thomas started with 100 life and ended with -10 life, an evil wisp started with 320 life and ended with 320.

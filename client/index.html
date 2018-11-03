@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-32495473-13"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-32495473-13');
-  </script>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -82,7 +72,7 @@
       left: 0;
       right: 0;
       background-color: #3c6478;
-      background-image: url('assets/whirlpool/large-files/whirlpool_ft.jpg');
+      background-image: url('assets/whirlpool/webp/whirlpool_ft.webp');
       background-size: cover;
       background-position: center center;
       color: #cff;
@@ -193,9 +183,6 @@
       }
     }
   </style>
-
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="libraries.js"></script>
 </head>
 <body>
   <div id="playerWindow" class="window">
@@ -239,6 +226,9 @@
     </div>
   </div>
 
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/97/three.min.js" integrity="sha256-PtfJMWwHJIEzMPJyARHylYJ6wioE2kcfFnwPoGufKOU=" crossorigin="anonymous"></script>
+  <script src="libraries.js"></script>
   <script>
     var socket = io();
     var EG = {

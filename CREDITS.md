@@ -26,27 +26,25 @@ Source: http://www.custommapmakers.org/skyboxes.php
 ## Free, royalty-free sounds list
 Source: https://v-play.net/game-resources/16-sites-featuring-free-game-sounds
 
-## Healing sound effects
-- assets/sound-effects/healspell/healspell1.aif
-- assets/sound-effects/healspell/healspell2.aif
-- assets/sound-effects/healspell/healspell3.aif
-Author: DoKashiteru
-Source: https://opengameart.org/content/3-heal-spells
-
-## Spell sounds starter pack
-- assets/sound-effects/spells/*.ogg
-Author: p0ss
-Source: https://opengameart.org/content/spell-sounds-starter-pack
-
-## Energy drain sound effect
-- assets/sound-effects/qubodup-PowerDrain/*
-Author: Iwan Gabovitch (https://qubodup.github.io/)
-Source: https://opengameart.org/content/energy-drain
-
 ## Theme music Nautilus
 - assets/music/ambient2-nautilus.mp3
 Author: poinl
 Source: https://opengameart.org/content/nautilus
+
+## CSS loading animation
+Author: loadingio (https://github.com/loadingio)
+Source: https://github.com/loadingio/css-spinner/
+
+## HSL color picker
+Source: http://hslpicker.com/
+
+## Animation of a group of fishes
+Source: http://altspacevr.github.io/AltspaceJam/fish/fish.html
+
+## Fight music
+- assets/music/hold-the-line.ogg
+Author: Bart Kelsey
+Source: https://opengameart.org/content/hold-line-boss-theme
 
 ## socket.io code snippets
 ```
@@ -76,34 +74,3 @@ socket.broadcast.to(socketid).emit('message', 'for your eyes only');
 ```
 Author: LearnRPG (https://stackoverflow.com/users/1325485/learnrpg)
 Source: https://stackoverflow.com/questions/10058226/send-response-to-all-clients-except-sender
-
-## CSS loading animation
-Author: loadingio (https://github.com/loadingio)
-Source: https://github.com/loadingio/css-spinner/
-
-## HSL color picker
-Source: http://hslpicker.com/
-
-## Animation of a group of fishes
-Source: http://altspacevr.github.io/AltspaceJam/fish/fish.html
-
-## Fight music
-- assets/music/hold-the-line.ogg
-Author: Bart Kelsey
-Source: https://opengameart.org/content/hold-line-boss-theme
-
-## Battle sound effects
-- assets/sound-effects/battle-sound-effects/Bow.wav
-- assets/sound-effects/battle-sound-effects/swish_2.wav
-- assets/sound-effects/battle-sound-effects/swish_3.wav
-- assets/sound-effects/battle-sound-effects/swish_4.wav
-Author: artisticdude
-Source: https://opengameart.org/content/battle-sound-effects
-
-## Wind, hit, and time morph sound effects
-- assets/sound-effects/qubodup-timehitwind/60009__qubodup__swosh_22.flac
-- assets/sound-effects/qubodup-timehitwind/qubodup-megaswosh1.wav
-- assets/sound-effects/qubodup-timehitwind/qubodup-megaswosh2.wav
-- assets/sound-effects/qubodup-timehitwind/qubodup-slomo1.wav
-Author: Iwan Gabovitch (https://qubodup.github.io/)
-Source: https://opengameart.org/content/wind-hit-time-morph

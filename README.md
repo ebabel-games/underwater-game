@@ -53,3 +53,9 @@ Once that's done (only once per machine), you can start for Production:
 npm run start-production
 ```
 
+## Run on Cloud9
+It's possible to run this game in Cloud9. The package `forever` needs to be installed, node upgraded to the latest version instead of the default version 6 with `nvm install stable`.
+
+```
+npm run c9
+```

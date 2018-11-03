@@ -38,7 +38,7 @@ const world = (input) => {
     THREE,
     camera,
     volume: EG.dataStore.defaultVolume,
-    url: 'assets/music/ambient2-nautilus.mp3',
+    url: 'assets/music/ambient2-nautilus.ogg',
     name: 'default-theme',
     autostart: true,
     loop: true,
@@ -73,7 +73,7 @@ const world = (input) => {
     THREE,
     scene,
     directions:  ['ft', 'bk', 'up', 'dn', 'rt', 'lf']
-      .map((direction) => `../assets/whirlpool/large-files/whirlpool_${direction}.jpg`)
+      .map((direction) => `../assets/whirlpool/webp/whirlpool_${direction}.webp`)
   });
 
   return {

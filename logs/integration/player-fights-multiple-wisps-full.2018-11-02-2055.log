@@ -1,0 +1,129 @@
+[2018-11-02T21:55:45.005] [INFO] full - Test Case version 0.1 for player-fights-multiple-wisps.test.js - standard life only
+[2018-11-02T21:55:45.013] [INFO] full - Player Thomas pops {"name":"Thomas","strength":6,"stamina":9,"agility":14,"position":[0,0,0],"rotation":[0,0,0],"life":540,"attack":3,"defence":33,"fightMode":false,"color":[0.3583,0.9,0.7],"respawnedLife":340,"socketId":1}.
+[2018-11-02T21:55:45.014] [INFO] full - a wisp pops {"name":"a wisp","strength":8,"stamina":13,"agility":8,"position":[4027,-2572,4202],"rotation":[0,0,0],"life":260,"attack":12,"defence":12,"fightMode":false,"color":[0.64,0.9,0.7],"respawnedLife":260}.
+[2018-11-02T21:55:45.014] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.014] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.014] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.014] [INFO] full - a wisp hits Thomas for 30 life.
+[2018-11-02T21:55:45.015] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.015] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.015] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.015] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.015] [INFO] full - Thomas hits a wisp for 20 life.
+[2018-11-02T21:55:45.015] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.015] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.015] [INFO] full - a wisp hits Thomas for 30 life.
+[2018-11-02T21:55:45.015] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.015] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.015] [INFO] full - Thomas hits a wisp for 20 life.
+[2018-11-02T21:55:45.015] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.015] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.015] [INFO] full - a wisp hits Thomas for 60 life.
+[2018-11-02T21:55:45.015] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.015] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.015] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.015] [INFO] full - a wisp hits Thomas for 10 life.
+[2018-11-02T21:55:45.015] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.015] [INFO] full - a wisp hits Thomas for 50 life.
+[2018-11-02T21:55:45.015] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.015] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.015] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.015] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.015] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.015] [INFO] full - a wisp hits Thomas for 60 life.
+[2018-11-02T21:55:45.015] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.015] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.015] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.015] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.015] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.015] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.015] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.015] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.015] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.016] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.016] [INFO] full - Thomas hits a wisp for 30 life.
+[2018-11-02T21:55:45.016] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.016] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.016] [INFO] full - a wisp hits Thomas for 40 life.
+[2018-11-02T21:55:45.016] [INFO] full - Thomas hits a wisp for 40 life.
+[2018-11-02T21:55:45.016] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.016] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.016] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.016] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.016] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.016] [INFO] full - Thomas hits a wisp for 30 life.
+[2018-11-02T21:55:45.016] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.016] [INFO] full - Thomas hits a wisp for 10 life.
+[2018-11-02T21:55:45.016] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.016] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.016] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.016] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.016] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.016] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.016] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.016] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.016] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.016] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.016] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.016] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.016] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.016] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.016] [INFO] full - a wisp hits Thomas for 10 life.
+[2018-11-02T21:55:45.016] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.016] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.016] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.016] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.016] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.016] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.016] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.016] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.016] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.016] [INFO] full - a wisp hits Thomas for 40 life.
+[2018-11-02T21:55:45.017] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.017] [INFO] full - a wisp hits Thomas for 20 life.
+[2018-11-02T21:55:45.017] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.017] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.017] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.017] [INFO] full - a wisp hits Thomas for 30 life.
+[2018-11-02T21:55:45.017] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.017] [INFO] full - a wisp hits Thomas for 40 life.
+[2018-11-02T21:55:45.017] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.017] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.017] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.017] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.017] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.017] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.017] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.017] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.017] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.017] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.017] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.017] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.017] [INFO] full - Thomas hits a wisp for 10 life.
+[2018-11-02T21:55:45.017] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.017] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.017] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.017] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.017] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.017] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.017] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.017] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.017] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.017] [INFO] full - Thomas hits a wisp for 20 life.
+[2018-11-02T21:55:45.017] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.017] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.017] [INFO] full - a wisp hits Thomas for 20 life.
+[2018-11-02T21:55:45.017] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.017] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.017] [INFO] full - Thomas hits a wisp for 50 life.
+[2018-11-02T21:55:45.017] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.017] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.017] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.018] [INFO] full - Thomas tries to hit a wisp but misses.
+[2018-11-02T21:55:45.018] [INFO] full - a wisp hits Thomas for 50 life.
+[2018-11-02T21:55:45.018] [INFO] full - Thomas hits a wisp for 10 life.
+[2018-11-02T21:55:45.018] [INFO] full - a wisp tries to hit Thomas but misses.
+[2018-11-02T21:55:45.018] [INFO] full - Thomas hits a wisp for 10 life.
+[2018-11-02T21:55:45.018] [INFO] full - a wisp hits Thomas for 50 life.
+[2018-11-02T21:55:45.018] [INFO] full - Thomas has died in a fight with a wisp.
+[2018-11-02T21:55:45.018] [INFO] full - Fight summary: Thomas dies after 125 rounds, Thomas started with 540 life and ended with 0 life, fought 1 a wisp.

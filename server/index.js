@@ -1,7 +1,10 @@
 'strict';
 
+const compression = require('compression');
 const express = require('express');
 const app = express();
+app.use(compression());
+
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
@@ -22,7 +25,9 @@ const {
 // Central store that keeps state of the whole game, server-side.
 global.dataStore = c.dataStore;
 
-app.use(express.static('client'));
+app.use(express.static('client', {
+  maxAge: '1y',
+}));
 
 app.settings['x-powered-by'] = false;
 app.use((req, res, next) => {
@@ -86,6 +91,7 @@ io.on('connection', (socket) => {
 
 let port = 3000;
 if (process.env.NODE_ENV === 'production') port = 80;
+if (process.env.NODE_ENV === 'cloud9') port = process.env.PORT;
 http.listen(port, () => {
   console.log(`Underwater Game listening on port ${port}.`); /* eslint no-console: 0 */
 });
