@@ -2,12 +2,10 @@
 
 const gameloop = require('node-gameloop');
 
-const { random, randomPosition } = require('ebabel');
+const { random } = require('ebabel');
 
 const c = require('./constants');
 const createNpc = require('./create-npc');
-const npcMove = require('./npc-move');
-const npcVsNpc = require('./npc-vs-npc');
 const playersVsNpc = require('./players-vs-npc');
 
 // Main server-side game function.
@@ -25,9 +23,6 @@ const game = (input) => {
   // Main game loop that runs continuously.
   // Note: run gameloop.clearGameLoop(id); to stop the loop from running.
   const id = gameloop.setGameLoop((delta) => {  /* eslint no-unused-vars: 0 */
-    // Move all npc sprites.
-    global.dataStore.npc = npcMove(global.dataStore.npc);
-
     // Runs every 1 second.
     oneSecond += delta;
     const oneSecondFlag = oneSecond >= 1;
@@ -50,11 +45,6 @@ const game = (input) => {
       }
     }
 
-    // All npc that are close to each other will fight (bar exceptions, like blessed wisp).
-    if (oneSecondFlag) {
-      global.dataStore.npc = npcVsNpc(global.dataStore.npc);
-    }
-
     // Current player fights nearby npc.
     if (oneSecondFlag && global.dataStore.players && Object.keys(global.dataStore.players).length > 0) {
       const { players, npc } = playersVsNpc(global.dataStore.players, global.dataStore.npc, io);
@@ -62,13 +52,18 @@ const game = (input) => {
       global.dataStore.npc = npc;
     }
 
-    // Respawn dead npc that have reached a certain height after they drifted upwards.
+    // Respawn dead npc when they reach their respawn counter.
     if (oneSecondFlag) {
       global.dataStore.npc = global.dataStore.npc.map((n) => {
-        if (n.life <= 0 && n.position[1] >= c.respawnHeight) {
-          n.life = n.respawnedLife;
+        if (n.life <= 0 && n.respawnCounter >= n.respawnTimer) {
+          n.life = n.respawnLife;
           n.fightMode = false;
-          n.position = randomPosition();
+          n.position = n.respawnPosition;
+          n.respawnCounter = 0;
+        }
+
+        if (n.life <= 0) {
+          n.respawnCounter += 1;
         }
   
         return n;
@@ -76,14 +71,16 @@ const game = (input) => {
     }
 
     // Update life, and fightMode for all npc after their fights.
-    const npcStates = global.dataStore.npc.map((n) => {
-      return {
-        position: n.position,
-        life: n.life,
-        fightMode: n.fightMode,
-      };
-    });
-    io.emit('updateNpcStates', npcStates);
+    if (oneSecondFlag) {
+      const npcStates = global.dataStore.npc.map((n) => {
+        return {
+          position: n.position,
+          life: n.life,
+          fightMode: n.fightMode,
+        };
+      });
+      io.emit('updateNpcStates', npcStates);
+    }
 
     // Reset.
     if (oneSecondFlag) oneSecond = 0;

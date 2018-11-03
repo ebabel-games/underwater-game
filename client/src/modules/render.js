@@ -1,11 +1,10 @@
 'use strict';
 
 const { updatePlayerPositionRotation } = require('ebabel');
-
-const npcMinimumSize = 20;
+const c = require('../constants');
 
 // Get the new size or the minimum size of any wisp sprite.
-const getNewSize = (life) => (life > npcMinimumSize) ? life : npcMinimumSize;
+const getNewSize = (life) => (life > c.npcMinimumSize) ? life : c.npcMinimumSize;
 
 const render = (
     clock,
@@ -55,11 +54,12 @@ const render = (
   scene.children.filter(c => c.name === 'skybox')[0]
     .position.set(camera.position.x, camera.position.y, camera.position.z);
 
+  // Update all npc.
   const npc = EG.scene && EG.scene.children.filter(child => child.name === 'npc-group');
   if (npc && npc.length && EG.dataStore.npcStates && EG.dataStore.npcStates.length) {
     // Update position and state of all npc.
     npc[0].children.map((child, index) => {
-      // Skip npc  if there is no matching state to update for same index.
+      // Skip npc if there is no matching state to update for same index.
       const newState = EG.dataStore.npcStates[index];
       if (!newState) {
         return;
@@ -69,6 +69,9 @@ const render = (
       child.userData.position =  newState.position;
       child.userData.life = newState.life;
       child.userData.fightMode = newState.fightMode;
+
+      // Hide npc if it has no life.
+      child.visible = child.userData.life > 0;
 
       // Update the size of npc based on its life.
       const newSize = getNewSize(child.userData.life);
