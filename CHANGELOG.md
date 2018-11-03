@@ -6,7 +6,10 @@
 - Set master volume for Web Audio API sounds.
 - npc respawn at their respawn position once their respawn timer has been hit since they died.
 - npc no longer fight npc.
-- npc move only on client side, with a small animation, but not from server-side, to lighten the load.
+- At most, only broadcast updateNpcStates once per second.
+- Blessed Wisp only respawns one hour after death.
+- Instead of broadcasting updateNpcStates every second, only broadcast the data of npc that need an update.
+- npc move only on client side, with a small animation, but not from server-side, to lighten the load on the socket messages.
 
 ## 1.17.1
 - Fix multiple sounds playing at the same time.

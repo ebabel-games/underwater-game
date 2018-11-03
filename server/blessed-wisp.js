@@ -1,5 +1,6 @@
 'use strict';
 
+const c = require('./constants');
 const Wisp = require('./wisp');
 
 class BlessedWisp extends Wisp {
@@ -14,6 +15,8 @@ class BlessedWisp extends Wisp {
 
     this.color[0] = 0.1583; // Hue.
     this.color[2] = 0.67;   // Lightness.
+
+    this.respawnTimer = c.oneHourInSeconds;
   }
 }
 

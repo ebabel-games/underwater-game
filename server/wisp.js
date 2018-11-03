@@ -1,6 +1,7 @@
 'use strict';
 
 const { trait, positive, randomPosition } = require('ebabel');
+const c = require('./constants');
 
 class Wisp {
   constructor(input = {}) {
@@ -34,7 +35,7 @@ class Wisp {
     this.respawnCounter = 0;
 
     // How many seconds until the wisp respawns after death.
-    this.respawnTimer = 120; // 2 minutes.
+    this.respawnTimer = c.oneMinuteInSeconds * 3;
   }
 }
 

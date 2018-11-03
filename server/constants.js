@@ -11,4 +11,6 @@ module.exports = {
     npc: [],
     players: {},
   },
+  oneHourInSeconds: 3600,
+  oneMinuteInSeconds: 60,
 };
