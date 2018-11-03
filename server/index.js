@@ -1,7 +1,10 @@
 'strict';
 
+const compression = require('compression');
 const express = require('express');
 const app = express();
+app.use(compression());
+
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
@@ -22,7 +25,9 @@ const {
 // Central store that keeps state of the whole game, server-side.
 global.dataStore = c.dataStore;
 
-app.use(express.static('client'));
+app.use(express.static('client', {
+  maxAge: '1y',
+}));
 
 app.settings['x-powered-by'] = false;
 app.use((req, res, next) => {
