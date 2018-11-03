@@ -1,5 +1,9 @@
 # Underwater Game changelog
 
+## 1.18.0
+- npc no longer fight npc.
+- npc move only on client side, with a small animation, but not from server-side, to lighten the load.
+
 ## 1.17.1
 - Fix multiple sounds playing at the same time.
 
