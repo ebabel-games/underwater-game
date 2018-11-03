@@ -7,4 +7,5 @@ module.exports = {
     misses: 'misses',
     heals: 'heals',
   },
+  npcMinimumSize: 20,
 };
