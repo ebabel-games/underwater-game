@@ -21,7 +21,7 @@ test('Wisp can instantiate a wisp object with default values when no input is su
   expect(result.defence).toBeGreaterThan(0);
   expect(result.fightMode).toBe(false);
   expect(result.color).toEqual([0.64, 0.9, 0.7]);
-  expect(result.respawnedLife).toEqual(result.life);
+  expect(result.respawnLife).toEqual(result.life);
 });
 
 test('Wisp defaults to 20 life when stamina and agility sum are exactly the same value as strength.', () => {

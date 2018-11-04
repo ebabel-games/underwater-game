@@ -21,6 +21,6 @@ test('BlessedWisp can be instantiated without any input for its constructor and 
   expect(result.defence).toBe(53);
   expect(result.fightMode).toBe(false);
   expect(result.color).toEqual([0.1583, 0.9, 0.67]);
-  expect(result.respawnedLife).toEqual(result.life);
+  expect(result.respawnLife).toEqual(result.life);
 });
 

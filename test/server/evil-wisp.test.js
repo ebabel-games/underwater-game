@@ -21,6 +21,6 @@ test('EvilWisp can be instantiated without any input for its constructor and set
   expect(result.defence).toBe(24);
   expect(result.fightMode).toBe(false);
   expect(result.color).toEqual([0, 1, 0.5]);
-  expect(result.respawnedLife).toEqual(result.life);
+  expect(result.respawnLife).toEqual(result.life);
 });
 

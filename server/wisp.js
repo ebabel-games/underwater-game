@@ -25,10 +25,10 @@ class Wisp {
     this.color = input.color
       || [0.64, 0.9, 0.7]; // Hue, saturation, and lightness.
 
-    // Life when respawned.
+    // Life when respawn.
     this.respawnLife = this.life;
 
-    // Position when respawned.
+    // Position when respawn.
     this.respawnPosition = this.position;
 
     // Counter measuring number of seconds since the wisp died.
