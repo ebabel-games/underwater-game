@@ -1,6 +1,6 @@
 'use strict';
 
-const { textSprite } = require('ebabel');
+const addNameAboveSprite = require('./add-name-above-sprite');
 
 const spawnSprite = (input) => {
   const {
@@ -19,16 +19,11 @@ const spawnSprite = (input) => {
   sprite.userData = spriteData;
 
   // Name above sprite.
-  const text = textSprite({
-    THREE,
-    canvas: document.createElement('canvas'),
-    text: spriteData.name,
-  });
-  sprite.add(text);
+  addNameAboveSprite(spriteData.name, sprite);
 
   // todo: add one animation that loops continuously, with a view to
   // have multiple animations for different situations (hits, misses, death, for example).
-  
+
 
   return sprite;
 };

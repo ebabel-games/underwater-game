@@ -8,8 +8,9 @@
 - npc no longer fight npc.
 - At most, only broadcast updateNpcStates once per second.
 - Blessed Wisp only respawns one hour after death.
-- Instead of broadcasting updateNpcStates every second, only broadcast the data of npc that need an update.
+- Starting area (origin where players spawn) is free of wisps.
 - npc move only on client side, with a small animation, but not from server-side, to lighten the load on the socket messages.
+- Instead of broadcasting updateNpcStates every second, only broadcast the data of npc that need an update.
 
 ## 1.17.1
 - Fix multiple sounds playing at the same time.
