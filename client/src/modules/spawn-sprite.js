@@ -26,6 +26,10 @@ const spawnSprite = (input) => {
   });
   sprite.add(text);
 
+  // todo: add one animation that loops continuously, with a view to
+  // have multiple animations for different situations (hits, misses, death, for example).
+  
+
   return sprite;
 };
 
