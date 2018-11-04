@@ -13,4 +13,6 @@ module.exports = {
   },
   oneHourInSeconds: 3600,
   oneMinuteInSeconds: 60,
+  safeOriginArea: [200, 200, 200],
+  initialSpawnArea: [6000, 6000, 6000],
 };

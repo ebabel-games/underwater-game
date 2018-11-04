@@ -9,7 +9,7 @@ class Wisp {
     this.strength = input.strength || trait();
     this.stamina = input.stamina || trait();
     this.agility = input.agility || trait();
-    this.position = input.position || randomPosition();
+    this.position = input.position || randomPosition(c.initialSpawnArea, c.safeOriginArea);
     this.rotation = input.rotation || [0, 0, 0];
     this.life = input.life
       || positive((this.stamina + this.agility - this.strength) * 20)
