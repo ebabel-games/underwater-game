@@ -9,6 +9,7 @@
 - At most, only broadcast updateNpcStates once per second.
 - Blessed Wisp only respawns one hour after death.
 - Starting area (origin where players spawn) is free of wisps.
+- Add dependencies badge.
 - npc move only on client side, with a small animation, but not from server-side, to lighten the load on the socket messages.
 - Instead of broadcasting updateNpcStates every second, only broadcast the data of npc that need an update.
 
