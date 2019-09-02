@@ -44,7 +44,7 @@
     "babel-eslint": "^9.0.0",
     "babel-loader": "^8.0.4",
     "eslint": "^5.7.0",
-    "jest": "^23.6.0",
+    "jest": "^24.9.0",
     "log4js": "^3.0.6",
     "merge": ">=1.2.1",
     "webpack": "^4.20.2",
