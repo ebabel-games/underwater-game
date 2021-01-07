@@ -20,7 +20,7 @@ const createNpc = (io, name = 'a wisp') => {
       npc = new Wisp();
   }
 
-  io.emit('spawnSprite', npc);
+  EG.io.emit('spawnSprite', npc);
 
   return npc;
 };

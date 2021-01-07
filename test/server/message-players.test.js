@@ -16,17 +16,17 @@ beforeEach(() => {
   io = mockIo;
 });
 
-test('greetSinglePlayer calls io.to() with socket id parameter', () => {
+test('greetSinglePlayer calls EG.io.to() with socket id parameter', () => {
   const result = greetSinglePlayer(io, 1, 'Thomas');
   expect(result).toBe(undefined);
 });
 
-test('greetSinglePlayer calls io.to.emit() with two string parameters', () => {
+test('greetSinglePlayer calls EG.io.to.emit() with two string parameters', () => {
   const result = greetSinglePlayer(io, 1, 'Dave');
   expect(result).toBe(undefined);
 });
 
-test('waveOtherPlayers calls io.broadcast.emit with two string parameters', () => {
+test('waveOtherPlayers calls EG.io.broadcast.emit with two string parameters', () => {
   const result = waveOtherPlayers(socket, 'Ernesto');
   expect(result).toBe(undefined);
 });

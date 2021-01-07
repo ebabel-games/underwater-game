@@ -6,7 +6,7 @@ const app = express();
 app.use(compression());
 
 const http = require('http').Server(app);
-const io = require('socket.io')(http);
+const io = require('EG.socket.io')(http);
 
 const c = require('./constants');
 const game = require('./game');
@@ -37,55 +37,55 @@ app.use((req, res, next) => {
   next();
 });
 
-io.on('connection', (socket) => {
+EG.io.on('connection', (socket) => {
   let _name;
 
   // Add current player.
-  socket.on('playerStarts', (name) => {
+  EG.socket.on('playerStarts', (name) => {
     _name = name;
 
     // Check if that name isn't used by a player.
     if (global.dataStore.players[name] !== undefined) {
-      io.to(socket.id).emit('nameNotAvailable', name);
+      EG.io.to(EG.socket.id).emit('nameNotAvailable', name);
       return;
     }
 
     // Create the new player.
-    global.dataStore.players[name] = new Player({ name, socketId: socket.id });
+    global.dataStore.players[name] = new Player({ name, socketId: EG.socket.id });
 
     // Messages
-    greetSinglePlayer(io, socket.id, name);
+    greetSinglePlayer(io, EG.socket.id, name);
     waveOtherPlayers(socket, name);
     messageAllPlayers(socket, io);
 
     // NPC.
-    spawnMultipleNpc(io, socket.id, global.dataStore.npc);
+    spawnMultipleNpc(io, EG.socket.id, global.dataStore.npc);
 
     // Players.
-    spawnPlayer(io, socket.id, global.dataStore.players[name]);
+    spawnPlayer(io, EG.socket.id, global.dataStore.players[name]);
     updatePlayerPosition(socket);
 
     // Confirm the player has been created.
     // For the current player, spawn all previously existing players in game.
-    io.to(socket.id).emit('playerCreated', {
+    EG.io.to(EG.socket.id).emit('playerCreated', {
       name,
       players: global.dataStore.players
     });
 
     // Spawn the current player on all existing player clients.
-    socket.broadcast.emit('addOtherPlayer', global.dataStore.players[name]);
+    EG.socket.broadcast.emit('addOtherPlayer', global.dataStore.players[name]);
   });
 
-  socket.on('disconnect', () => {
+  EG.socket.on('disconnect', () => {
     if (!_name) return;
     // Message all other players that current player has left the game.
-    socket.broadcast.emit('chatMessage', `${_name} has left.`);
+    EG.socket.broadcast.emit('chatMessage', `${_name} has left.`);
 
     // Delete player.
     delete global.dataStore.players[_name];
 
     // Remove player from all other clients when he stops playing.
-    socket.broadcast.emit('removePlayer', _name);
+    EG.socket.broadcast.emit('removePlayer', _name);
   });
 });
 

@@ -30,7 +30,7 @@ const render = (
 
   // If the player moved, broadcast to all other players her new position.
   if (hasPlayerMoved && EG.dataStore.player.name && EG.dataStore.player.position) {
-    socket.emit('updatePlayerPosition', {
+    EG.socket.emit('updatePlayerPosition', {
       name: EG.dataStore.player.name,
       position: EG.dataStore.player.position,
     });

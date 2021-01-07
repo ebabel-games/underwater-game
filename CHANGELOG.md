@@ -1,5 +1,8 @@
 # Underwater Game changelog
 
+## 2.0.0
+- Rewrite the game as single-player, client-side.
+
 ## 1.17.1
 - Fix multiple sounds playing at the same time.
 

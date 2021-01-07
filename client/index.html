@@ -226,12 +226,14 @@
     </div>
   </div>
 
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/97/three.min.js" integrity="sha256-PtfJMWwHJIEzMPJyARHylYJ6wioE2kcfFnwPoGufKOU=" crossorigin="anonymous"></script>
+  <script src="three.min.js"></script>
   <script src="libraries.js"></script>
   <script>
-    var socket = io();
-    var EG = {
+    var EG = { // EG = eBabel Game
+      socket: {
+        emit: () => {},
+        on: () => {}, 
+      },
       scene: null,
       camera: null,
       dataStore: {
@@ -259,7 +261,7 @@
         document.getElementById('loginForm').classList.toggle('error', false);
       }
     
-      socket.emit('playerStarts', name);
+      EG.socket.emit('playerStarts', name);
     });
     
     document.getElementById('name').focus();

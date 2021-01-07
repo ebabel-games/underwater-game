@@ -34,7 +34,7 @@ const playersVsNpc = (players, npc, io) => {
       opponentNpc.fightMode = true;
 
       // Update all clients the current player is in fightMode.
-      io.emit('updatePlayerFightMode', { name: player.name, fightMode: true });
+      EG.io.emit('updatePlayerFightMode', { name: player.name, fightMode: true });
   
       // Fight resolution.
       const { fighterOneLife, fighterTwoLife, fightMessages, actions } = resolveFight(player, opponentNpc);
@@ -44,13 +44,13 @@ const playersVsNpc = (players, npc, io) => {
       opponentNpc.life = fighterTwoLife;
 
       // Update all clients the current player has lost or gained life.
-      io.emit('updatePlayerLife', { name: player.name, life: player.life });
+      EG.io.emit('updatePlayerLife', { name: player.name, life: player.life });
 
       // Message only the relevant player that she lost or gained life.
-      fightMessages.map((fightMessage) => io.to(player.socketId).emit('chatMessage', fightMessage));
+      fightMessages.map((fightMessage) => EG.io.to(player.socketId).emit('chatMessage', fightMessage));
 
       // Message only the relevant player the actions involving herself and sprites she interacts with.
-      actions.map((action) => io.to(player.socketId).emit('action', action));
+      actions.map((action) => EG.io.to(player.socketId).emit('action', action));
 
       // Update dataStore.
       players[player.name].life = fighterOneLife;
@@ -59,18 +59,18 @@ const playersVsNpc = (players, npc, io) => {
       // Reset fightMode of opponentNpc if the player lost all life and opponentNpc is still alive.
       if (player.life <= 0 && opponentNpc.life > 0) {
         opponentNpc.fightMode = false;
-        io.emit('updatePlayerFightMode', { name: player.name, fightMode: false });
+        EG.io.emit('updatePlayerFightMode', { name: player.name, fightMode: false });
       }
 
       // Reset fightMode of player if the opponentNpc lost all life and player is still alive.
       if (opponentNpc.life <= 0 && player.life > 0) {
         player.fightMode = false;
-        io.emit('updatePlayerFightMode', { name: player.name, fightMode: false });
+        EG.io.emit('updatePlayerFightMode', { name: player.name, fightMode: false });
       }
 
       // If player has just died, signal this to all players.
       if (fighterOneLife <= 0) {
-        io.emit('playerDied', player.name);
+        EG.io.emit('playerDied', player.name);
       }
     }
   });

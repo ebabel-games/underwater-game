@@ -11,7 +11,7 @@ const npcVsNpc = require('./npc-vs-npc');
 const playersVsNpc = require('./players-vs-npc');
 
 // Main server-side game function.
-// @io: socket.io
+// @io: EG.socket.io
 // @fps: number of frames per second.
 const game = (input) => {
   const {
@@ -83,7 +83,7 @@ const game = (input) => {
         fightMode: n.fightMode,
       };
     });
-    io.emit('updateNpcStates', npcStates);
+    EG.io.emit('updateNpcStates', npcStates);
 
     // Reset.
     if (oneSecondFlag) oneSecond = 0;

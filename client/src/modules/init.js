@@ -15,42 +15,42 @@ const addNpc = (sprite) => {
 
 const init = () => {
   // Spawn multiple npc.
-  socket.on('spawnMultipleNpc', (multipleNpc) => {
+  EG.socket.on('spawnMultipleNpc', (multipleNpc) => {
     multipleNpc.map((npc) => {
       addNpc(spawnSprite({ spriteData: npc, particleTexture }));
     });
   });
 
   // Spawn single npc.
-  socket.on('spawnSprite', (npc) => {
+  EG.socket.on('spawnSprite', (npc) => {
     addNpc(spawnSprite({ spriteData: npc, particleTexture }));
   });
 
   // Update npc states.
-  socket.on('updateNpcStates', (npcStates) => {
+  EG.socket.on('updateNpcStates', (npcStates) => {
     EG.dataStore.npcStates = npcStates;
   });
 
   // Spawn current player.
-  socket.on('spawnPlayer', (player) => {
+  EG.socket.on('spawnPlayer', (player) => {
     EG.dataStore.player = player;
     EG.scene.add(spawnSprite({ spriteData: player, particleTexture }));
   });
 
   //  Spawn other player state that spawns after the current player.
-  socket.on('addOtherPlayer', (otherPlayerState) => {
+  EG.socket.on('addOtherPlayer', (otherPlayerState) => {
     EG.dataStore.otherPlayerStates[otherPlayerState.name] = otherPlayerState;
     EG.scene.add(spawnSprite({ spriteData: otherPlayerState, particleTexture }));
   });
 
   // Update position of a player other than current one.
-  socket.on('updateOtherPlayerPosition', (playerState) => {
+  EG.socket.on('updateOtherPlayerPosition', (playerState) => {
     EG.dataStore.otherPlayerStates[playerState.name].position = playerState.position;
   });
 
   // Update life of players, only from server to all clients
   // because the single source of truth for life is on the server-side.
-  socket.on('updatePlayerLife', (playerState) => {
+  EG.socket.on('updatePlayerLife', (playerState) => {
     if (EG.dataStore.player.name === playerState.name) {
       // Update current player.
       EG.dataStore.player.life = playerState.life;
@@ -75,7 +75,7 @@ const init = () => {
     }
   });
 
-  socket.on('action', (action) => {
+  EG.socket.on('action', (action) => {
     // Play all sound effects when the Player is the agent.
     if (action.agentType === 'Player') {
       playSoundEffect(action.agentName, action.name);
@@ -89,11 +89,11 @@ const init = () => {
     // Note: not all possible sound effects are played, in particular the npc sound effects, because their name is not unique and there would be too many sound effects competing to play at the same time.
   });
 
-  socket.on('playerDied', (name) => {
+  EG.socket.on('playerDied', (name) => {
     playSoundEffect(name, 'death');
   });
 
-  socket.on('removePlayer', (name) => {
+  EG.socket.on('removePlayer', (name) => {
     // Remove other player from EG.dataStore.
     EG.dataStore.otherPlayerStates[name] = undefined;
     delete EG.dataStore.otherPlayerStates[name];
@@ -102,7 +102,7 @@ const init = () => {
     EG.scene.remove(EG.scene.getObjectByName(name));
   });
 
-  socket.on('updatePlayerFightMode', (playerState) => {
+  EG.socket.on('updatePlayerFightMode', (playerState) => {
     if (playerState.name ===  EG.dataStore.player.name && playerState.fightMode) {
       EG.dataStore.player.fightMode = true;
       const sounds = EG.scene.children.filter(c => c.type === 'Audio');
@@ -122,7 +122,7 @@ const init = () => {
     }
   });
 
-  socket.on('playerCreated', (input = {}) => {
+  EG.socket.on('playerCreated', (input = {}) => {
     const {
       name,
       players
@@ -142,7 +142,7 @@ const init = () => {
     });
   });
   
-  socket.on('nameNotAvailable', (name) => {
+  EG.socket.on('nameNotAvailable', (name) => {
     document.getElementById('loginForm').classList.toggle('error', true);
   });  
 };

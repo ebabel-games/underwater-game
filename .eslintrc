@@ -7,7 +7,6 @@
   },
   "globals": {
     "io": true,
-    "socket": true,
     "THREE": true,
     "THREEx": true,
     "EG": true,
